@@ -14,14 +14,19 @@ require 'date'
 require 'time'
 
 module PostBoost
-  class UploadChunk200Response
-    # Number of chunks received so far.
-    attr_accessor :received
+  class InitiateChunkedUpload201Response
+    attr_accessor :upload_uuid
+
+    attr_accessor :chunk_size
+
+    attr_accessor :total_chunks
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'received' => :'received'
+        :'upload_uuid' => :'upload_uuid',
+        :'chunk_size' => :'chunk_size',
+        :'total_chunks' => :'total_chunks'
       }
     end
 
@@ -33,7 +38,9 @@ module PostBoost
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'received' => :'Integer'
+        :'upload_uuid' => :'String',
+        :'chunk_size' => :'Integer',
+        :'total_chunks' => :'Integer'
       }
     end
 
@@ -47,19 +54,27 @@ module PostBoost
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `PostBoost::UploadChunk200Response` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `PostBoost::InitiateChunkedUpload201Response` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `PostBoost::UploadChunk200Response`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `PostBoost::InitiateChunkedUpload201Response`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'received')
-        self.received = attributes[:'received']
+      if attributes.key?(:'upload_uuid')
+        self.upload_uuid = attributes[:'upload_uuid']
+      end
+
+      if attributes.key?(:'chunk_size')
+        self.chunk_size = attributes[:'chunk_size']
+      end
+
+      if attributes.key?(:'total_chunks')
+        self.total_chunks = attributes[:'total_chunks']
       end
     end
 
@@ -83,7 +98,9 @@ module PostBoost
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          received == o.received
+          upload_uuid == o.upload_uuid &&
+          chunk_size == o.chunk_size &&
+          total_chunks == o.total_chunks
     end
 
     # @see the `==` method
@@ -95,7 +112,7 @@ module PostBoost
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [received].hash
+      [upload_uuid, chunk_size, total_chunks].hash
     end
 
     # Builds the object from hash

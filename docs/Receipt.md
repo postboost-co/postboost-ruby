@@ -4,16 +4,16 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **uuid** | **String** |  | [optional] |
-| **transaction_id** | **String** |  | [optional] |
-| **invoice_number** | **String** |  | [optional] |
-| **amount** | **Float** |  | [optional] |
-| **tax** | **Float** |  | [optional] |
-| **currency** | **String** |  | [optional] |
+| **uuid** | **String** |  |  |
+| **transaction_id** | **String** |  |  |
+| **invoice_number** | **String** |  |  |
+| **amount** | **Float** |  |  |
+| **tax** | **Float** |  |  |
+| **currency** | **String** |  |  |
 | **receipt_url** | **String** |  | [optional] |
 | **description** | **String** |  | [optional] |
-| **paid_at** | **Time** |  | [optional] |
-| **created_at** | **Time** |  | [optional] |
+| **paid_at** | **Time** |  |  |
+| **created_at** | **Time** |  |  |
 
 ## Example
 

@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **success** | **Boolean** |  | [optional] |
+| **success** | **Boolean** |  |  |
 | **scheduled_at** | **Time** |  | [optional] |
 
 ## Example

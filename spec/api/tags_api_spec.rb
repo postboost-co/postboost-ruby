@@ -34,6 +34,7 @@ describe 'TagsApi' do
 
   # unit tests for create_tag
   # Create tag
+  # Creates a new color-coded tag in the workspace for organizing posts.
   # @param workspace_uuid UUID of the workspace.
   # @param tag_input 
   # @param [Hash] opts the optional parameters
@@ -46,6 +47,7 @@ describe 'TagsApi' do
 
   # unit tests for delete_tag
   # Delete tag
+  # Permanently deletes a tag. Posts that had this tag attached are unaffected.
   # @param workspace_uuid UUID of the workspace.
   # @param tag_uuid UUID of the tag.
   # @param [Hash] opts the optional parameters
@@ -58,6 +60,7 @@ describe 'TagsApi' do
 
   # unit tests for get_tag
   # Get tag
+  # Returns a single tag by UUID.
   # @param workspace_uuid UUID of the workspace.
   # @param tag_uuid UUID of the tag.
   # @param [Hash] opts the optional parameters
@@ -70,6 +73,7 @@ describe 'TagsApi' do
 
   # unit tests for list_tags
   # List tags
+  # Returns all tags defined in the workspace.
   # @param workspace_uuid UUID of the workspace.
   # @param [Hash] opts the optional parameters
   # @return [ListTags200Response]
@@ -81,6 +85,7 @@ describe 'TagsApi' do
 
   # unit tests for update_tag
   # Update tag
+  # Updates a tag&#39;s name or color.
   # @param workspace_uuid UUID of the workspace.
   # @param tag_uuid UUID of the tag.
   # @param tag_input 

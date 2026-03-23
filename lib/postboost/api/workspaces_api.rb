@@ -20,6 +20,7 @@ module PostBoost
       @api_client = api_client
     end
     # Add user to workspace
+    # Adds an existing user to the workspace with a specified role. Admin only.
     # @param workspace_uuid [String] UUID of the workspace.
     # @param workspace_user_input [WorkspaceUserInput] 
     # @param [Hash] opts the optional parameters
@@ -30,6 +31,7 @@ module PostBoost
     end
 
     # Add user to workspace
+    # Adds an existing user to the workspace with a specified role. Admin only.
     # @param workspace_uuid [String] UUID of the workspace.
     # @param workspace_user_input [WorkspaceUserInput] 
     # @param [Hash] opts the optional parameters
@@ -160,6 +162,7 @@ module PostBoost
     end
 
     # Delete workspace
+    # Permanently deletes a single workspace and all its associated data. Admin only.
     # @param workspace_uuid [String] UUID of the workspace.
     # @param [Hash] opts the optional parameters
     # @return [Object]
@@ -169,6 +172,7 @@ module PostBoost
     end
 
     # Delete workspace
+    # Permanently deletes a single workspace and all its associated data. Admin only.
     # @param workspace_uuid [String] UUID of the workspace.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
@@ -221,6 +225,7 @@ module PostBoost
     end
 
     # Delete workspaces (bulk)
+    # Permanently deletes one or more workspaces and all their associated data. Admin only.
     # @param delete_workspaces_bulk_request [DeleteWorkspacesBulkRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Object]
@@ -230,6 +235,7 @@ module PostBoost
     end
 
     # Delete workspaces (bulk)
+    # Permanently deletes one or more workspaces and all their associated data. Admin only.
     # @param delete_workspaces_bulk_request [DeleteWorkspacesBulkRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
@@ -287,6 +293,7 @@ module PostBoost
     end
 
     # Get workspace
+    # Returns a single workspace by UUID including its subscription status. Admin only.
     # @param workspace_uuid [String] UUID of the workspace.
     # @param [Hash] opts the optional parameters
     # @return [Workspace]
@@ -296,6 +303,7 @@ module PostBoost
     end
 
     # Get workspace
+    # Returns a single workspace by UUID including its subscription status. Admin only.
     # @param workspace_uuid [String] UUID of the workspace.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Workspace, Integer, Hash)>] Workspace data, response status code and response headers
@@ -353,6 +361,7 @@ module PostBoost
     # @option opts [String] :keyword 
     # @option opts [String] :subscription_status 
     # @option opts [String] :access_status 
+    # @option opts [Integer] :page Page number (15 items per page). (default to 1)
     # @return [ListWorkspaces200Response]
     def list_workspaces(opts = {})
       data, _status_code, _headers = list_workspaces_with_http_info(opts)
@@ -365,6 +374,7 @@ module PostBoost
     # @option opts [String] :keyword 
     # @option opts [String] :subscription_status 
     # @option opts [String] :access_status 
+    # @option opts [Integer] :page Page number (15 items per page). (default to 1)
     # @return [Array<(ListWorkspaces200Response, Integer, Hash)>] ListWorkspaces200Response data, response status code and response headers
     def list_workspaces_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -386,6 +396,7 @@ module PostBoost
       query_params[:'keyword'] = opts[:'keyword'] if !opts[:'keyword'].nil?
       query_params[:'subscription_status'] = opts[:'subscription_status'] if !opts[:'subscription_status'].nil?
       query_params[:'access_status'] = opts[:'access_status'] if !opts[:'access_status'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -422,6 +433,7 @@ module PostBoost
     end
 
     # Remove user from workspace
+    # Removes a user's access to the workspace. The user account is not deleted. Admin only.
     # @param workspace_uuid [String] UUID of the workspace.
     # @param remove_user_from_workspace_request [RemoveUserFromWorkspaceRequest] 
     # @param [Hash] opts the optional parameters
@@ -432,6 +444,7 @@ module PostBoost
     end
 
     # Remove user from workspace
+    # Removes a user&#39;s access to the workspace. The user account is not deleted. Admin only.
     # @param workspace_uuid [String] UUID of the workspace.
     # @param remove_user_from_workspace_request [RemoveUserFromWorkspaceRequest] 
     # @param [Hash] opts the optional parameters
@@ -494,6 +507,7 @@ module PostBoost
     end
 
     # Update workspace
+    # Updates a workspace's name, color, or access status. Admin only.
     # @param workspace_uuid [String] UUID of the workspace.
     # @param workspace_input [WorkspaceInput] 
     # @param [Hash] opts the optional parameters
@@ -504,6 +518,7 @@ module PostBoost
     end
 
     # Update workspace
+    # Updates a workspace&#39;s name, color, or access status. Admin only.
     # @param workspace_uuid [String] UUID of the workspace.
     # @param workspace_input [WorkspaceInput] 
     # @param [Hash] opts the optional parameters
@@ -566,6 +581,7 @@ module PostBoost
     end
 
     # Update user role in workspace
+    # Changes a user's role or permissions within the workspace. Admin only.
     # @param workspace_uuid [String] UUID of the workspace.
     # @param workspace_user_input [WorkspaceUserInput] 
     # @param [Hash] opts the optional parameters
@@ -576,6 +592,7 @@ module PostBoost
     end
 
     # Update user role in workspace
+    # Changes a user&#39;s role or permissions within the workspace. Admin only.
     # @param workspace_uuid [String] UUID of the workspace.
     # @param workspace_user_input [WorkspaceUserInput] 
     # @param [Hash] opts the optional parameters

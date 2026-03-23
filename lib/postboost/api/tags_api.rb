@@ -20,6 +20,7 @@ module PostBoost
       @api_client = api_client
     end
     # Create tag
+    # Creates a new color-coded tag in the workspace for organizing posts.
     # @param workspace_uuid [String] UUID of the workspace.
     # @param tag_input [TagInput] 
     # @param [Hash] opts the optional parameters
@@ -30,6 +31,7 @@ module PostBoost
     end
 
     # Create tag
+    # Creates a new color-coded tag in the workspace for organizing posts.
     # @param workspace_uuid [String] UUID of the workspace.
     # @param tag_input [TagInput] 
     # @param [Hash] opts the optional parameters
@@ -92,6 +94,7 @@ module PostBoost
     end
 
     # Delete tag
+    # Permanently deletes a tag. Posts that had this tag attached are unaffected.
     # @param workspace_uuid [String] UUID of the workspace.
     # @param tag_uuid [String] UUID of the tag.
     # @param [Hash] opts the optional parameters
@@ -102,6 +105,7 @@ module PostBoost
     end
 
     # Delete tag
+    # Permanently deletes a tag. Posts that had this tag attached are unaffected.
     # @param workspace_uuid [String] UUID of the workspace.
     # @param tag_uuid [String] UUID of the tag.
     # @param [Hash] opts the optional parameters
@@ -159,6 +163,7 @@ module PostBoost
     end
 
     # Get tag
+    # Returns a single tag by UUID.
     # @param workspace_uuid [String] UUID of the workspace.
     # @param tag_uuid [String] UUID of the tag.
     # @param [Hash] opts the optional parameters
@@ -169,6 +174,7 @@ module PostBoost
     end
 
     # Get tag
+    # Returns a single tag by UUID.
     # @param workspace_uuid [String] UUID of the workspace.
     # @param tag_uuid [String] UUID of the tag.
     # @param [Hash] opts the optional parameters
@@ -226,6 +232,7 @@ module PostBoost
     end
 
     # List tags
+    # Returns all tags defined in the workspace.
     # @param workspace_uuid [String] UUID of the workspace.
     # @param [Hash] opts the optional parameters
     # @return [ListTags200Response]
@@ -235,6 +242,7 @@ module PostBoost
     end
 
     # List tags
+    # Returns all tags defined in the workspace.
     # @param workspace_uuid [String] UUID of the workspace.
     # @param [Hash] opts the optional parameters
     # @return [Array<(ListTags200Response, Integer, Hash)>] ListTags200Response data, response status code and response headers
@@ -287,6 +295,7 @@ module PostBoost
     end
 
     # Update tag
+    # Updates a tag's name or color.
     # @param workspace_uuid [String] UUID of the workspace.
     # @param tag_uuid [String] UUID of the tag.
     # @param tag_input [TagInput] 
@@ -298,6 +307,7 @@ module PostBoost
     end
 
     # Update tag
+    # Updates a tag&#39;s name or color.
     # @param workspace_uuid [String] UUID of the workspace.
     # @param tag_uuid [String] UUID of the tag.
     # @param tag_input [TagInput] 

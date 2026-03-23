@@ -21,6 +21,8 @@ All URIs are relative to *https://postboost.co/app/api*
 
 Add user to workspace
 
+Adds an existing user to the workspace with a specified role. Admin only.
+
 ### Examples
 
 ```ruby
@@ -159,6 +161,8 @@ end
 
 Delete workspace
 
+Permanently deletes a single workspace and all its associated data. Admin only.
+
 ### Examples
 
 ```ruby
@@ -226,6 +230,8 @@ end
 
 Delete workspaces (bulk)
 
+Permanently deletes one or more workspaces and all their associated data. Admin only.
+
 ### Examples
 
 ```ruby
@@ -292,6 +298,8 @@ end
 > <Workspace> get_workspace(workspace_uuid)
 
 Get workspace
+
+Returns a single workspace by UUID including its subscription status. Admin only.
 
 ### Examples
 
@@ -377,7 +385,8 @@ api_instance = PostBoost::WorkspacesApi.new
 opts = {
   keyword: 'keyword_example', # String | 
   subscription_status: 'active', # String | 
-  access_status: 'subscription' # String | 
+  access_status: 'subscription', # String | 
+  page: 56 # Integer | Page number (15 items per page).
 }
 
 begin
@@ -414,6 +423,7 @@ end
 | **keyword** | **String** |  | [optional] |
 | **subscription_status** | **String** |  | [optional] |
 | **access_status** | **String** |  | [optional] |
+| **page** | **Integer** | Page number (15 items per page). | [optional][default to 1] |
 
 ### Return type
 
@@ -434,6 +444,8 @@ end
 > Object remove_user_from_workspace(workspace_uuid, remove_user_from_workspace_request)
 
 Remove user from workspace
+
+Removes a user's access to the workspace. The user account is not deleted. Admin only.
 
 ### Examples
 
@@ -504,6 +516,8 @@ end
 
 Update workspace
 
+Updates a workspace's name, color, or access status. Admin only.
+
 ### Examples
 
 ```ruby
@@ -572,6 +586,8 @@ end
 > Object update_workspace_user(workspace_uuid, workspace_user_input)
 
 Update user role in workspace
+
+Changes a user's role or permissions within the workspace. Admin only.
 
 ### Examples
 

@@ -22,6 +22,8 @@ All URIs are relative to *https://postboost.co/app/api*
 
 Add generic subscription
 
+Assigns a non-Stripe (generic) subscription plan to the workspace, optionally granting a trial period. Used for AppSumo-style lifetime deals. Admin only.
+
 ### Examples
 
 ```ruby
@@ -91,6 +93,8 @@ end
 
 Cancel subscription
 
+Cancels the workspace's Stripe subscription at the end of the current billing period. Admin only.
+
 ### Examples
 
 ```ruby
@@ -157,6 +161,8 @@ end
 > Object change_subscription_plan(workspace_uuid, change_subscription_plan_request)
 
 Change subscription plan
+
+Switches the workspace to a different Stripe plan. Optionally prorates the change and bills immediately. Admin only.
 
 ### Examples
 
@@ -298,6 +304,8 @@ end
 
 Create subscription
 
+Manually creates a subscription record for the workspace (for external billing integrations). Admin only.
+
 ### Examples
 
 ```ruby
@@ -367,6 +375,8 @@ end
 
 Delete subscription
 
+Removes the subscription record from the workspace. Admin only.
+
 ### Examples
 
 ```ruby
@@ -433,6 +443,8 @@ end
 > <Subscription> get_subscription(workspace_uuid)
 
 Get subscription
+
+Returns the active subscription for the workspace, or `null` if none exists. Admin only.
 
 ### Examples
 
@@ -501,6 +513,8 @@ end
 
 Remove generic subscription
 
+Removes the generic (non-Stripe) subscription from the workspace. Admin only.
+
 ### Examples
 
 ```ruby
@@ -568,6 +582,8 @@ end
 
 Resume subscription
 
+Resumes a previously canceled subscription before it expires. Admin only.
+
 ### Examples
 
 ```ruby
@@ -634,6 +650,8 @@ end
 > Object update_subscription(workspace_uuid, subscription_update_input)
 
 Update subscription
+
+Updates the plan ID, status, or trial/pause dates of an existing subscription. Admin only.
 
 ### Examples
 

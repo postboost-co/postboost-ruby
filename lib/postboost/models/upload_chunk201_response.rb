@@ -14,13 +14,14 @@ require 'date'
 require 'time'
 
 module PostBoost
-  class InitiateRemoteUpload200ResponseOneOf
-    attr_accessor :download_id
+  class UploadChunk201Response
+    # Number of chunks received so far.
+    attr_accessor :received
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'download_id' => :'download_id'
+        :'received' => :'received'
       }
     end
 
@@ -32,7 +33,7 @@ module PostBoost
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'download_id' => :'String'
+        :'received' => :'Integer'
       }
     end
 
@@ -46,19 +47,19 @@ module PostBoost
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `PostBoost::InitiateRemoteUpload200ResponseOneOf` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `PostBoost::UploadChunk201Response` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `PostBoost::InitiateRemoteUpload200ResponseOneOf`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `PostBoost::UploadChunk201Response`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'download_id')
-        self.download_id = attributes[:'download_id']
+      if attributes.key?(:'received')
+        self.received = attributes[:'received']
       end
     end
 
@@ -82,7 +83,7 @@ module PostBoost
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          download_id == o.download_id
+          received == o.received
     end
 
     # @see the `==` method
@@ -94,7 +95,7 @@ module PostBoost
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [download_id].hash
+      [received].hash
     end
 
     # Builds the object from hash

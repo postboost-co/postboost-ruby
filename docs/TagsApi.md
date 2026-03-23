@@ -17,6 +17,8 @@ All URIs are relative to *https://postboost.co/app/api*
 
 Create tag
 
+Creates a new color-coded tag in the workspace for organizing posts.
+
 ### Examples
 
 ```ruby
@@ -85,6 +87,8 @@ end
 > Object delete_tag(workspace_uuid, tag_uuid)
 
 Delete tag
+
+Permanently deletes a tag. Posts that had this tag attached are unaffected.
 
 ### Examples
 
@@ -155,6 +159,8 @@ end
 
 Get tag
 
+Returns a single tag by UUID.
+
 ### Examples
 
 ```ruby
@@ -224,6 +230,8 @@ end
 
 List tags
 
+Returns all tags defined in the workspace.
+
 ### Examples
 
 ```ruby
@@ -290,6 +298,8 @@ end
 > Object update_tag(workspace_uuid, tag_uuid, tag_input)
 
 Update tag
+
+Updates a tag's name or color.
 
 ### Examples
 

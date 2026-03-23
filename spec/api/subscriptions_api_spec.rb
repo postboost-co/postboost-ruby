@@ -34,6 +34,7 @@ describe 'SubscriptionsApi' do
 
   # unit tests for add_generic_subscription
   # Add generic subscription
+  # Assigns a non-Stripe (generic) subscription plan to the workspace, optionally granting a trial period. Used for AppSumo-style lifetime deals. Admin only.
   # @param workspace_uuid UUID of the workspace.
   # @param add_generic_subscription_request 
   # @param [Hash] opts the optional parameters
@@ -46,6 +47,7 @@ describe 'SubscriptionsApi' do
 
   # unit tests for cancel_subscription
   # Cancel subscription
+  # Cancels the workspace&#39;s Stripe subscription at the end of the current billing period. Admin only.
   # @param workspace_uuid UUID of the workspace.
   # @param [Hash] opts the optional parameters
   # @return [Object]
@@ -57,6 +59,7 @@ describe 'SubscriptionsApi' do
 
   # unit tests for change_subscription_plan
   # Change subscription plan
+  # Switches the workspace to a different Stripe plan. Optionally prorates the change and bills immediately. Admin only.
   # @param workspace_uuid UUID of the workspace.
   # @param change_subscription_plan_request 
   # @param [Hash] opts the optional parameters
@@ -82,6 +85,7 @@ describe 'SubscriptionsApi' do
 
   # unit tests for create_subscription
   # Create subscription
+  # Manually creates a subscription record for the workspace (for external billing integrations). Admin only.
   # @param workspace_uuid UUID of the workspace.
   # @param subscription_input 
   # @param [Hash] opts the optional parameters
@@ -94,6 +98,7 @@ describe 'SubscriptionsApi' do
 
   # unit tests for delete_subscription
   # Delete subscription
+  # Removes the subscription record from the workspace. Admin only.
   # @param workspace_uuid UUID of the workspace.
   # @param [Hash] opts the optional parameters
   # @return [Object]
@@ -105,6 +110,7 @@ describe 'SubscriptionsApi' do
 
   # unit tests for get_subscription
   # Get subscription
+  # Returns the active subscription for the workspace, or &#x60;null&#x60; if none exists. Admin only.
   # @param workspace_uuid UUID of the workspace.
   # @param [Hash] opts the optional parameters
   # @return [Subscription]
@@ -116,6 +122,7 @@ describe 'SubscriptionsApi' do
 
   # unit tests for remove_generic_subscription
   # Remove generic subscription
+  # Removes the generic (non-Stripe) subscription from the workspace. Admin only.
   # @param workspace_uuid UUID of the workspace.
   # @param [Hash] opts the optional parameters
   # @return [Object]
@@ -127,6 +134,7 @@ describe 'SubscriptionsApi' do
 
   # unit tests for resume_subscription
   # Resume subscription
+  # Resumes a previously canceled subscription before it expires. Admin only.
   # @param workspace_uuid UUID of the workspace.
   # @param [Hash] opts the optional parameters
   # @return [Object]
@@ -138,6 +146,7 @@ describe 'SubscriptionsApi' do
 
   # unit tests for update_subscription
   # Update subscription
+  # Updates the plan ID, status, or trial/pause dates of an existing subscription. Admin only.
   # @param workspace_uuid UUID of the workspace.
   # @param subscription_update_input 
   # @param [Hash] opts the optional parameters

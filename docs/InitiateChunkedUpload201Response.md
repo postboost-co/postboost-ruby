@@ -1,4 +1,4 @@
-# PostBoost::InitiateChunkedUpload200Response
+# PostBoost::InitiateChunkedUpload201Response
 
 ## Properties
 
@@ -13,7 +13,7 @@
 ```ruby
 require 'postboost'
 
-instance = PostBoost::InitiateChunkedUpload200Response.new(
+instance = PostBoost::InitiateChunkedUpload201Response.new(
   upload_uuid: null,
   chunk_size: null,
   total_chunks: null

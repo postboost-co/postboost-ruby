@@ -4,10 +4,10 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **id** | **Integer** |  | [optional] |
-| **uuid** | **String** |  | [optional] |
-| **name** | **String** |  | [optional] |
-| **hex_color** | **String** |  | [optional] |
+| **id** | **Integer** |  |  |
+| **uuid** | **String** |  |  |
+| **name** | **String** |  |  |
+| **hex_color** | **String** |  |  |
 
 ## Example
 

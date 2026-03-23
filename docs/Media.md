@@ -4,15 +4,15 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **id** | **Integer** |  | [optional] |
-| **uuid** | **String** |  | [optional] |
-| **name** | **String** |  | [optional] |
-| **mime_type** | **String** |  | [optional] |
-| **type** | **String** |  | [optional] |
-| **url** | **String** |  | [optional] |
+| **id** | **Integer** |  |  |
+| **uuid** | **String** |  |  |
+| **name** | **String** |  |  |
+| **mime_type** | **String** |  |  |
+| **type** | **String** |  |  |
+| **url** | **String** |  |  |
 | **thumb_url** | **String** |  | [optional] |
-| **is_video** | **Boolean** |  | [optional] |
-| **created_at** | **Time** |  | [optional] |
+| **is_video** | **Boolean** |  |  |
+| **created_at** | **Time** |  |  |
 
 ## Example
 

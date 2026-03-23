@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **deleted** | **Boolean** |  | [optional] |
-| **deleted_from_app** | **Boolean** |  | [optional] |
-| **to_trash** | **Boolean** |  | [optional] |
+| **deleted** | **Boolean** |  |  |
+| **deleted_from_app** | **Boolean** |  |  |
+| **to_trash** | **Boolean** |  |  |
 
 ## Example
 

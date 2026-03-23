@@ -18,6 +18,8 @@ All URIs are relative to *https://postboost.co/app/api*
 
 Create receipt
 
+Creates a billing receipt record for a workspace. Admin only.
+
 ### Examples
 
 ```ruby
@@ -84,6 +86,8 @@ end
 > Object delete_receipt(receipt_uuid)
 
 Delete receipt
+
+Permanently deletes a single receipt. Admin only.
 
 ### Examples
 
@@ -152,6 +156,8 @@ end
 
 Delete receipts (bulk)
 
+Permanently deletes one or more receipt records. Admin only.
+
 ### Examples
 
 ```ruby
@@ -218,6 +224,8 @@ end
 > <Receipt> get_receipt(receipt_uuid)
 
 Get receipt
+
+Returns a single receipt by UUID. Admin only.
 
 ### Examples
 
@@ -286,6 +294,8 @@ end
 
 List receipts
 
+Returns a paginated list of billing receipts. Filter by workspace UUID or invoice number. Admin only.
+
 ### Examples
 
 ```ruby
@@ -300,7 +310,8 @@ end
 api_instance = PostBoost::ReceiptsApi.new
 opts = {
   workspace_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  invoice_number: 'invoice_number_example' # String | 
+  invoice_number: 'invoice_number_example', # String | 
+  page: 56 # Integer | Page number (15 items per page).
 }
 
 begin
@@ -336,6 +347,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **workspace_uuid** | **String** |  | [optional] |
 | **invoice_number** | **String** |  | [optional] |
+| **page** | **Integer** | Page number (15 items per page). | [optional][default to 1] |
 
 ### Return type
 
@@ -356,6 +368,8 @@ end
 > Object update_receipt(receipt_uuid, receipt_update_input)
 
 Update receipt
+
+Updates a receipt's transaction details, amount, or payment date. Admin only.
 
 ### Examples
 

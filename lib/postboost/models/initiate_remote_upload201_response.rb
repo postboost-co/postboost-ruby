@@ -14,12 +14,12 @@ require 'date'
 require 'time'
 
 module PostBoost
-  module InitiateRemoteUpload200Response
+  module InitiateRemoteUpload201Response
     class << self
       # List of class defined in oneOf (OpenAPI v3)
       def openapi_one_of
         [
-          :'InitiateRemoteUpload200ResponseOneOf',
+          :'InitiateRemoteUpload201ResponseOneOf',
           :'Media'
         ]
       end

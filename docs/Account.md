@@ -4,15 +4,15 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **id** | **Integer** |  | [optional] |
-| **uuid** | **String** |  | [optional] |
-| **name** | **String** |  | [optional] |
-| **username** | **String** |  | [optional] |
+| **id** | **Integer** |  |  |
+| **uuid** | **String** |  |  |
+| **name** | **String** |  |  |
+| **username** | **String** |  |  |
 | **image** | **String** |  | [optional] |
-| **provider** | **String** |  | [optional] |
-| **data** | **Object** | Provider-specific metadata. | [optional] |
-| **authorized** | **Boolean** |  | [optional] |
-| **created_at** | **Time** |  | [optional] |
+| **provider** | **String** |  |  |
+| **data** | **Object** | Provider-specific metadata. |  |
+| **authorized** | **Boolean** |  |  |
+| **created_at** | **Time** |  |  |
 
 ## Example
 

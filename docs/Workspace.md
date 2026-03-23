@@ -4,12 +4,12 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **uuid** | **String** |  | [optional] |
-| **name** | **String** |  | [optional] |
-| **hex_color** | **String** |  | [optional] |
+| **uuid** | **String** |  |  |
+| **name** | **String** |  |  |
+| **hex_color** | **String** |  |  |
 | **owner** | [**User**](User.md) |  | [optional] |
-| **access_status** | **String** |  | [optional] |
-| **created_at** | **Time** |  | [optional] |
+| **access_status** | **String** |  |  |
+| **created_at** | **Time** |  |  |
 
 ## Example
 

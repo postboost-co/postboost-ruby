@@ -1,4 +1,4 @@
-# PostBoost::UploadChunk200Response
+# PostBoost::UploadChunk201Response
 
 ## Properties
 
@@ -11,7 +11,7 @@
 ```ruby
 require 'postboost'
 
-instance = PostBoost::UploadChunk200Response.new(
+instance = PostBoost::UploadChunk201Response.new(
   received: null
 )
 ```

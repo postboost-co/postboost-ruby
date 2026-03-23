@@ -373,7 +373,7 @@ end
 
 ## initiate_chunked_upload
 
-> <InitiateChunkedUpload200Response> initiate_chunked_upload(workspace_uuid, initiate_chunked_upload_request)
+> <InitiateChunkedUpload201Response> initiate_chunked_upload(workspace_uuid, initiate_chunked_upload_request)
 
 Initiate chunked upload
 
@@ -407,7 +407,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InitiateChunkedUpload200Response>, Integer, Hash)> initiate_chunked_upload_with_http_info(workspace_uuid, initiate_chunked_upload_request)
+> <Array(<InitiateChunkedUpload201Response>, Integer, Hash)> initiate_chunked_upload_with_http_info(workspace_uuid, initiate_chunked_upload_request)
 
 ```ruby
 begin
@@ -415,7 +415,7 @@ begin
   data, status_code, headers = api_instance.initiate_chunked_upload_with_http_info(workspace_uuid, initiate_chunked_upload_request)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InitiateChunkedUpload200Response>
+  p data # => <InitiateChunkedUpload201Response>
 rescue PostBoost::ApiError => e
   puts "Error when calling MediaApi->initiate_chunked_upload_with_http_info: #{e}"
 end
@@ -430,7 +430,7 @@ end
 
 ### Return type
 
-[**InitiateChunkedUpload200Response**](InitiateChunkedUpload200Response.md)
+[**InitiateChunkedUpload201Response**](InitiateChunkedUpload201Response.md)
 
 ### Authorization
 
@@ -444,7 +444,7 @@ end
 
 ## initiate_remote_upload
 
-> <InitiateRemoteUpload200Response> initiate_remote_upload(workspace_uuid, initiate_remote_upload_request)
+> <InitiateRemoteUpload201Response> initiate_remote_upload(workspace_uuid, initiate_remote_upload_request)
 
 Initiate remote upload
 
@@ -478,7 +478,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InitiateRemoteUpload200Response>, Integer, Hash)> initiate_remote_upload_with_http_info(workspace_uuid, initiate_remote_upload_request)
+> <Array(<InitiateRemoteUpload201Response>, Integer, Hash)> initiate_remote_upload_with_http_info(workspace_uuid, initiate_remote_upload_request)
 
 ```ruby
 begin
@@ -486,7 +486,7 @@ begin
   data, status_code, headers = api_instance.initiate_remote_upload_with_http_info(workspace_uuid, initiate_remote_upload_request)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InitiateRemoteUpload200Response>
+  p data # => <InitiateRemoteUpload201Response>
 rescue PostBoost::ApiError => e
   puts "Error when calling MediaApi->initiate_remote_upload_with_http_info: #{e}"
 end
@@ -501,7 +501,7 @@ end
 
 ### Return type
 
-[**InitiateRemoteUpload200Response**](InitiateRemoteUpload200Response.md)
+[**InitiateRemoteUpload201Response**](InitiateRemoteUpload201Response.md)
 
 ### Authorization
 
@@ -661,7 +661,7 @@ end
 
 ## upload_chunk
 
-> <UploadChunk200Response> upload_chunk(workspace_uuid, upload_uuid, chunk, chunk_index)
+> <UploadChunk201Response> upload_chunk(workspace_uuid, upload_uuid, chunk, chunk_index)
 
 Upload a chunk
 
@@ -697,7 +697,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<UploadChunk200Response>, Integer, Hash)> upload_chunk_with_http_info(workspace_uuid, upload_uuid, chunk, chunk_index)
+> <Array(<UploadChunk201Response>, Integer, Hash)> upload_chunk_with_http_info(workspace_uuid, upload_uuid, chunk, chunk_index)
 
 ```ruby
 begin
@@ -705,7 +705,7 @@ begin
   data, status_code, headers = api_instance.upload_chunk_with_http_info(workspace_uuid, upload_uuid, chunk, chunk_index)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <UploadChunk200Response>
+  p data # => <UploadChunk201Response>
 rescue PostBoost::ApiError => e
   puts "Error when calling MediaApi->upload_chunk_with_http_info: #{e}"
 end
@@ -722,7 +722,7 @@ end
 
 ### Return type
 
-[**UploadChunk200Response**](UploadChunk200Response.md)
+[**UploadChunk201Response**](UploadChunk201Response.md)
 
 ### Authorization
 

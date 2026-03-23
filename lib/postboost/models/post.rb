@@ -117,32 +117,44 @@ module PostBoost
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
+      else
+        self.id = nil
       end
 
       if attributes.key?(:'uuid')
         self.uuid = attributes[:'uuid']
+      else
+        self.uuid = nil
       end
 
       if attributes.key?(:'status')
         self.status = attributes[:'status']
+      else
+        self.status = nil
       end
 
       if attributes.key?(:'accounts')
         if (value = attributes[:'accounts']).is_a?(Array)
           self.accounts = value
         end
+      else
+        self.accounts = nil
       end
 
       if attributes.key?(:'versions')
         if (value = attributes[:'versions']).is_a?(Array)
           self.versions = value
         end
+      else
+        self.versions = nil
       end
 
       if attributes.key?(:'tags')
         if (value = attributes[:'tags']).is_a?(Array)
           self.tags = value
         end
+      else
+        self.tags = nil
       end
 
       if attributes.key?(:'scheduled_at')
@@ -155,10 +167,14 @@ module PostBoost
 
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
+      else
+        self.created_at = nil
       end
 
       if attributes.key?(:'trashed')
         self.trashed = attributes[:'trashed']
+      else
+        self.trashed = nil
       end
     end
 
@@ -167,6 +183,38 @@ module PostBoost
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @id.nil?
+        invalid_properties.push('invalid value for "id", id cannot be nil.')
+      end
+
+      if @uuid.nil?
+        invalid_properties.push('invalid value for "uuid", uuid cannot be nil.')
+      end
+
+      if @status.nil?
+        invalid_properties.push('invalid value for "status", status cannot be nil.')
+      end
+
+      if @accounts.nil?
+        invalid_properties.push('invalid value for "accounts", accounts cannot be nil.')
+      end
+
+      if @versions.nil?
+        invalid_properties.push('invalid value for "versions", versions cannot be nil.')
+      end
+
+      if @tags.nil?
+        invalid_properties.push('invalid value for "tags", tags cannot be nil.')
+      end
+
+      if @created_at.nil?
+        invalid_properties.push('invalid value for "created_at", created_at cannot be nil.')
+      end
+
+      if @trashed.nil?
+        invalid_properties.push('invalid value for "trashed", trashed cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -174,6 +222,14 @@ module PostBoost
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @id.nil?
+      return false if @uuid.nil?
+      return false if @status.nil?
+      return false if @accounts.nil?
+      return false if @versions.nil?
+      return false if @tags.nil?
+      return false if @created_at.nil?
+      return false if @trashed.nil?
       true
     end
 

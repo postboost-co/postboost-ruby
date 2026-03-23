@@ -20,6 +20,7 @@ module PostBoost
       @api_client = api_client
     end
     # Create user
+    # Creates a new user account on the platform. Admin only.
     # @param user_input [UserInput] 
     # @param [Hash] opts the optional parameters
     # @return [User]
@@ -29,6 +30,7 @@ module PostBoost
     end
 
     # Create user
+    # Creates a new user account on the platform. Admin only.
     # @param user_input [UserInput] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(User, Integer, Hash)>] User data, response status code and response headers
@@ -86,6 +88,7 @@ module PostBoost
     end
 
     # Delete user
+    # Permanently deletes a user account. Returns 400 if you attempt to delete your own account. Admin only.
     # @param user_id [Integer] ID of the user.
     # @param [Hash] opts the optional parameters
     # @return [Object]
@@ -95,6 +98,7 @@ module PostBoost
     end
 
     # Delete user
+    # Permanently deletes a user account. Returns 400 if you attempt to delete your own account. Admin only.
     # @param user_id [Integer] ID of the user.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
@@ -147,6 +151,7 @@ module PostBoost
     end
 
     # Delete users (bulk)
+    # Permanently deletes one or more user accounts. You cannot delete your own account. Admin only.
     # @param delete_users_bulk_request [DeleteUsersBulkRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Object]
@@ -156,6 +161,7 @@ module PostBoost
     end
 
     # Delete users (bulk)
+    # Permanently deletes one or more user accounts. You cannot delete your own account. Admin only.
     # @param delete_users_bulk_request [DeleteUsersBulkRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
@@ -213,6 +219,7 @@ module PostBoost
     end
 
     # Get user
+    # Returns a single user account by ID. Admin only.
     # @param user_id [Integer] ID of the user.
     # @param [Hash] opts the optional parameters
     # @return [User]
@@ -222,6 +229,7 @@ module PostBoost
     end
 
     # Get user
+    # Returns a single user account by ID. Admin only.
     # @param user_id [Integer] ID of the user.
     # @param [Hash] opts the optional parameters
     # @return [Array<(User, Integer, Hash)>] User data, response status code and response headers
@@ -274,8 +282,10 @@ module PostBoost
     end
 
     # List users
+    # Returns a paginated list of all users on the platform. Optionally filter by name or email. Admin only.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :keyword Search by name or email.
+    # @option opts [Integer] :page Page number (15 items per page). (default to 1)
     # @return [ListUsers200Response]
     def list_users(opts = {})
       data, _status_code, _headers = list_users_with_http_info(opts)
@@ -283,8 +293,10 @@ module PostBoost
     end
 
     # List users
+    # Returns a paginated list of all users on the platform. Optionally filter by name or email. Admin only.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :keyword Search by name or email.
+    # @option opts [Integer] :page Page number (15 items per page). (default to 1)
     # @return [Array<(ListUsers200Response, Integer, Hash)>] ListUsers200Response data, response status code and response headers
     def list_users_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -296,6 +308,7 @@ module PostBoost
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'keyword'] = opts[:'keyword'] if !opts[:'keyword'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -332,6 +345,7 @@ module PostBoost
     end
 
     # Update user
+    # Updates a user's name, email, admin status, or password. Admin only.
     # @param user_id [Integer] ID of the user.
     # @param user_update_input [UserUpdateInput] 
     # @param [Hash] opts the optional parameters
@@ -342,6 +356,7 @@ module PostBoost
     end
 
     # Update user
+    # Updates a user&#39;s name, email, admin status, or password. Admin only.
     # @param user_id [Integer] ID of the user.
     # @param user_update_input [UserUpdateInput] 
     # @param [Hash] opts the optional parameters

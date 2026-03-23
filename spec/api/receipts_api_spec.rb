@@ -34,6 +34,7 @@ describe 'ReceiptsApi' do
 
   # unit tests for create_receipt
   # Create receipt
+  # Creates a billing receipt record for a workspace. Admin only.
   # @param receipt_input 
   # @param [Hash] opts the optional parameters
   # @return [Receipt]
@@ -45,6 +46,7 @@ describe 'ReceiptsApi' do
 
   # unit tests for delete_receipt
   # Delete receipt
+  # Permanently deletes a single receipt. Admin only.
   # @param receipt_uuid UUID of the receipt.
   # @param [Hash] opts the optional parameters
   # @return [Object]
@@ -56,6 +58,7 @@ describe 'ReceiptsApi' do
 
   # unit tests for delete_receipts_bulk
   # Delete receipts (bulk)
+  # Permanently deletes one or more receipt records. Admin only.
   # @param delete_receipts_bulk_request 
   # @param [Hash] opts the optional parameters
   # @return [Object]
@@ -67,6 +70,7 @@ describe 'ReceiptsApi' do
 
   # unit tests for get_receipt
   # Get receipt
+  # Returns a single receipt by UUID. Admin only.
   # @param receipt_uuid UUID of the receipt.
   # @param [Hash] opts the optional parameters
   # @return [Receipt]
@@ -78,9 +82,11 @@ describe 'ReceiptsApi' do
 
   # unit tests for list_receipts
   # List receipts
+  # Returns a paginated list of billing receipts. Filter by workspace UUID or invoice number. Admin only.
   # @param [Hash] opts the optional parameters
   # @option opts [String] :workspace_uuid 
   # @option opts [String] :invoice_number 
+  # @option opts [Integer] :page Page number (15 items per page).
   # @return [ListReceipts200Response]
   describe 'list_receipts test' do
     it 'should work' do
@@ -90,6 +96,7 @@ describe 'ReceiptsApi' do
 
   # unit tests for update_receipt
   # Update receipt
+  # Updates a receipt&#39;s transaction details, amount, or payment date. Admin only.
   # @param receipt_uuid UUID of the receipt.
   # @param receipt_update_input 
   # @param [Hash] opts the optional parameters

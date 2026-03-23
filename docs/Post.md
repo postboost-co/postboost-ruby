@@ -4,16 +4,16 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **id** | **Integer** |  | [optional] |
-| **uuid** | **String** |  | [optional] |
-| **status** | [**PostStatus**](PostStatus.md) |  | [optional] |
-| **accounts** | [**Array&lt;Account&gt;**](Account.md) |  | [optional] |
-| **versions** | [**Array&lt;PostVersion&gt;**](PostVersion.md) |  | [optional] |
-| **tags** | [**Array&lt;Tag&gt;**](Tag.md) |  | [optional] |
+| **id** | **Integer** |  |  |
+| **uuid** | **String** |  |  |
+| **status** | [**PostStatus**](PostStatus.md) |  |  |
+| **accounts** | [**Array&lt;Account&gt;**](Account.md) |  |  |
+| **versions** | [**Array&lt;PostVersion&gt;**](PostVersion.md) |  |  |
+| **tags** | [**Array&lt;Tag&gt;**](Tag.md) |  |  |
 | **scheduled_at** | **Time** |  | [optional] |
 | **published_at** | **Time** |  | [optional] |
-| **created_at** | **Time** |  | [optional] |
-| **trashed** | **Boolean** |  | [optional] |
+| **created_at** | **Time** |  |  |
+| **trashed** | **Boolean** |  |  |
 
 ## Example
 

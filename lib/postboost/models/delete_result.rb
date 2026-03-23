@@ -67,14 +67,20 @@ module PostBoost
 
       if attributes.key?(:'deleted')
         self.deleted = attributes[:'deleted']
+      else
+        self.deleted = nil
       end
 
       if attributes.key?(:'deleted_from_app')
         self.deleted_from_app = attributes[:'deleted_from_app']
+      else
+        self.deleted_from_app = nil
       end
 
       if attributes.key?(:'to_trash')
         self.to_trash = attributes[:'to_trash']
+      else
+        self.to_trash = nil
       end
     end
 
@@ -83,6 +89,18 @@ module PostBoost
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @deleted.nil?
+        invalid_properties.push('invalid value for "deleted", deleted cannot be nil.')
+      end
+
+      if @deleted_from_app.nil?
+        invalid_properties.push('invalid value for "deleted_from_app", deleted_from_app cannot be nil.')
+      end
+
+      if @to_trash.nil?
+        invalid_properties.push('invalid value for "to_trash", to_trash cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -90,6 +108,9 @@ module PostBoost
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @deleted.nil?
+      return false if @deleted_from_app.nil?
+      return false if @to_trash.nil?
       true
     end
 

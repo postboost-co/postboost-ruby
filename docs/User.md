@@ -4,12 +4,12 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **id** | **Integer** |  | [optional] |
-| **name** | **String** |  | [optional] |
-| **email** | **String** |  | [optional] |
-| **is_admin** | **Boolean** |  | [optional] |
+| **id** | **Integer** |  |  |
+| **name** | **String** |  |  |
+| **email** | **String** |  |  |
+| **is_admin** | **Boolean** |  |  |
 | **email_verified_at** | **Time** |  | [optional] |
-| **created_at** | **Time** |  | [optional] |
+| **created_at** | **Time** |  |  |
 
 ## Example
 

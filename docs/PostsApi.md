@@ -234,6 +234,8 @@ end
 
 Delete post
 
+Deletes a post. Use `delete_mode` to control whether to also remove the published content from social platforms.
+
 ### Examples
 
 ```ruby
@@ -377,6 +379,8 @@ end
 > <Post> get_post(workspace_uuid, post_uuid)
 
 Get post
+
+Returns a single post with all its versions and associated accounts.
 
 ### Examples
 
@@ -592,6 +596,8 @@ end
 > Object update_post(workspace_uuid, post_uuid, post_input)
 
 Update post
+
+Replaces a post's versions, accounts, tags, and scheduling options. The post must not be in a published state.
 
 ### Examples
 

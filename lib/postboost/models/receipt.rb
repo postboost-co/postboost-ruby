@@ -95,26 +95,38 @@ module PostBoost
 
       if attributes.key?(:'uuid')
         self.uuid = attributes[:'uuid']
+      else
+        self.uuid = nil
       end
 
       if attributes.key?(:'transaction_id')
         self.transaction_id = attributes[:'transaction_id']
+      else
+        self.transaction_id = nil
       end
 
       if attributes.key?(:'invoice_number')
         self.invoice_number = attributes[:'invoice_number']
+      else
+        self.invoice_number = nil
       end
 
       if attributes.key?(:'amount')
         self.amount = attributes[:'amount']
+      else
+        self.amount = nil
       end
 
       if attributes.key?(:'tax')
         self.tax = attributes[:'tax']
+      else
+        self.tax = nil
       end
 
       if attributes.key?(:'currency')
         self.currency = attributes[:'currency']
+      else
+        self.currency = nil
       end
 
       if attributes.key?(:'receipt_url')
@@ -127,10 +139,14 @@ module PostBoost
 
       if attributes.key?(:'paid_at')
         self.paid_at = attributes[:'paid_at']
+      else
+        self.paid_at = nil
       end
 
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
+      else
+        self.created_at = nil
       end
     end
 
@@ -139,6 +155,38 @@ module PostBoost
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @uuid.nil?
+        invalid_properties.push('invalid value for "uuid", uuid cannot be nil.')
+      end
+
+      if @transaction_id.nil?
+        invalid_properties.push('invalid value for "transaction_id", transaction_id cannot be nil.')
+      end
+
+      if @invoice_number.nil?
+        invalid_properties.push('invalid value for "invoice_number", invoice_number cannot be nil.')
+      end
+
+      if @amount.nil?
+        invalid_properties.push('invalid value for "amount", amount cannot be nil.')
+      end
+
+      if @tax.nil?
+        invalid_properties.push('invalid value for "tax", tax cannot be nil.')
+      end
+
+      if @currency.nil?
+        invalid_properties.push('invalid value for "currency", currency cannot be nil.')
+      end
+
+      if @paid_at.nil?
+        invalid_properties.push('invalid value for "paid_at", paid_at cannot be nil.')
+      end
+
+      if @created_at.nil?
+        invalid_properties.push('invalid value for "created_at", created_at cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -146,6 +194,14 @@ module PostBoost
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @uuid.nil?
+      return false if @transaction_id.nil?
+      return false if @invoice_number.nil?
+      return false if @amount.nil?
+      return false if @tax.nil?
+      return false if @currency.nil?
+      return false if @paid_at.nil?
+      return false if @created_at.nil?
       true
     end
 

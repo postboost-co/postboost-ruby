@@ -103,7 +103,7 @@ describe 'MediaApi' do
   # @param workspace_uuid UUID of the workspace.
   # @param initiate_chunked_upload_request 
   # @param [Hash] opts the optional parameters
-  # @return [InitiateChunkedUpload200Response]
+  # @return [InitiateChunkedUpload201Response]
   describe 'initiate_chunked_upload test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -116,7 +116,7 @@ describe 'MediaApi' do
   # @param workspace_uuid UUID of the workspace.
   # @param initiate_remote_upload_request 
   # @param [Hash] opts the optional parameters
-  # @return [InitiateRemoteUpload200Response]
+  # @return [InitiateRemoteUpload201Response]
   describe 'initiate_remote_upload test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -158,7 +158,7 @@ describe 'MediaApi' do
   # @param chunk 
   # @param chunk_index Zero-based index of this chunk.
   # @param [Hash] opts the optional parameters
-  # @return [UploadChunk200Response]
+  # @return [UploadChunk201Response]
   describe 'upload_chunk test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

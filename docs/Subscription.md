@@ -4,11 +4,11 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **name** | **String** |  | [optional] |
-| **platform_subscription_id** | **String** |  | [optional] |
-| **platform_plan_id** | **String** |  | [optional] |
-| **status** | [**SubscriptionStatus**](SubscriptionStatus.md) |  | [optional] |
-| **recurring** | **Boolean** |  | [optional] |
+| **name** | **String** |  |  |
+| **platform_subscription_id** | **String** |  |  |
+| **platform_plan_id** | **String** |  |  |
+| **status** | [**SubscriptionStatus**](SubscriptionStatus.md) |  |  |
+| **recurring** | **Boolean** |  |  |
 | **trial_ends_at** | **Time** |  | [optional] |
 | **paused_from** | **Time** |  | [optional] |
 | **ends_at** | **Time** |  | [optional] |

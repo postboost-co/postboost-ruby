@@ -20,6 +20,7 @@ module PostBoost
       @api_client = api_client
     end
     # Create receipt
+    # Creates a billing receipt record for a workspace. Admin only.
     # @param receipt_input [ReceiptInput] 
     # @param [Hash] opts the optional parameters
     # @return [Receipt]
@@ -29,6 +30,7 @@ module PostBoost
     end
 
     # Create receipt
+    # Creates a billing receipt record for a workspace. Admin only.
     # @param receipt_input [ReceiptInput] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Receipt, Integer, Hash)>] Receipt data, response status code and response headers
@@ -86,6 +88,7 @@ module PostBoost
     end
 
     # Delete receipt
+    # Permanently deletes a single receipt. Admin only.
     # @param receipt_uuid [String] UUID of the receipt.
     # @param [Hash] opts the optional parameters
     # @return [Object]
@@ -95,6 +98,7 @@ module PostBoost
     end
 
     # Delete receipt
+    # Permanently deletes a single receipt. Admin only.
     # @param receipt_uuid [String] UUID of the receipt.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
@@ -147,6 +151,7 @@ module PostBoost
     end
 
     # Delete receipts (bulk)
+    # Permanently deletes one or more receipt records. Admin only.
     # @param delete_receipts_bulk_request [DeleteReceiptsBulkRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Object]
@@ -156,6 +161,7 @@ module PostBoost
     end
 
     # Delete receipts (bulk)
+    # Permanently deletes one or more receipt records. Admin only.
     # @param delete_receipts_bulk_request [DeleteReceiptsBulkRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
@@ -213,6 +219,7 @@ module PostBoost
     end
 
     # Get receipt
+    # Returns a single receipt by UUID. Admin only.
     # @param receipt_uuid [String] UUID of the receipt.
     # @param [Hash] opts the optional parameters
     # @return [Receipt]
@@ -222,6 +229,7 @@ module PostBoost
     end
 
     # Get receipt
+    # Returns a single receipt by UUID. Admin only.
     # @param receipt_uuid [String] UUID of the receipt.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Receipt, Integer, Hash)>] Receipt data, response status code and response headers
@@ -274,9 +282,11 @@ module PostBoost
     end
 
     # List receipts
+    # Returns a paginated list of billing receipts. Filter by workspace UUID or invoice number. Admin only.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :workspace_uuid 
     # @option opts [String] :invoice_number 
+    # @option opts [Integer] :page Page number (15 items per page). (default to 1)
     # @return [ListReceipts200Response]
     def list_receipts(opts = {})
       data, _status_code, _headers = list_receipts_with_http_info(opts)
@@ -284,9 +294,11 @@ module PostBoost
     end
 
     # List receipts
+    # Returns a paginated list of billing receipts. Filter by workspace UUID or invoice number. Admin only.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :workspace_uuid 
     # @option opts [String] :invoice_number 
+    # @option opts [Integer] :page Page number (15 items per page). (default to 1)
     # @return [Array<(ListReceipts200Response, Integer, Hash)>] ListReceipts200Response data, response status code and response headers
     def list_receipts_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -299,6 +311,7 @@ module PostBoost
       query_params = opts[:query_params] || {}
       query_params[:'workspace_uuid'] = opts[:'workspace_uuid'] if !opts[:'workspace_uuid'].nil?
       query_params[:'invoice_number'] = opts[:'invoice_number'] if !opts[:'invoice_number'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -335,6 +348,7 @@ module PostBoost
     end
 
     # Update receipt
+    # Updates a receipt's transaction details, amount, or payment date. Admin only.
     # @param receipt_uuid [String] UUID of the receipt.
     # @param receipt_update_input [ReceiptUpdateInput] 
     # @param [Hash] opts the optional parameters
@@ -345,6 +359,7 @@ module PostBoost
     end
 
     # Update receipt
+    # Updates a receipt&#39;s transaction details, amount, or payment date. Admin only.
     # @param receipt_uuid [String] UUID of the receipt.
     # @param receipt_update_input [ReceiptUpdateInput] 
     # @param [Hash] opts the optional parameters

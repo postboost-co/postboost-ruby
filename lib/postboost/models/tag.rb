@@ -71,18 +71,26 @@ module PostBoost
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
+      else
+        self.id = nil
       end
 
       if attributes.key?(:'uuid')
         self.uuid = attributes[:'uuid']
+      else
+        self.uuid = nil
       end
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
+      else
+        self.name = nil
       end
 
       if attributes.key?(:'hex_color')
         self.hex_color = attributes[:'hex_color']
+      else
+        self.hex_color = nil
       end
     end
 
@@ -91,6 +99,22 @@ module PostBoost
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @id.nil?
+        invalid_properties.push('invalid value for "id", id cannot be nil.')
+      end
+
+      if @uuid.nil?
+        invalid_properties.push('invalid value for "uuid", uuid cannot be nil.')
+      end
+
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
+      if @hex_color.nil?
+        invalid_properties.push('invalid value for "hex_color", hex_color cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -98,6 +122,10 @@ module PostBoost
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @id.nil?
+      return false if @uuid.nil?
+      return false if @name.nil?
+      return false if @hex_color.nil?
       true
     end
 

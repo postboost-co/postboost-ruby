@@ -34,6 +34,7 @@ describe 'UsersApi' do
 
   # unit tests for create_user
   # Create user
+  # Creates a new user account on the platform. Admin only.
   # @param user_input 
   # @param [Hash] opts the optional parameters
   # @return [User]
@@ -45,6 +46,7 @@ describe 'UsersApi' do
 
   # unit tests for delete_user
   # Delete user
+  # Permanently deletes a user account. Returns 400 if you attempt to delete your own account. Admin only.
   # @param user_id ID of the user.
   # @param [Hash] opts the optional parameters
   # @return [Object]
@@ -56,6 +58,7 @@ describe 'UsersApi' do
 
   # unit tests for delete_users_bulk
   # Delete users (bulk)
+  # Permanently deletes one or more user accounts. You cannot delete your own account. Admin only.
   # @param delete_users_bulk_request 
   # @param [Hash] opts the optional parameters
   # @return [Object]
@@ -67,6 +70,7 @@ describe 'UsersApi' do
 
   # unit tests for get_user
   # Get user
+  # Returns a single user account by ID. Admin only.
   # @param user_id ID of the user.
   # @param [Hash] opts the optional parameters
   # @return [User]
@@ -78,8 +82,10 @@ describe 'UsersApi' do
 
   # unit tests for list_users
   # List users
+  # Returns a paginated list of all users on the platform. Optionally filter by name or email. Admin only.
   # @param [Hash] opts the optional parameters
   # @option opts [String] :keyword Search by name or email.
+  # @option opts [Integer] :page Page number (15 items per page).
   # @return [ListUsers200Response]
   describe 'list_users test' do
     it 'should work' do
@@ -89,6 +95,7 @@ describe 'UsersApi' do
 
   # unit tests for update_user
   # Update user
+  # Updates a user&#39;s name, email, admin status, or password. Admin only.
   # @param user_id ID of the user.
   # @param user_update_input 
   # @param [Hash] opts the optional parameters

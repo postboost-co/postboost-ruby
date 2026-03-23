@@ -34,6 +34,7 @@ describe 'WorkspacesApi' do
 
   # unit tests for add_user_to_workspace
   # Add user to workspace
+  # Adds an existing user to the workspace with a specified role. Admin only.
   # @param workspace_uuid UUID of the workspace.
   # @param workspace_user_input 
   # @param [Hash] opts the optional parameters
@@ -58,6 +59,7 @@ describe 'WorkspacesApi' do
 
   # unit tests for delete_workspace
   # Delete workspace
+  # Permanently deletes a single workspace and all its associated data. Admin only.
   # @param workspace_uuid UUID of the workspace.
   # @param [Hash] opts the optional parameters
   # @return [Object]
@@ -69,6 +71,7 @@ describe 'WorkspacesApi' do
 
   # unit tests for delete_workspaces_bulk
   # Delete workspaces (bulk)
+  # Permanently deletes one or more workspaces and all their associated data. Admin only.
   # @param delete_workspaces_bulk_request 
   # @param [Hash] opts the optional parameters
   # @return [Object]
@@ -80,6 +83,7 @@ describe 'WorkspacesApi' do
 
   # unit tests for get_workspace
   # Get workspace
+  # Returns a single workspace by UUID including its subscription status. Admin only.
   # @param workspace_uuid UUID of the workspace.
   # @param [Hash] opts the optional parameters
   # @return [Workspace]
@@ -96,6 +100,7 @@ describe 'WorkspacesApi' do
   # @option opts [String] :keyword 
   # @option opts [String] :subscription_status 
   # @option opts [String] :access_status 
+  # @option opts [Integer] :page Page number (15 items per page).
   # @return [ListWorkspaces200Response]
   describe 'list_workspaces test' do
     it 'should work' do
@@ -105,6 +110,7 @@ describe 'WorkspacesApi' do
 
   # unit tests for remove_user_from_workspace
   # Remove user from workspace
+  # Removes a user&#39;s access to the workspace. The user account is not deleted. Admin only.
   # @param workspace_uuid UUID of the workspace.
   # @param remove_user_from_workspace_request 
   # @param [Hash] opts the optional parameters
@@ -117,6 +123,7 @@ describe 'WorkspacesApi' do
 
   # unit tests for update_workspace
   # Update workspace
+  # Updates a workspace&#39;s name, color, or access status. Admin only.
   # @param workspace_uuid UUID of the workspace.
   # @param workspace_input 
   # @param [Hash] opts the optional parameters
@@ -129,6 +136,7 @@ describe 'WorkspacesApi' do
 
   # unit tests for update_workspace_user
   # Update user role in workspace
+  # Changes a user&#39;s role or permissions within the workspace. Admin only.
   # @param workspace_uuid UUID of the workspace.
   # @param workspace_user_input 
   # @param [Hash] opts the optional parameters

@@ -63,6 +63,8 @@ module PostBoost
 
       if attributes.key?(:'success')
         self.success = attributes[:'success']
+      else
+        self.success = nil
       end
 
       if attributes.key?(:'scheduled_at')
@@ -75,6 +77,10 @@ module PostBoost
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @success.nil?
+        invalid_properties.push('invalid value for "success", success cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -82,6 +88,7 @@ module PostBoost
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @success.nil?
       true
     end
 

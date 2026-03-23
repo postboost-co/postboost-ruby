@@ -1,4 +1,4 @@
-# PostBoost::InitiateRemoteUpload200Response
+# PostBoost::InitiateRemoteUpload201Response
 
 ## Class instance methods
 
@@ -11,10 +11,10 @@ Returns the list of classes defined in oneOf.
 ```ruby
 require 'postboost'
 
-PostBoost::InitiateRemoteUpload200Response.openapi_one_of
+PostBoost::InitiateRemoteUpload201Response.openapi_one_of
 # =>
 # [
-#   :'InitiateRemoteUpload200ResponseOneOf',
+#   :'InitiateRemoteUpload201ResponseOneOf',
 #   :'Media'
 # ]
 ```
@@ -28,10 +28,10 @@ Find the appropriate object from the `openapi_one_of` list and casts the data in
 ```ruby
 require 'postboost'
 
-PostBoost::InitiateRemoteUpload200Response.build(data)
-# => #<InitiateRemoteUpload200ResponseOneOf:0x00007fdd4aab02a0>
+PostBoost::InitiateRemoteUpload201Response.build(data)
+# => #<InitiateRemoteUpload201ResponseOneOf:0x00007fdd4aab02a0>
 
-PostBoost::InitiateRemoteUpload200Response.build(data_that_doesnt_match)
+PostBoost::InitiateRemoteUpload201Response.build(data_that_doesnt_match)
 # => nil
 ```
 
@@ -43,7 +43,7 @@ PostBoost::InitiateRemoteUpload200Response.build(data_that_doesnt_match)
 
 #### Return type
 
-- `InitiateRemoteUpload200ResponseOneOf`
+- `InitiateRemoteUpload201ResponseOneOf`
 - `Media`
 - `nil` (if no type matches)
 

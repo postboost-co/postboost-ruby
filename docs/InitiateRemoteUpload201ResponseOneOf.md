@@ -1,4 +1,4 @@
-# PostBoost::InitiateRemoteUpload200ResponseOneOf
+# PostBoost::InitiateRemoteUpload201ResponseOneOf
 
 ## Properties
 
@@ -11,7 +11,7 @@
 ```ruby
 require 'postboost'
 
-instance = PostBoost::InitiateRemoteUpload200ResponseOneOf.new(
+instance = PostBoost::InitiateRemoteUpload201ResponseOneOf.new(
   download_id: null
 )
 ```

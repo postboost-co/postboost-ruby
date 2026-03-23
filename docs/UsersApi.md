@@ -18,6 +18,8 @@ All URIs are relative to *https://postboost.co/app/api*
 
 Create user
 
+Creates a new user account on the platform. Admin only.
+
 ### Examples
 
 ```ruby
@@ -84,6 +86,8 @@ end
 > Object delete_user(user_id)
 
 Delete user
+
+Permanently deletes a user account. Returns 400 if you attempt to delete your own account. Admin only.
 
 ### Examples
 
@@ -152,6 +156,8 @@ end
 
 Delete users (bulk)
 
+Permanently deletes one or more user accounts. You cannot delete your own account. Admin only.
+
 ### Examples
 
 ```ruby
@@ -218,6 +224,8 @@ end
 > <User> get_user(user_id)
 
 Get user
+
+Returns a single user account by ID. Admin only.
 
 ### Examples
 
@@ -286,6 +294,8 @@ end
 
 List users
 
+Returns a paginated list of all users on the platform. Optionally filter by name or email. Admin only.
+
 ### Examples
 
 ```ruby
@@ -299,7 +309,8 @@ end
 
 api_instance = PostBoost::UsersApi.new
 opts = {
-  keyword: 'keyword_example' # String | Search by name or email.
+  keyword: 'keyword_example', # String | Search by name or email.
+  page: 56 # Integer | Page number (15 items per page).
 }
 
 begin
@@ -334,6 +345,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **keyword** | **String** | Search by name or email. | [optional] |
+| **page** | **Integer** | Page number (15 items per page). | [optional][default to 1] |
 
 ### Return type
 
@@ -354,6 +366,8 @@ end
 > Object update_user(user_id, user_update_input)
 
 Update user
+
+Updates a user's name, email, admin status, or password. Admin only.
 
 ### Examples
 

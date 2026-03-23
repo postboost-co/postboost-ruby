@@ -109,22 +109,32 @@ module PostBoost
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
+      else
+        self.name = nil
       end
 
       if attributes.key?(:'platform_subscription_id')
         self.platform_subscription_id = attributes[:'platform_subscription_id']
+      else
+        self.platform_subscription_id = nil
       end
 
       if attributes.key?(:'platform_plan_id')
         self.platform_plan_id = attributes[:'platform_plan_id']
+      else
+        self.platform_plan_id = nil
       end
 
       if attributes.key?(:'status')
         self.status = attributes[:'status']
+      else
+        self.status = nil
       end
 
       if attributes.key?(:'recurring')
         self.recurring = attributes[:'recurring']
+      else
+        self.recurring = nil
       end
 
       if attributes.key?(:'trial_ends_at')
@@ -145,6 +155,26 @@ module PostBoost
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
+      if @platform_subscription_id.nil?
+        invalid_properties.push('invalid value for "platform_subscription_id", platform_subscription_id cannot be nil.')
+      end
+
+      if @platform_plan_id.nil?
+        invalid_properties.push('invalid value for "platform_plan_id", platform_plan_id cannot be nil.')
+      end
+
+      if @status.nil?
+        invalid_properties.push('invalid value for "status", status cannot be nil.')
+      end
+
+      if @recurring.nil?
+        invalid_properties.push('invalid value for "recurring", recurring cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -152,6 +182,11 @@ module PostBoost
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @name.nil?
+      return false if @platform_subscription_id.nil?
+      return false if @platform_plan_id.nil?
+      return false if @status.nil?
+      return false if @recurring.nil?
       true
     end
 

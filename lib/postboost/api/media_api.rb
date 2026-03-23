@@ -374,7 +374,7 @@ module PostBoost
     # @param workspace_uuid [String] UUID of the workspace.
     # @param initiate_chunked_upload_request [InitiateChunkedUploadRequest] 
     # @param [Hash] opts the optional parameters
-    # @return [InitiateChunkedUpload200Response]
+    # @return [InitiateChunkedUpload201Response]
     def initiate_chunked_upload(workspace_uuid, initiate_chunked_upload_request, opts = {})
       data, _status_code, _headers = initiate_chunked_upload_with_http_info(workspace_uuid, initiate_chunked_upload_request, opts)
       data
@@ -385,7 +385,7 @@ module PostBoost
     # @param workspace_uuid [String] UUID of the workspace.
     # @param initiate_chunked_upload_request [InitiateChunkedUploadRequest] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InitiateChunkedUpload200Response, Integer, Hash)>] InitiateChunkedUpload200Response data, response status code and response headers
+    # @return [Array<(InitiateChunkedUpload201Response, Integer, Hash)>] InitiateChunkedUpload201Response data, response status code and response headers
     def initiate_chunked_upload_with_http_info(workspace_uuid, initiate_chunked_upload_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MediaApi.initiate_chunked_upload ...'
@@ -421,7 +421,7 @@ module PostBoost
       post_body = opts[:debug_body] || @api_client.object_to_http_body(initiate_chunked_upload_request)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InitiateChunkedUpload200Response'
+      return_type = opts[:debug_return_type] || 'InitiateChunkedUpload201Response'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['bearerAuth']
@@ -448,7 +448,7 @@ module PostBoost
     # @param workspace_uuid [String] UUID of the workspace.
     # @param initiate_remote_upload_request [InitiateRemoteUploadRequest] 
     # @param [Hash] opts the optional parameters
-    # @return [InitiateRemoteUpload200Response]
+    # @return [InitiateRemoteUpload201Response]
     def initiate_remote_upload(workspace_uuid, initiate_remote_upload_request, opts = {})
       data, _status_code, _headers = initiate_remote_upload_with_http_info(workspace_uuid, initiate_remote_upload_request, opts)
       data
@@ -459,7 +459,7 @@ module PostBoost
     # @param workspace_uuid [String] UUID of the workspace.
     # @param initiate_remote_upload_request [InitiateRemoteUploadRequest] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InitiateRemoteUpload200Response, Integer, Hash)>] InitiateRemoteUpload200Response data, response status code and response headers
+    # @return [Array<(InitiateRemoteUpload201Response, Integer, Hash)>] InitiateRemoteUpload201Response data, response status code and response headers
     def initiate_remote_upload_with_http_info(workspace_uuid, initiate_remote_upload_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MediaApi.initiate_remote_upload ...'
@@ -495,7 +495,7 @@ module PostBoost
       post_body = opts[:debug_body] || @api_client.object_to_http_body(initiate_remote_upload_request)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InitiateRemoteUpload200Response'
+      return_type = opts[:debug_return_type] || 'InitiateRemoteUpload201Response'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['bearerAuth']
@@ -670,7 +670,7 @@ module PostBoost
     # @param chunk [File] 
     # @param chunk_index [Integer] Zero-based index of this chunk.
     # @param [Hash] opts the optional parameters
-    # @return [UploadChunk200Response]
+    # @return [UploadChunk201Response]
     def upload_chunk(workspace_uuid, upload_uuid, chunk, chunk_index, opts = {})
       data, _status_code, _headers = upload_chunk_with_http_info(workspace_uuid, upload_uuid, chunk, chunk_index, opts)
       data
@@ -683,7 +683,7 @@ module PostBoost
     # @param chunk [File] 
     # @param chunk_index [Integer] Zero-based index of this chunk.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(UploadChunk200Response, Integer, Hash)>] UploadChunk200Response data, response status code and response headers
+    # @return [Array<(UploadChunk201Response, Integer, Hash)>] UploadChunk201Response data, response status code and response headers
     def upload_chunk_with_http_info(workspace_uuid, upload_uuid, chunk, chunk_index, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MediaApi.upload_chunk ...'
@@ -729,7 +729,7 @@ module PostBoost
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'UploadChunk200Response'
+      return_type = opts[:debug_return_type] || 'UploadChunk201Response'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['bearerAuth']
