@@ -1,7 +1,7 @@
 =begin
 #PostBoost API
 
-#The PostBoost REST API lets you publish, schedule, and analyze social media posts across 8+ platforms from a single integration. No OAuth apps to maintain — PostBoost handles platform authorization for you.  ## Base URL All workspace-scoped endpoints are prefixed with `/{workspaceUuid}`. Panel/admin endpoints are prefixed with `/panel`.  ## Authentication All requests require a Bearer token in the `Authorization` header. Generate tokens in your PostBoost dashboard under **Settings → Access Tokens**.  ``` Authorization: Bearer YOUR_API_TOKEN ``` 
+#The PostBoost REST API lets you publish, schedule, and analyze social media posts across 12+ platforms from a single integration. No OAuth apps to maintain — PostBoost handles platform authorization for you.  ## Base URL All workspace-scoped endpoints are prefixed with `/{workspaceUuid}`. Panel/admin endpoints are prefixed with `/panel`.  ## Authentication All requests require a Bearer token in the `Authorization` header. Generate tokens in your PostBoost dashboard under **Settings → Access Tokens**.  ``` Authorization: Bearer YOUR_API_TOKEN ``` 
 
 The version of the OpenAPI document: 1.0.0
 Contact: hi@postboost.co
@@ -19,6 +19,12 @@ require 'postboost/configuration'
 # Models
 require 'postboost/models/account'
 require 'postboost/models/add_generic_subscription_request'
+require 'postboost/models/blog_to_social200_response'
+require 'postboost/models/blog_to_social429_response'
+require 'postboost/models/blog_to_social_caption'
+require 'postboost/models/blog_to_social_input'
+require 'postboost/models/blog_to_social_media'
+require 'postboost/models/blog_to_social_response'
 require 'postboost/models/change_subscription_plan_request'
 require 'postboost/models/checkout_subscription200_response'
 require 'postboost/models/checkout_subscription_request'
@@ -75,6 +81,7 @@ require 'postboost/models/workspace_input'
 require 'postboost/models/workspace_user_input'
 
 # APIs
+require 'postboost/api/ai_api'
 require 'postboost/api/accounts_api'
 require 'postboost/api/media_api'
 require 'postboost/api/posts_api'
