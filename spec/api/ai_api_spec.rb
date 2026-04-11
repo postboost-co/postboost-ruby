@@ -45,4 +45,69 @@ describe 'AIApi' do
     end
   end
 
+  # unit tests for image_alt_text
+  # Generate alt text for a media image using AI
+  # Analyzes an existing workspace media item and generates accessible alt text. The alt text is saved back to the media record. Costs 1 AI credit per call. 
+  # @param workspace_uuid UUID of the workspace.
+  # @param image_alt_text_input 
+  # @param [Hash] opts the optional parameters
+  # @return [ImageAltText200Response]
+  describe 'image_alt_text test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for image_edit
+  # Edit an existing media image using AI
+  # Edits an existing workspace media item using the source image and a text prompt. Optionally accepts a mask (transparent areas are replaced). Saves results to the media library. Credits: &#x60;count × credit_weight&#x60;. 
+  # @param workspace_uuid UUID of the workspace.
+  # @param image_edit_input 
+  # @param [Hash] opts the optional parameters
+  # @return [ImageGenerate200Response]
+  describe 'image_edit test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for image_generate
+  # Generate social media images from a caption
+  # Generates one or more images and saves them immediately to the workspace media library.  **Standard mode** (recommended): provide &#x60;caption&#x60; + &#x60;platform&#x60;. PostBoost builds a professional image prompt internally using platform-specific templates. No prompt engineering required.  **Developer mode**: provide &#x60;prompt&#x60; directly to bypass prompt building. If both &#x60;caption&#x60; and &#x60;prompt&#x60; are sent, standard mode runs.  Credits: &#x60;count x credit_weight&#x60; (default: 5 per image). 
+  # @param workspace_uuid UUID of the workspace.
+  # @param image_generate_input 
+  # @param [Hash] opts the optional parameters
+  # @return [ImageGenerate200Response]
+  describe 'image_generate test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for image_prompt
+  # Build an optimized image prompt from a social media caption
+  # Builds a professional image generation prompt from a caption and platform. No image is generated. Use this to preview the prompt before calling &#x60;image-generate&#x60;. Costs 1 AI credit per call.  When &#x60;image-generate&#x60; builds the prompt internally (standard mode), no credit is charged for the prompt step. 
+  # @param workspace_uuid UUID of the workspace.
+  # @param image_prompt_input 
+  # @param [Hash] opts the optional parameters
+  # @return [ImagePrompt200Response]
+  describe 'image_prompt test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for image_variations
+  # Generate variations of an existing media image
+  # Creates one or more variations of an existing workspace media item. Saves results to the media library. Credits: &#x60;count × credit_weight&#x60;. 
+  # @param workspace_uuid UUID of the workspace.
+  # @param image_variations_input 
+  # @param [Hash] opts the optional parameters
+  # @return [ImageVariations200Response]
+  describe 'image_variations test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
 end

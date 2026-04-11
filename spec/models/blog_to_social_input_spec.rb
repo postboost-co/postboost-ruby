@@ -54,7 +54,7 @@ describe PostBoost::BlogToSocialInput do
   describe 'test attribute "platforms"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('Array<String>', ["facebook", "instagram", "x", "linkedin", "pinterest", "youtube", "tiktok", "mastodon", "threads", "bluesky", "google_business"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('Array<String>', ["twitter", "facebook_page", "instagram", "threads", "mastodon", "youtube", "gbp", "pinterest", "linkedin", "linkedin_page", "tiktok", "bluesky"])
       # validator.allowable_values.each do |value|
       #   expect { instance.platforms = value }.not_to raise_error
       # end

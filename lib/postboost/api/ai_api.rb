@@ -92,5 +92,375 @@ module PostBoost
       end
       return data, status_code, headers
     end
+
+    # Generate alt text for a media image using AI
+    # Analyzes an existing workspace media item and generates accessible alt text. The alt text is saved back to the media record. Costs 1 AI credit per call. 
+    # @param workspace_uuid [String] UUID of the workspace.
+    # @param image_alt_text_input [ImageAltTextInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [ImageAltText200Response]
+    def image_alt_text(workspace_uuid, image_alt_text_input, opts = {})
+      data, _status_code, _headers = image_alt_text_with_http_info(workspace_uuid, image_alt_text_input, opts)
+      data
+    end
+
+    # Generate alt text for a media image using AI
+    # Analyzes an existing workspace media item and generates accessible alt text. The alt text is saved back to the media record. Costs 1 AI credit per call. 
+    # @param workspace_uuid [String] UUID of the workspace.
+    # @param image_alt_text_input [ImageAltTextInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ImageAltText200Response, Integer, Hash)>] ImageAltText200Response data, response status code and response headers
+    def image_alt_text_with_http_info(workspace_uuid, image_alt_text_input, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AIApi.image_alt_text ...'
+      end
+      # verify the required parameter 'workspace_uuid' is set
+      if @api_client.config.client_side_validation && workspace_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'workspace_uuid' when calling AIApi.image_alt_text"
+      end
+      # verify the required parameter 'image_alt_text_input' is set
+      if @api_client.config.client_side_validation && image_alt_text_input.nil?
+        fail ArgumentError, "Missing the required parameter 'image_alt_text_input' when calling AIApi.image_alt_text"
+      end
+      # resource path
+      local_var_path = '/{workspaceUuid}/ai/image-alt-text'.sub('{' + 'workspaceUuid' + '}', CGI.escape(workspace_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(image_alt_text_input)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ImageAltText200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['bearerAuth']
+
+      new_options = opts.merge(
+        :operation => :"AIApi.image_alt_text",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AIApi#image_alt_text\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Edit an existing media image using AI
+    # Edits an existing workspace media item using the source image and a text prompt. Optionally accepts a mask (transparent areas are replaced). Saves results to the media library. Credits: `count × credit_weight`. 
+    # @param workspace_uuid [String] UUID of the workspace.
+    # @param image_edit_input [ImageEditInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [ImageGenerate200Response]
+    def image_edit(workspace_uuid, image_edit_input, opts = {})
+      data, _status_code, _headers = image_edit_with_http_info(workspace_uuid, image_edit_input, opts)
+      data
+    end
+
+    # Edit an existing media image using AI
+    # Edits an existing workspace media item using the source image and a text prompt. Optionally accepts a mask (transparent areas are replaced). Saves results to the media library. Credits: &#x60;count × credit_weight&#x60;. 
+    # @param workspace_uuid [String] UUID of the workspace.
+    # @param image_edit_input [ImageEditInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ImageGenerate200Response, Integer, Hash)>] ImageGenerate200Response data, response status code and response headers
+    def image_edit_with_http_info(workspace_uuid, image_edit_input, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AIApi.image_edit ...'
+      end
+      # verify the required parameter 'workspace_uuid' is set
+      if @api_client.config.client_side_validation && workspace_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'workspace_uuid' when calling AIApi.image_edit"
+      end
+      # verify the required parameter 'image_edit_input' is set
+      if @api_client.config.client_side_validation && image_edit_input.nil?
+        fail ArgumentError, "Missing the required parameter 'image_edit_input' when calling AIApi.image_edit"
+      end
+      # resource path
+      local_var_path = '/{workspaceUuid}/ai/image-edit'.sub('{' + 'workspaceUuid' + '}', CGI.escape(workspace_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(image_edit_input)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ImageGenerate200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['bearerAuth']
+
+      new_options = opts.merge(
+        :operation => :"AIApi.image_edit",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AIApi#image_edit\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Generate social media images from a caption
+    # Generates one or more images and saves them immediately to the workspace media library.  **Standard mode** (recommended): provide `caption` + `platform`. PostBoost builds a professional image prompt internally using platform-specific templates. No prompt engineering required.  **Developer mode**: provide `prompt` directly to bypass prompt building. If both `caption` and `prompt` are sent, standard mode runs.  Credits: `count x credit_weight` (default: 5 per image). 
+    # @param workspace_uuid [String] UUID of the workspace.
+    # @param image_generate_input [ImageGenerateInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [ImageGenerate200Response]
+    def image_generate(workspace_uuid, image_generate_input, opts = {})
+      data, _status_code, _headers = image_generate_with_http_info(workspace_uuid, image_generate_input, opts)
+      data
+    end
+
+    # Generate social media images from a caption
+    # Generates one or more images and saves them immediately to the workspace media library.  **Standard mode** (recommended): provide &#x60;caption&#x60; + &#x60;platform&#x60;. PostBoost builds a professional image prompt internally using platform-specific templates. No prompt engineering required.  **Developer mode**: provide &#x60;prompt&#x60; directly to bypass prompt building. If both &#x60;caption&#x60; and &#x60;prompt&#x60; are sent, standard mode runs.  Credits: &#x60;count x credit_weight&#x60; (default: 5 per image). 
+    # @param workspace_uuid [String] UUID of the workspace.
+    # @param image_generate_input [ImageGenerateInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ImageGenerate200Response, Integer, Hash)>] ImageGenerate200Response data, response status code and response headers
+    def image_generate_with_http_info(workspace_uuid, image_generate_input, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AIApi.image_generate ...'
+      end
+      # verify the required parameter 'workspace_uuid' is set
+      if @api_client.config.client_side_validation && workspace_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'workspace_uuid' when calling AIApi.image_generate"
+      end
+      # verify the required parameter 'image_generate_input' is set
+      if @api_client.config.client_side_validation && image_generate_input.nil?
+        fail ArgumentError, "Missing the required parameter 'image_generate_input' when calling AIApi.image_generate"
+      end
+      # resource path
+      local_var_path = '/{workspaceUuid}/ai/image-generate'.sub('{' + 'workspaceUuid' + '}', CGI.escape(workspace_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(image_generate_input)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ImageGenerate200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['bearerAuth']
+
+      new_options = opts.merge(
+        :operation => :"AIApi.image_generate",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AIApi#image_generate\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Build an optimized image prompt from a social media caption
+    # Builds a professional image generation prompt from a caption and platform. No image is generated. Use this to preview the prompt before calling `image-generate`. Costs 1 AI credit per call.  When `image-generate` builds the prompt internally (standard mode), no credit is charged for the prompt step. 
+    # @param workspace_uuid [String] UUID of the workspace.
+    # @param image_prompt_input [ImagePromptInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [ImagePrompt200Response]
+    def image_prompt(workspace_uuid, image_prompt_input, opts = {})
+      data, _status_code, _headers = image_prompt_with_http_info(workspace_uuid, image_prompt_input, opts)
+      data
+    end
+
+    # Build an optimized image prompt from a social media caption
+    # Builds a professional image generation prompt from a caption and platform. No image is generated. Use this to preview the prompt before calling &#x60;image-generate&#x60;. Costs 1 AI credit per call.  When &#x60;image-generate&#x60; builds the prompt internally (standard mode), no credit is charged for the prompt step. 
+    # @param workspace_uuid [String] UUID of the workspace.
+    # @param image_prompt_input [ImagePromptInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ImagePrompt200Response, Integer, Hash)>] ImagePrompt200Response data, response status code and response headers
+    def image_prompt_with_http_info(workspace_uuid, image_prompt_input, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AIApi.image_prompt ...'
+      end
+      # verify the required parameter 'workspace_uuid' is set
+      if @api_client.config.client_side_validation && workspace_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'workspace_uuid' when calling AIApi.image_prompt"
+      end
+      # verify the required parameter 'image_prompt_input' is set
+      if @api_client.config.client_side_validation && image_prompt_input.nil?
+        fail ArgumentError, "Missing the required parameter 'image_prompt_input' when calling AIApi.image_prompt"
+      end
+      # resource path
+      local_var_path = '/{workspaceUuid}/ai/image-prompt'.sub('{' + 'workspaceUuid' + '}', CGI.escape(workspace_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(image_prompt_input)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ImagePrompt200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['bearerAuth']
+
+      new_options = opts.merge(
+        :operation => :"AIApi.image_prompt",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AIApi#image_prompt\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Generate variations of an existing media image
+    # Creates one or more variations of an existing workspace media item. Saves results to the media library. Credits: `count × credit_weight`. 
+    # @param workspace_uuid [String] UUID of the workspace.
+    # @param image_variations_input [ImageVariationsInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [ImageVariations200Response]
+    def image_variations(workspace_uuid, image_variations_input, opts = {})
+      data, _status_code, _headers = image_variations_with_http_info(workspace_uuid, image_variations_input, opts)
+      data
+    end
+
+    # Generate variations of an existing media image
+    # Creates one or more variations of an existing workspace media item. Saves results to the media library. Credits: &#x60;count × credit_weight&#x60;. 
+    # @param workspace_uuid [String] UUID of the workspace.
+    # @param image_variations_input [ImageVariationsInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ImageVariations200Response, Integer, Hash)>] ImageVariations200Response data, response status code and response headers
+    def image_variations_with_http_info(workspace_uuid, image_variations_input, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AIApi.image_variations ...'
+      end
+      # verify the required parameter 'workspace_uuid' is set
+      if @api_client.config.client_side_validation && workspace_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'workspace_uuid' when calling AIApi.image_variations"
+      end
+      # verify the required parameter 'image_variations_input' is set
+      if @api_client.config.client_side_validation && image_variations_input.nil?
+        fail ArgumentError, "Missing the required parameter 'image_variations_input' when calling AIApi.image_variations"
+      end
+      # resource path
+      local_var_path = '/{workspaceUuid}/ai/image-variations'.sub('{' + 'workspaceUuid' + '}', CGI.escape(workspace_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(image_variations_input)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ImageVariations200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['bearerAuth']
+
+      new_options = opts.merge(
+        :operation => :"AIApi.image_variations",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AIApi#image_variations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
   end
 end

@@ -28,7 +28,7 @@ instance = PostBoost::BlogToSocialInput.new(
   title: 10 Tips for Better Social Media,
   excerpt: Social media success starts with consistency and knowing your audience...,
   image_url: https://example.com/images/post-cover.jpg,
-  platforms: [x, linkedin],
+  platforms: [twitter, linkedin],
   account_ids: [5, 12],
   tone: professional,
   content_length: medium,
