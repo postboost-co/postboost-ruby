@@ -44,7 +44,7 @@ module PostBoost
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'images' => :'Array<GeneratedImageItem>',
+        :'images' => :'Array<Media>',
         :'aspect_ratio' => :'String',
         :'quality' => :'String',
         :'credits_used' => :'Integer',

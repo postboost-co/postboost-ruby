@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **images** | [**Array&lt;GeneratedImageItem&gt;**](GeneratedImageItem.md) |  |  |
+| **images** | [**Array&lt;Media&gt;**](Media.md) |  |  |
 | **prompt_used** | **String** |  |  |
 | **revised_prompt** | **String** |  | [optional] |
 | **aspect_ratio** | **String** |  |  |
