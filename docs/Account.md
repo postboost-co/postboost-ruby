@@ -12,6 +12,9 @@
 | **provider** | **String** |  |  |
 | **data** | **Object** | Provider-specific metadata. |  |
 | **authorized** | **Boolean** |  |  |
+| **profile_url** | **String** | Public URL of the account&#39;s profile on the network, when known. | [optional] |
+| **publish_status** | **String** | Only present when the account is embedded in a post. Publishing state of this account for the post. | [optional] |
+| **published_parts** | **Integer** | Only present when the account is embedded in a post. How many parts (for example thread items or a first comment) are live on the network. | [optional] |
 | **created_at** | **Time** |  |  |
 
 ## Example
@@ -28,6 +31,9 @@ instance = PostBoost::Account.new(
   provider: null,
   data: null,
   authorized: null,
+  profile_url: null,
+  publish_status: null,
+  published_parts: null,
   created_at: null
 )
 ```

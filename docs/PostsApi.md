@@ -10,18 +10,20 @@ All URIs are relative to *https://postboost.co/app/api*
 | [**delete_post**](PostsApi.md#delete_post) | **DELETE** /{workspaceUuid}/posts/{postUuid} | Delete post |
 | [**delete_posts_bulk**](PostsApi.md#delete_posts_bulk) | **DELETE** /{workspaceUuid}/posts | Delete posts (bulk) |
 | [**get_post**](PostsApi.md#get_post) | **GET** /{workspaceUuid}/posts/{postUuid} | Get post |
+| [**get_post_analytics**](PostsApi.md#get_post_analytics) | **GET** /{workspaceUuid}/posts/{postUuid}/analytics | Get post analytics |
 | [**list_posts**](PostsApi.md#list_posts) | **GET** /{workspaceUuid}/posts | List posts |
+| [**retry_post_account**](PostsApi.md#retry_post_account) | **POST** /{workspaceUuid}/posts/retry/{postUuid}/{accountUuid} | Retry publishing to one account |
 | [**schedule_post**](PostsApi.md#schedule_post) | **POST** /{workspaceUuid}/posts/schedule/{postUuid} | Schedule post |
 | [**update_post**](PostsApi.md#update_post) | **PUT** /{workspaceUuid}/posts/{postUuid} | Update post |
 
 
 ## add_post_to_queue
 
-> <ScheduleResult> add_post_to_queue(workspace_uuid, post_uuid)
+> <ScheduleResult> add_post_to_queue(workspace_uuid, post_uuid, opts)
 
 Add post to queue
 
-Add an existing post to the smart publishing queue.
+Add an existing post to the smart publishing queue. Each account of the post gets its own next free queue slot. Returns `422` when the post has no accounts, the posting schedule has no available times, or provider requirements are not met. 
 
 ### Examples
 
@@ -37,10 +39,13 @@ end
 api_instance = PostBoost::PostsApi.new
 workspace_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the workspace.
 post_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the post.
+opts = {
+  add_post_to_queue_request: PostBoost::AddPostToQueueRequest.new # AddPostToQueueRequest | 
+}
 
 begin
   # Add post to queue
-  result = api_instance.add_post_to_queue(workspace_uuid, post_uuid)
+  result = api_instance.add_post_to_queue(workspace_uuid, post_uuid, opts)
   p result
 rescue PostBoost::ApiError => e
   puts "Error when calling PostsApi->add_post_to_queue: #{e}"
@@ -51,12 +56,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ScheduleResult>, Integer, Hash)> add_post_to_queue_with_http_info(workspace_uuid, post_uuid)
+> <Array(<ScheduleResult>, Integer, Hash)> add_post_to_queue_with_http_info(workspace_uuid, post_uuid, opts)
 
 ```ruby
 begin
   # Add post to queue
-  data, status_code, headers = api_instance.add_post_to_queue_with_http_info(workspace_uuid, post_uuid)
+  data, status_code, headers = api_instance.add_post_to_queue_with_http_info(workspace_uuid, post_uuid, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ScheduleResult>
@@ -71,6 +76,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **workspace_uuid** | **String** | UUID of the workspace. |  |
 | **post_uuid** | **String** | UUID of the post. |  |
+| **add_post_to_queue_request** | [**AddPostToQueueRequest**](AddPostToQueueRequest.md) |  | [optional] |
 
 ### Return type
 
@@ -82,17 +88,17 @@ end
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
 ## approve_post
 
-> <ScheduleResult> approve_post(workspace_uuid, post_uuid)
+> <ScheduleResult> approve_post(workspace_uuid, post_uuid, opts)
 
 Approve post
 
-Approve a post that is pending review.
+Approve a post that is pending review. The approver may move the post with `date`/`time` (read in `timezone`) and set per-account times with `accounts_schedule`; without them the post keeps the time it was submitted with. Provider requirements are validated and reported as `422`. 
 
 ### Examples
 
@@ -108,10 +114,13 @@ end
 api_instance = PostBoost::PostsApi.new
 workspace_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the workspace.
 post_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the post.
+opts = {
+  approve_post_request: PostBoost::ApprovePostRequest.new # ApprovePostRequest | 
+}
 
 begin
   # Approve post
-  result = api_instance.approve_post(workspace_uuid, post_uuid)
+  result = api_instance.approve_post(workspace_uuid, post_uuid, opts)
   p result
 rescue PostBoost::ApiError => e
   puts "Error when calling PostsApi->approve_post: #{e}"
@@ -122,12 +131,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ScheduleResult>, Integer, Hash)> approve_post_with_http_info(workspace_uuid, post_uuid)
+> <Array(<ScheduleResult>, Integer, Hash)> approve_post_with_http_info(workspace_uuid, post_uuid, opts)
 
 ```ruby
 begin
   # Approve post
-  data, status_code, headers = api_instance.approve_post_with_http_info(workspace_uuid, post_uuid)
+  data, status_code, headers = api_instance.approve_post_with_http_info(workspace_uuid, post_uuid, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ScheduleResult>
@@ -142,6 +151,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **workspace_uuid** | **String** | UUID of the workspace. |  |
 | **post_uuid** | **String** | UUID of the post. |  |
+| **approve_post_request** | [**ApprovePostRequest**](ApprovePostRequest.md) |  | [optional] |
 
 ### Return type
 
@@ -153,7 +163,7 @@ end
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -163,7 +173,7 @@ end
 
 Create post
 
-Create a new post. Use `schedule: true` with `date` and `time` to schedule, `schedule_now: true` to publish immediately, or `queue: true` to add to the smart publishing queue. 
+Create a new post. Use `schedule: true` with `date` and `time` to schedule, `schedule_now: true` to publish immediately, or `queue: true` to add to the smart publishing queue (each account gets its own queue slot).  `date`, `time` and `accounts_schedule` are read in `timezone` when given, otherwise in the workspace timezone. Use `accounts_schedule` to give individual accounts their own departure time.  Post bodies may reference mentions with `{{mention:<reference>}}` (see the Mentions endpoints). When the post is scheduled, provider requirements (for example a network that requires media) are validated up front and reported as `422`. 
 
 ### Examples
 
@@ -445,6 +455,77 @@ end
 - **Accept**: application/json
 
 
+## get_post_analytics
+
+> <PostAnalytics> get_post_analytics(workspace_uuid, post_uuid)
+
+Get post analytics
+
+Engagement metrics for a published post across its accounts (also works for trashed posts), with totals, trends and the best-performing account.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+# setup authorization
+PostBoost.configure do |config|
+  # Configure Bearer authorization: bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = PostBoost::PostsApi.new
+workspace_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the workspace.
+post_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the post.
+
+begin
+  # Get post analytics
+  result = api_instance.get_post_analytics(workspace_uuid, post_uuid)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling PostsApi->get_post_analytics: #{e}"
+end
+```
+
+#### Using the get_post_analytics_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PostAnalytics>, Integer, Hash)> get_post_analytics_with_http_info(workspace_uuid, post_uuid)
+
+```ruby
+begin
+  # Get post analytics
+  data, status_code, headers = api_instance.get_post_analytics_with_http_info(workspace_uuid, post_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PostAnalytics>
+rescue PostBoost::ApiError => e
+  puts "Error when calling PostsApi->get_post_analytics_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **workspace_uuid** | **String** | UUID of the workspace. |  |
+| **post_uuid** | **String** | UUID of the post. |  |
+
+### Return type
+
+[**PostAnalytics**](PostAnalytics.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## list_posts
 
 > <ListPosts200Response> list_posts(workspace_uuid, opts)
@@ -518,13 +599,86 @@ end
 - **Accept**: application/json
 
 
+## retry_post_account
+
+> <RetryPostAccountResult> retry_post_account(workspace_uuid, post_uuid, account_uuid)
+
+Retry publishing to one account
+
+Re-publishes a post to a single account whose publishing failed. Returns `422` when the account is not on the post, the post is still publishing, or the account did not fail.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+# setup authorization
+PostBoost.configure do |config|
+  # Configure Bearer authorization: bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = PostBoost::PostsApi.new
+workspace_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the workspace.
+post_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the post.
+account_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the social media account.
+
+begin
+  # Retry publishing to one account
+  result = api_instance.retry_post_account(workspace_uuid, post_uuid, account_uuid)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling PostsApi->retry_post_account: #{e}"
+end
+```
+
+#### Using the retry_post_account_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RetryPostAccountResult>, Integer, Hash)> retry_post_account_with_http_info(workspace_uuid, post_uuid, account_uuid)
+
+```ruby
+begin
+  # Retry publishing to one account
+  data, status_code, headers = api_instance.retry_post_account_with_http_info(workspace_uuid, post_uuid, account_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RetryPostAccountResult>
+rescue PostBoost::ApiError => e
+  puts "Error when calling PostsApi->retry_post_account_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **workspace_uuid** | **String** | UUID of the workspace. |  |
+| **post_uuid** | **String** | UUID of the post. |  |
+| **account_uuid** | **String** | UUID of the social media account. |  |
+
+### Return type
+
+[**RetryPostAccountResult**](RetryPostAccountResult.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## schedule_post
 
 > <ScheduleResult> schedule_post(workspace_uuid, post_uuid, schedule_post_request)
 
 Schedule post
 
-Schedule an existing post. Set `postNow: true` to publish immediately.
+Schedule an existing post. Optionally move it with `date`/`time` (read in `timezone`) and give accounts their own times with `accounts_schedule`. Set `postNow: true` to publish immediately; publishing starts within the request and any per-account times are dropped. Provider requirements are validated and reported as `422`. 
 
 ### Examples
 
@@ -597,7 +751,7 @@ end
 
 Update post
 
-Replaces a post's versions, accounts, tags, and scheduling options. The post must not be in a published state.
+Replaces a post's versions, accounts, tags, and scheduling options. The post must not be in a published state. `timezone` is honoured: `date`, `time` and `accounts_schedule` are read in it. When the post stays scheduled, provider requirements are validated and reported as `422`. 
 
 ### Examples
 

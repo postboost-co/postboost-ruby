@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **name** | **String** |  |  |
-| **hex_color** | **String** |  |  |
+| **hex_color** | **String** | Ignored since v2.0; kept for backward compatibility | [optional] |
 | **owner_id** | **Integer** |  | [optional] |
 | **access_status** | **String** |  |  |
 

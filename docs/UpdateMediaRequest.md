@@ -4,7 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **alt_text** | **String** | Alternative text for accessibility. |  |
+| **name** | **String** |  | [optional] |
+| **alt_text** | **String** | Alternative text for accessibility. | [optional] |
+| **folder** | **String** | UUID of the media folder to move the item to, or null for the library root. | [optional] |
 
 ## Example
 
@@ -12,7 +14,9 @@
 require 'postboost'
 
 instance = PostBoost::UpdateMediaRequest.new(
-  alt_text: null
+  name: null,
+  alt_text: null,
+  folder: null
 )
 ```
 

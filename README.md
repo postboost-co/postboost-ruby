@@ -13,7 +13,7 @@ gem install postboost
 | **RubyGems** | [rubygems.org/gems/postboost](https://rubygems.org/gems/postboost) |
 | **GitHub** | [postboost-co/postboost-ruby](https://github.com/postboost-co/postboost-ruby) |
 | **Docs** | [postboost.co/docs/api](https://postboost.co/docs/api) |
-| **Version** | v1.5.0 |
+| **Version** | v1.8.0 |
 
 ## Quick start
 
@@ -43,24 +43,40 @@ Class | Method | HTTP request | Description
 *PostBoost::AIApi* | [**image_variations**](docs/AIApi.md#image_variations) | **POST** /{workspaceUuid}/ai/image-variations | Generate variations of an existing media image
 *PostBoost::AccountsApi* | [**get_account**](docs/AccountsApi.md#get_account) | **GET** /{workspaceUuid}/accounts/{accountUuid} | Get account
 *PostBoost::AccountsApi* | [**list_accounts**](docs/AccountsApi.md#list_accounts) | **GET** /{workspaceUuid}/accounts | List accounts
+*PostBoost::AnalyticsApi* | [**get_account_analytics**](docs/AnalyticsApi.md#get_account_analytics) | **GET** /{workspaceUuid}/analytics/accounts/{accountUuid} | Get account analytics
+*PostBoost::AnalyticsApi* | [**get_analytics_summary**](docs/AnalyticsApi.md#get_analytics_summary) | **GET** /{workspaceUuid}/analytics | Get analytics summary
+*PostBoost::AnalyticsApi* | [**get_best_posting_times**](docs/AnalyticsApi.md#get_best_posting_times) | **GET** /{workspaceUuid}/analytics/best-times | Get best posting times
+*PostBoost::AnalyticsApi* | [**get_post_analytics_0**](docs/AnalyticsApi.md#get_post_analytics_0) | **GET** /{workspaceUuid}/posts/{postUuid}/analytics | Get post analytics
+*PostBoost::AnalyticsApi* | [**get_posting_times**](docs/AnalyticsApi.md#get_posting_times) | **GET** /{workspaceUuid}/analytics/posting-times | Get posting times heatmap
 *PostBoost::MediaApi* | [**abort_chunked_upload**](docs/MediaApi.md#abort_chunked_upload) | **DELETE** /{workspaceUuid}/media/chunked/{uploadUuid} | Abort chunked upload
 *PostBoost::MediaApi* | [**complete_chunked_upload**](docs/MediaApi.md#complete_chunked_upload) | **POST** /{workspaceUuid}/media/chunked/{uploadUuid}/complete | Complete chunked upload
+*PostBoost::MediaApi* | [**create_media_folder**](docs/MediaApi.md#create_media_folder) | **POST** /{workspaceUuid}/media/folders | Create media folder
 *PostBoost::MediaApi* | [**delete_media_bulk**](docs/MediaApi.md#delete_media_bulk) | **DELETE** /{workspaceUuid}/media | Delete media (bulk)
+*PostBoost::MediaApi* | [**delete_media_folder**](docs/MediaApi.md#delete_media_folder) | **DELETE** /{workspaceUuid}/media/folders/{folderUuid} | Delete media folder
 *PostBoost::MediaApi* | [**get_media**](docs/MediaApi.md#get_media) | **GET** /{workspaceUuid}/media/{mediaUuid} | Get media
 *PostBoost::MediaApi* | [**get_remote_upload_status**](docs/MediaApi.md#get_remote_upload_status) | **GET** /{workspaceUuid}/media/remote/{downloadId}/status | Get remote upload status
 *PostBoost::MediaApi* | [**initiate_chunked_upload**](docs/MediaApi.md#initiate_chunked_upload) | **POST** /{workspaceUuid}/media/chunked/initiate | Initiate chunked upload
 *PostBoost::MediaApi* | [**initiate_remote_upload**](docs/MediaApi.md#initiate_remote_upload) | **POST** /{workspaceUuid}/media/remote/initiate | Initiate remote upload
 *PostBoost::MediaApi* | [**list_media**](docs/MediaApi.md#list_media) | **GET** /{workspaceUuid}/media | List media
+*PostBoost::MediaApi* | [**list_media_folders**](docs/MediaApi.md#list_media_folders) | **GET** /{workspaceUuid}/media/folders | List media folders
 *PostBoost::MediaApi* | [**update_media**](docs/MediaApi.md#update_media) | **PUT** /{workspaceUuid}/media/{mediaUuid} | Update media
+*PostBoost::MediaApi* | [**update_media_folder**](docs/MediaApi.md#update_media_folder) | **PUT** /{workspaceUuid}/media/folders/{folderUuid} | Update media folder
 *PostBoost::MediaApi* | [**upload_chunk**](docs/MediaApi.md#upload_chunk) | **POST** /{workspaceUuid}/media/chunked/{uploadUuid}/upload | Upload a chunk
 *PostBoost::MediaApi* | [**upload_media**](docs/MediaApi.md#upload_media) | **POST** /{workspaceUuid}/media | Upload media (binary)
+*PostBoost::MentionsApi* | [**create_mention**](docs/MentionsApi.md#create_mention) | **POST** /{workspaceUuid}/mentions | Create mention
+*PostBoost::MentionsApi* | [**delete_mention**](docs/MentionsApi.md#delete_mention) | **DELETE** /{workspaceUuid}/mentions/{mentionId} | Delete mention
+*PostBoost::MentionsApi* | [**get_mention**](docs/MentionsApi.md#get_mention) | **GET** /{workspaceUuid}/mentions/{mentionId} | Get mention
+*PostBoost::MentionsApi* | [**list_mentions**](docs/MentionsApi.md#list_mentions) | **GET** /{workspaceUuid}/mentions | List mentions
+*PostBoost::MentionsApi* | [**update_mention**](docs/MentionsApi.md#update_mention) | **PUT** /{workspaceUuid}/mentions/{mentionId} | Update mention
 *PostBoost::PostsApi* | [**add_post_to_queue**](docs/PostsApi.md#add_post_to_queue) | **POST** /{workspaceUuid}/posts/add-to-queue/{postUuid} | Add post to queue
 *PostBoost::PostsApi* | [**approve_post**](docs/PostsApi.md#approve_post) | **POST** /{workspaceUuid}/posts/approve/{postUuid} | Approve post
 *PostBoost::PostsApi* | [**create_post**](docs/PostsApi.md#create_post) | **POST** /{workspaceUuid}/posts | Create post
 *PostBoost::PostsApi* | [**delete_post**](docs/PostsApi.md#delete_post) | **DELETE** /{workspaceUuid}/posts/{postUuid} | Delete post
 *PostBoost::PostsApi* | [**delete_posts_bulk**](docs/PostsApi.md#delete_posts_bulk) | **DELETE** /{workspaceUuid}/posts | Delete posts (bulk)
 *PostBoost::PostsApi* | [**get_post**](docs/PostsApi.md#get_post) | **GET** /{workspaceUuid}/posts/{postUuid} | Get post
+*PostBoost::PostsApi* | [**get_post_analytics**](docs/PostsApi.md#get_post_analytics) | **GET** /{workspaceUuid}/posts/{postUuid}/analytics | Get post analytics
 *PostBoost::PostsApi* | [**list_posts**](docs/PostsApi.md#list_posts) | **GET** /{workspaceUuid}/posts | List posts
+*PostBoost::PostsApi* | [**retry_post_account**](docs/PostsApi.md#retry_post_account) | **POST** /{workspaceUuid}/posts/retry/{postUuid}/{accountUuid} | Retry publishing to one account
 *PostBoost::PostsApi* | [**schedule_post**](docs/PostsApi.md#schedule_post) | **POST** /{workspaceUuid}/posts/schedule/{postUuid} | Schedule post
 *PostBoost::PostsApi* | [**update_post**](docs/PostsApi.md#update_post) | **PUT** /{workspaceUuid}/posts/{postUuid} | Update post
 *PostBoost::ReceiptsApi* | [**create_receipt**](docs/ReceiptsApi.md#create_receipt) | **POST** /panel/receipts | Create receipt
@@ -95,6 +111,8 @@ Class | Method | HTTP request | Description
 *PostBoost::WorkspacesApi* | [**delete_workspace**](docs/WorkspacesApi.md#delete_workspace) | **DELETE** /panel/workspaces/{workspaceUuid} | Delete workspace
 *PostBoost::WorkspacesApi* | [**delete_workspaces_bulk**](docs/WorkspacesApi.md#delete_workspaces_bulk) | **DELETE** /panel/workspaces | Delete workspaces (bulk)
 *PostBoost::WorkspacesApi* | [**get_workspace**](docs/WorkspacesApi.md#get_workspace) | **GET** /panel/workspaces/{workspaceUuid} | Get workspace
+*PostBoost::WorkspacesApi* | [**get_workspace_ai_credits**](docs/WorkspacesApi.md#get_workspace_ai_credits) | **GET** /panel/workspaces/{workspaceUuid}/ai-credits | Get workspace AI credits
+*PostBoost::WorkspacesApi* | [**list_my_workspaces**](docs/WorkspacesApi.md#list_my_workspaces) | **GET** /workspaces | List my workspaces
 *PostBoost::WorkspacesApi* | [**list_workspaces**](docs/WorkspacesApi.md#list_workspaces) | **GET** /panel/workspaces | List workspaces
 *PostBoost::WorkspacesApi* | [**remove_user_from_workspace**](docs/WorkspacesApi.md#remove_user_from_workspace) | **DELETE** /panel/workspaces/{workspaceUuid}/users | Remove user from workspace
 *PostBoost::WorkspacesApi* | [**update_workspace**](docs/WorkspacesApi.md#update_workspace) | **PUT** /panel/workspaces/{workspaceUuid} | Update workspace

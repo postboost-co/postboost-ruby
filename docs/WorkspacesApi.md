@@ -9,6 +9,8 @@ All URIs are relative to *https://postboost.co/app/api*
 | [**delete_workspace**](WorkspacesApi.md#delete_workspace) | **DELETE** /panel/workspaces/{workspaceUuid} | Delete workspace |
 | [**delete_workspaces_bulk**](WorkspacesApi.md#delete_workspaces_bulk) | **DELETE** /panel/workspaces | Delete workspaces (bulk) |
 | [**get_workspace**](WorkspacesApi.md#get_workspace) | **GET** /panel/workspaces/{workspaceUuid} | Get workspace |
+| [**get_workspace_ai_credits**](WorkspacesApi.md#get_workspace_ai_credits) | **GET** /panel/workspaces/{workspaceUuid}/ai-credits | Get workspace AI credits |
+| [**list_my_workspaces**](WorkspacesApi.md#list_my_workspaces) | **GET** /workspaces | List my workspaces |
 | [**list_workspaces**](WorkspacesApi.md#list_workspaces) | **GET** /panel/workspaces | List workspaces |
 | [**remove_user_from_workspace**](WorkspacesApi.md#remove_user_from_workspace) | **DELETE** /panel/workspaces/{workspaceUuid}/users | Remove user from workspace |
 | [**update_workspace**](WorkspacesApi.md#update_workspace) | **PUT** /panel/workspaces/{workspaceUuid} | Update workspace |
@@ -106,7 +108,7 @@ PostBoost.configure do |config|
 end
 
 api_instance = PostBoost::WorkspacesApi.new
-workspace_input = PostBoost::WorkspaceInput.new({name: 'name_example', hex_color: '#1d4ed8', access_status: 'subscription'}) # WorkspaceInput | 
+workspace_input = PostBoost::WorkspaceInput.new({name: 'name_example', access_status: 'subscription'}) # WorkspaceInput | 
 
 begin
   # Create workspace
@@ -362,6 +364,141 @@ end
 - **Accept**: application/json
 
 
+## get_workspace_ai_credits
+
+> <AICredits> get_workspace_ai_credits(workspace_uuid)
+
+Get workspace AI credits
+
+Returns whether the workspace can use AI credits, its remaining balance, and whether the balance is low. Admin only.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+# setup authorization
+PostBoost.configure do |config|
+  # Configure Bearer authorization: bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = PostBoost::WorkspacesApi.new
+workspace_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the workspace.
+
+begin
+  # Get workspace AI credits
+  result = api_instance.get_workspace_ai_credits(workspace_uuid)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling WorkspacesApi->get_workspace_ai_credits: #{e}"
+end
+```
+
+#### Using the get_workspace_ai_credits_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AICredits>, Integer, Hash)> get_workspace_ai_credits_with_http_info(workspace_uuid)
+
+```ruby
+begin
+  # Get workspace AI credits
+  data, status_code, headers = api_instance.get_workspace_ai_credits_with_http_info(workspace_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AICredits>
+rescue PostBoost::ApiError => e
+  puts "Error when calling WorkspacesApi->get_workspace_ai_credits_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **workspace_uuid** | **String** | UUID of the workspace. |  |
+
+### Return type
+
+[**AICredits**](AICredits.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_my_workspaces
+
+> <ListMyWorkspaces200Response> list_my_workspaces
+
+List my workspaces
+
+Returns the workspaces the authenticated user belongs to, most recently updated first, with the caller's role in each. Use a returned `uuid` as `workspaceUuid`.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+# setup authorization
+PostBoost.configure do |config|
+  # Configure Bearer authorization: bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = PostBoost::WorkspacesApi.new
+
+begin
+  # List my workspaces
+  result = api_instance.list_my_workspaces
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling WorkspacesApi->list_my_workspaces: #{e}"
+end
+```
+
+#### Using the list_my_workspaces_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ListMyWorkspaces200Response>, Integer, Hash)> list_my_workspaces_with_http_info
+
+```ruby
+begin
+  # List my workspaces
+  data, status_code, headers = api_instance.list_my_workspaces_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ListMyWorkspaces200Response>
+rescue PostBoost::ApiError => e
+  puts "Error when calling WorkspacesApi->list_my_workspaces_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ListMyWorkspaces200Response**](ListMyWorkspaces200Response.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## list_workspaces
 
 > <ListWorkspaces200Response> list_workspaces(opts)
@@ -516,7 +653,7 @@ end
 
 Update workspace
 
-Updates a workspace's name, color, or access status. Admin only.
+Updates a workspace's name, owner, or access status. Admin only. `hex_color` is accepted but ignored.
 
 ### Examples
 
@@ -531,7 +668,7 @@ end
 
 api_instance = PostBoost::WorkspacesApi.new
 workspace_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the workspace.
-workspace_input = PostBoost::WorkspaceInput.new({name: 'name_example', hex_color: '#1d4ed8', access_status: 'subscription'}) # WorkspaceInput | 
+workspace_input = PostBoost::WorkspaceInput.new({name: 'name_example', access_status: 'subscription'}) # WorkspaceInput | 
 
 begin
   # Update workspace

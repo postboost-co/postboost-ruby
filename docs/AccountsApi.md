@@ -81,11 +81,11 @@ end
 
 ## list_accounts
 
-> <ListAccounts200Response> list_accounts(workspace_uuid)
+> <ListAccounts200Response> list_accounts(workspace_uuid, opts)
 
 List accounts
 
-Returns all social media accounts connected to the workspace.
+Returns all social media accounts connected to the workspace, newest first. Optional filters narrow the list.
 
 ### Examples
 
@@ -100,10 +100,16 @@ end
 
 api_instance = PostBoost::AccountsApi.new
 workspace_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the workspace.
+opts = {
+  keyword: 'keyword_example', # String | Match the account name or username.
+  group: 'group_example', # String | Only accounts in this account group.
+  providers: ['inner_example'], # Array<String> | Only accounts of these providers (for example `instagram`, `linkedin`).
+  unauthorized: true # Boolean | When `true`, only accounts that need to be reconnected.
+}
 
 begin
   # List accounts
-  result = api_instance.list_accounts(workspace_uuid)
+  result = api_instance.list_accounts(workspace_uuid, opts)
   p result
 rescue PostBoost::ApiError => e
   puts "Error when calling AccountsApi->list_accounts: #{e}"
@@ -114,12 +120,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ListAccounts200Response>, Integer, Hash)> list_accounts_with_http_info(workspace_uuid)
+> <Array(<ListAccounts200Response>, Integer, Hash)> list_accounts_with_http_info(workspace_uuid, opts)
 
 ```ruby
 begin
   # List accounts
-  data, status_code, headers = api_instance.list_accounts_with_http_info(workspace_uuid)
+  data, status_code, headers = api_instance.list_accounts_with_http_info(workspace_uuid, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListAccounts200Response>
@@ -133,6 +139,10 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **workspace_uuid** | **String** | UUID of the workspace. |  |
+| **keyword** | **String** | Match the account name or username. | [optional] |
+| **group** | **String** | Only accounts in this account group. | [optional] |
+| **providers** | [**Array&lt;String&gt;**](String.md) | Only accounts of these providers (for example &#x60;instagram&#x60;, &#x60;linkedin&#x60;). | [optional] |
+| **unauthorized** | **Boolean** | When &#x60;true&#x60;, only accounts that need to be reconnected. | [optional] |
 
 ### Return type
 

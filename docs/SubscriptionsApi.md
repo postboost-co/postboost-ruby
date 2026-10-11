@@ -89,11 +89,11 @@ end
 
 ## cancel_subscription
 
-> Object cancel_subscription(workspace_uuid)
+> Object cancel_subscription(workspace_uuid, opts)
 
 Cancel subscription
 
-Cancels the workspace's Stripe subscription at the end of the current billing period. Admin only.
+Cancels the workspace's Stripe subscription at the end of the current billing period, or right away with `immediately: true`. Works for active and past-due subscriptions. Admin only. 
 
 ### Examples
 
@@ -108,10 +108,13 @@ end
 
 api_instance = PostBoost::SubscriptionsApi.new
 workspace_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the workspace.
+opts = {
+  cancel_subscription_request: PostBoost::CancelSubscriptionRequest.new # CancelSubscriptionRequest | 
+}
 
 begin
   # Cancel subscription
-  result = api_instance.cancel_subscription(workspace_uuid)
+  result = api_instance.cancel_subscription(workspace_uuid, opts)
   p result
 rescue PostBoost::ApiError => e
   puts "Error when calling SubscriptionsApi->cancel_subscription: #{e}"
@@ -122,12 +125,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(Object, Integer, Hash)> cancel_subscription_with_http_info(workspace_uuid)
+> <Array(Object, Integer, Hash)> cancel_subscription_with_http_info(workspace_uuid, opts)
 
 ```ruby
 begin
   # Cancel subscription
-  data, status_code, headers = api_instance.cancel_subscription_with_http_info(workspace_uuid)
+  data, status_code, headers = api_instance.cancel_subscription_with_http_info(workspace_uuid, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => Object
@@ -141,6 +144,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **workspace_uuid** | **String** | UUID of the workspace. |  |
+| **cancel_subscription_request** | [**CancelSubscriptionRequest**](CancelSubscriptionRequest.md) |  | [optional] |
 
 ### Return type
 
@@ -152,7 +156,7 @@ end
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -513,7 +517,7 @@ end
 
 Remove generic subscription
 
-Removes the generic (non-Stripe) subscription from the workspace. Admin only.
+Removes the generic (non-Stripe) subscription from the workspace. Returns `422` when the workspace has no generic subscription. Admin only.
 
 ### Examples
 
