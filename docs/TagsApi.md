@@ -13,7 +13,7 @@ All URIs are relative to *https://postboost.co/app/api*
 
 ## create_tag
 
-> <Tag> create_tag(workspace_uuid, tag_input)
+> <Tag> create_tag(workspace_uuid, tag_input, opts)
 
 Create tag
 
@@ -33,10 +33,13 @@ end
 api_instance = PostBoost::TagsApi.new
 workspace_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the workspace.
 tag_input = PostBoost::TagInput.new({name: 'name_example', hex_color: '#3B82F6'}) # TagInput | 
+opts = {
+  idempotency_key: 'idempotency_key_example' # String | Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with `Idempotent-Replayed: true` and has no further effect. Keys are scoped to your user, the workspace, the method and the path. 
+}
 
 begin
   # Create tag
-  result = api_instance.create_tag(workspace_uuid, tag_input)
+  result = api_instance.create_tag(workspace_uuid, tag_input, opts)
   p result
 rescue PostBoost::ApiError => e
   puts "Error when calling TagsApi->create_tag: #{e}"
@@ -47,12 +50,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Tag>, Integer, Hash)> create_tag_with_http_info(workspace_uuid, tag_input)
+> <Array(<Tag>, Integer, Hash)> create_tag_with_http_info(workspace_uuid, tag_input, opts)
 
 ```ruby
 begin
   # Create tag
-  data, status_code, headers = api_instance.create_tag_with_http_info(workspace_uuid, tag_input)
+  data, status_code, headers = api_instance.create_tag_with_http_info(workspace_uuid, tag_input, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Tag>
@@ -67,6 +70,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **workspace_uuid** | **String** | UUID of the workspace. |  |
 | **tag_input** | [**TagInput**](TagInput.md) |  |  |
+| **idempotency_key** | **String** | Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with &#x60;Idempotent-Replayed: true&#x60; and has no further effect. Keys are scoped to your user, the workspace, the method and the path.  | [optional] |
 
 ### Return type
 

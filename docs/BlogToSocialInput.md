@@ -17,6 +17,7 @@
 | **language** | **String** | Output language as an ISO 639-1 code (e.g. &#x60;en&#x60;, &#x60;de&#x60;, &#x60;fr&#x60;). Use &#x60;auto&#x60; to match the blog post&#39;s language automatically.  | [optional][default to &#39;auto&#39;] |
 | **custom_instructions** | **String** | Additional instructions appended to the AI prompt (e.g. \&quot;always mention our free tier\&quot;). | [optional] |
 | **create_post** | **Boolean** | When &#x60;true&#x60;, creates a draft post in the workspace with per-account caption versions. If an image is available, it is imported and attached to the post.  | [optional][default to false] |
+| **use_brand_voice** | **Boolean** | Apply the workspace brand voice (see &#x60;GET brand-voice&#x60;) to the captions. An explicit &#x60;tone&#x60; is kept, but the brand voice wins on vocabulary, words to avoid and calls to action.  | [optional][default to true] |
 
 ## Example
 
@@ -36,7 +37,8 @@ instance = PostBoost::BlogToSocialInput.new(
   cta: link,
   language: auto,
   custom_instructions: Always mention that PostBoost supports 12+ platforms.,
-  create_post: null
+  create_post: null,
+  use_brand_voice: null
 )
 ```
 

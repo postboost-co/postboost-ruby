@@ -5,12 +5,18 @@ All URIs are relative to *https://postboost.co/app/api*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**add_user_to_workspace**](WorkspacesApi.md#add_user_to_workspace) | **POST** /panel/workspaces/{workspaceUuid}/users | Add user to workspace |
+| [**create_api_key**](WorkspacesApi.md#create_api_key) | **POST** /{workspaceUuid}/api-keys | Create a scoped API key |
+| [**create_reseller_client**](WorkspacesApi.md#create_reseller_client) | **POST** /{workspaceUuid}/clients | Create a client workspace |
 | [**create_workspace**](WorkspacesApi.md#create_workspace) | **POST** /panel/workspaces | Create workspace |
+| [**delete_api_key**](WorkspacesApi.md#delete_api_key) | **DELETE** /{workspaceUuid}/api-keys/{apiKeyId} | Revoke a scoped API key |
 | [**delete_workspace**](WorkspacesApi.md#delete_workspace) | **DELETE** /panel/workspaces/{workspaceUuid} | Delete workspace |
 | [**delete_workspaces_bulk**](WorkspacesApi.md#delete_workspaces_bulk) | **DELETE** /panel/workspaces | Delete workspaces (bulk) |
 | [**get_workspace**](WorkspacesApi.md#get_workspace) | **GET** /panel/workspaces/{workspaceUuid} | Get workspace |
 | [**get_workspace_ai_credits**](WorkspacesApi.md#get_workspace_ai_credits) | **GET** /panel/workspaces/{workspaceUuid}/ai-credits | Get workspace AI credits |
+| [**get_x_usage**](WorkspacesApi.md#get_x_usage) | **GET** /{workspaceUuid}/usage/x | X (Twitter) usage |
+| [**list_api_keys**](WorkspacesApi.md#list_api_keys) | **GET** /{workspaceUuid}/api-keys | List scoped API keys |
 | [**list_my_workspaces**](WorkspacesApi.md#list_my_workspaces) | **GET** /workspaces | List my workspaces |
+| [**list_reseller_clients**](WorkspacesApi.md#list_reseller_clients) | **GET** /{workspaceUuid}/clients | List client workspaces |
 | [**list_workspaces**](WorkspacesApi.md#list_workspaces) | **GET** /panel/workspaces | List workspaces |
 | [**remove_user_from_workspace**](WorkspacesApi.md#remove_user_from_workspace) | **DELETE** /panel/workspaces/{workspaceUuid}/users | Remove user from workspace |
 | [**update_workspace**](WorkspacesApi.md#update_workspace) | **PUT** /panel/workspaces/{workspaceUuid} | Update workspace |
@@ -88,6 +94,148 @@ end
 - **Accept**: application/json
 
 
+## create_api_key
+
+> <CreateApiKey201Response> create_api_key(workspace_uuid, api_key_input)
+
+Create a scoped API key
+
+Creates a least-privilege API key for the calling user, bound to this workspace. Pick the abilities it gets and, optionally, the accounts it may act on. The plain key is in `data.token` of this response only; store it safely.  | Ability | Allows | |---|---| | `read` | Every `GET`, plus the `posts/validate` dry run | | `write` | Creating and changing drafts, media, tags, mentions, the brand voice | | `publish` | Scheduling, queueing, publishing now, approving and retrying posts, and editing a post that is already scheduled | | `ai` | The `/ai/*` endpoints, running agents and turning on agent AI review (they also need AI credits) | | `webhooks` | Webhook subscription endpoints |  A scoped key is refused on other workspaces, on the admin panel, on API key management and on the app's built-in MCP endpoint (use `/mcp/postboost`). With `account_ids`, it may only name those accounts (in the URL, `accounts`, `account_ids` or post versions), cannot touch posts on other accounts, and `GET accounts` / `GET posts` only list matching items (pagination counts are computed before that filter). Workspace admins only, called with an unscoped key. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+# setup authorization
+PostBoost.configure do |config|
+  # Configure Bearer authorization: bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = PostBoost::WorkspacesApi.new
+workspace_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the workspace.
+api_key_input = PostBoost::ApiKeyInput.new({name: 'name_example', abilities: [PostBoost::ApiKeyAbility::READ]}) # ApiKeyInput | 
+
+begin
+  # Create a scoped API key
+  result = api_instance.create_api_key(workspace_uuid, api_key_input)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling WorkspacesApi->create_api_key: #{e}"
+end
+```
+
+#### Using the create_api_key_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateApiKey201Response>, Integer, Hash)> create_api_key_with_http_info(workspace_uuid, api_key_input)
+
+```ruby
+begin
+  # Create a scoped API key
+  data, status_code, headers = api_instance.create_api_key_with_http_info(workspace_uuid, api_key_input)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateApiKey201Response>
+rescue PostBoost::ApiError => e
+  puts "Error when calling WorkspacesApi->create_api_key_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **workspace_uuid** | **String** | UUID of the workspace. |  |
+| **api_key_input** | [**ApiKeyInput**](ApiKeyInput.md) |  |  |
+
+### Return type
+
+[**CreateApiKey201Response**](CreateApiKey201Response.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_reseller_client
+
+> <CreateResellerClient201Response> create_reseller_client(workspace_uuid, reseller_client_input)
+
+Create a client workspace
+
+Creates a client workspace on the Reseller client plan, with the caller as its owner and admin, and links it to this workspace. Fails with `422` and `code: client_limit_reached` once the plan's client limit is used (archived clients do not count). Archive clients on the Client workspaces page. Workspace admins with an unscoped key only. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+# setup authorization
+PostBoost.configure do |config|
+  # Configure Bearer authorization: bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = PostBoost::WorkspacesApi.new
+workspace_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the workspace.
+reseller_client_input = PostBoost::ResellerClientInput.new({name: 'name_example'}) # ResellerClientInput | 
+
+begin
+  # Create a client workspace
+  result = api_instance.create_reseller_client(workspace_uuid, reseller_client_input)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling WorkspacesApi->create_reseller_client: #{e}"
+end
+```
+
+#### Using the create_reseller_client_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateResellerClient201Response>, Integer, Hash)> create_reseller_client_with_http_info(workspace_uuid, reseller_client_input)
+
+```ruby
+begin
+  # Create a client workspace
+  data, status_code, headers = api_instance.create_reseller_client_with_http_info(workspace_uuid, reseller_client_input)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateResellerClient201Response>
+rescue PostBoost::ApiError => e
+  puts "Error when calling WorkspacesApi->create_reseller_client_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **workspace_uuid** | **String** | UUID of the workspace. |  |
+| **reseller_client_input** | [**ResellerClientInput**](ResellerClientInput.md) |  |  |
+
+### Return type
+
+[**CreateResellerClient201Response**](CreateResellerClient201Response.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_workspace
 
 > <Workspace> create_workspace(workspace_input)
@@ -154,6 +302,77 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## delete_api_key
+
+> Object delete_api_key(workspace_uuid, api_key_id)
+
+Revoke a scoped API key
+
+Revokes a scoped key bound to this workspace. It stops working at once. Workspace admins only, called with an unscoped key.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+# setup authorization
+PostBoost.configure do |config|
+  # Configure Bearer authorization: bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = PostBoost::WorkspacesApi.new
+workspace_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the workspace.
+api_key_id = 56 # Integer | The key's `id` from `GET api-keys`.
+
+begin
+  # Revoke a scoped API key
+  result = api_instance.delete_api_key(workspace_uuid, api_key_id)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling WorkspacesApi->delete_api_key: #{e}"
+end
+```
+
+#### Using the delete_api_key_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> delete_api_key_with_http_info(workspace_uuid, api_key_id)
+
+```ruby
+begin
+  # Revoke a scoped API key
+  data, status_code, headers = api_instance.delete_api_key_with_http_info(workspace_uuid, api_key_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue PostBoost::ApiError => e
+  puts "Error when calling WorkspacesApi->delete_api_key_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **workspace_uuid** | **String** | UUID of the workspace. |  |
+| **api_key_id** | **Integer** | The key&#39;s &#x60;id&#x60; from &#x60;GET api-keys&#x60;. |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -433,6 +652,144 @@ end
 - **Accept**: application/json
 
 
+## get_x_usage
+
+> <XUsage> get_x_usage(workspace_uuid)
+
+X (Twitter) usage
+
+The workspace's X posts this calendar month (UTC) against its monthly X allowance. Every thread part is one X post; a part with a link also counts as a link post. When the allowance is used up, scheduling to X is refused (`429`, `code: x_monthly_cap_reached`) and X posts that come due fail with \"Monthly X allowance reached\". Other networks are not affected. See the X policy in the developer docs. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+# setup authorization
+PostBoost.configure do |config|
+  # Configure Bearer authorization: bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = PostBoost::WorkspacesApi.new
+workspace_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the workspace.
+
+begin
+  # X (Twitter) usage
+  result = api_instance.get_x_usage(workspace_uuid)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling WorkspacesApi->get_x_usage: #{e}"
+end
+```
+
+#### Using the get_x_usage_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<XUsage>, Integer, Hash)> get_x_usage_with_http_info(workspace_uuid)
+
+```ruby
+begin
+  # X (Twitter) usage
+  data, status_code, headers = api_instance.get_x_usage_with_http_info(workspace_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <XUsage>
+rescue PostBoost::ApiError => e
+  puts "Error when calling WorkspacesApi->get_x_usage_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **workspace_uuid** | **String** | UUID of the workspace. |  |
+
+### Return type
+
+[**XUsage**](XUsage.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_api_keys
+
+> <ListApiKeys200Response> list_api_keys(workspace_uuid)
+
+List scoped API keys
+
+Scoped API keys bound to this workspace, newest first. The secret is never shown again after creation. Workspace admins only, called with an unscoped key (a scoped key gets `403` with `code: insufficient_scope`). 
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+# setup authorization
+PostBoost.configure do |config|
+  # Configure Bearer authorization: bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = PostBoost::WorkspacesApi.new
+workspace_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the workspace.
+
+begin
+  # List scoped API keys
+  result = api_instance.list_api_keys(workspace_uuid)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling WorkspacesApi->list_api_keys: #{e}"
+end
+```
+
+#### Using the list_api_keys_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ListApiKeys200Response>, Integer, Hash)> list_api_keys_with_http_info(workspace_uuid)
+
+```ruby
+begin
+  # List scoped API keys
+  data, status_code, headers = api_instance.list_api_keys_with_http_info(workspace_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ListApiKeys200Response>
+rescue PostBoost::ApiError => e
+  puts "Error when calling WorkspacesApi->list_api_keys_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **workspace_uuid** | **String** | UUID of the workspace. |  |
+
+### Return type
+
+[**ListApiKeys200Response**](ListApiKeys200Response.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## list_my_workspaces
 
 > <ListMyWorkspaces200Response> list_my_workspaces
@@ -488,6 +845,75 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**ListMyWorkspaces200Response**](ListMyWorkspaces200Response.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_reseller_clients
+
+> <ListResellerClients200Response> list_reseller_clients(workspace_uuid)
+
+List client workspaces
+
+Client workspaces this workspace created on the Reseller plan, active first, then archived. `accounts_needing_reconnect` counts accounts whose connection must be renewed. `meta` gives the active clients and the plan's client limit. Workspace admins with an unscoped key only; other workspaces get `403` with `code: not_a_reseller`. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+# setup authorization
+PostBoost.configure do |config|
+  # Configure Bearer authorization: bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = PostBoost::WorkspacesApi.new
+workspace_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the workspace.
+
+begin
+  # List client workspaces
+  result = api_instance.list_reseller_clients(workspace_uuid)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling WorkspacesApi->list_reseller_clients: #{e}"
+end
+```
+
+#### Using the list_reseller_clients_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ListResellerClients200Response>, Integer, Hash)> list_reseller_clients_with_http_info(workspace_uuid)
+
+```ruby
+begin
+  # List client workspaces
+  data, status_code, headers = api_instance.list_reseller_clients_with_http_info(workspace_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ListResellerClients200Response>
+rescue PostBoost::ApiError => e
+  puts "Error when calling WorkspacesApi->list_reseller_clients_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **workspace_uuid** | **String** | UUID of the workspace. |  |
+
+### Return type
+
+[**ListResellerClients200Response**](ListResellerClients200Response.md)
 
 ### Authorization
 

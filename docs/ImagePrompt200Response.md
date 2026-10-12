@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **data** | [**ImagePromptResponse**](ImagePromptResponse.md) |  |  |
+| **meta** | [**BrandVoiceMeta**](BrandVoiceMeta.md) |  | [optional] |
 
 ## Example
 
@@ -12,7 +13,8 @@
 require 'postboost'
 
 instance = PostBoost::ImagePrompt200Response.new(
-  data: null
+  data: null,
+  meta: null
 )
 ```
 

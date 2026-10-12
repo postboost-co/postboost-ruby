@@ -19,6 +19,7 @@ All URIs are relative to *https://postboost.co/app/api*
 | [**update_media_folder**](MediaApi.md#update_media_folder) | **PUT** /{workspaceUuid}/media/folders/{folderUuid} | Update media folder |
 | [**upload_chunk**](MediaApi.md#upload_chunk) | **POST** /{workspaceUuid}/media/chunked/{uploadUuid}/upload | Upload a chunk |
 | [**upload_media**](MediaApi.md#upload_media) | **POST** /{workspaceUuid}/media | Upload media (binary) |
+| [**upload_media_base64**](MediaApi.md#upload_media_base64) | **POST** /{workspaceUuid}/media/base64 | Upload media (base64 JSON) |
 
 
 ## abort_chunked_upload
@@ -168,7 +169,7 @@ end
 
 ## create_media_folder
 
-> <MediaFolder> create_media_folder(workspace_uuid, create_media_folder_request)
+> <MediaFolder> create_media_folder(workspace_uuid, create_media_folder_request, opts)
 
 Create media folder
 
@@ -188,10 +189,13 @@ end
 api_instance = PostBoost::MediaApi.new
 workspace_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the workspace.
 create_media_folder_request = PostBoost::CreateMediaFolderRequest.new({name: 'name_example'}) # CreateMediaFolderRequest | 
+opts = {
+  idempotency_key: 'idempotency_key_example' # String | Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with `Idempotent-Replayed: true` and has no further effect. Keys are scoped to your user, the workspace, the method and the path. 
+}
 
 begin
   # Create media folder
-  result = api_instance.create_media_folder(workspace_uuid, create_media_folder_request)
+  result = api_instance.create_media_folder(workspace_uuid, create_media_folder_request, opts)
   p result
 rescue PostBoost::ApiError => e
   puts "Error when calling MediaApi->create_media_folder: #{e}"
@@ -202,12 +206,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<MediaFolder>, Integer, Hash)> create_media_folder_with_http_info(workspace_uuid, create_media_folder_request)
+> <Array(<MediaFolder>, Integer, Hash)> create_media_folder_with_http_info(workspace_uuid, create_media_folder_request, opts)
 
 ```ruby
 begin
   # Create media folder
-  data, status_code, headers = api_instance.create_media_folder_with_http_info(workspace_uuid, create_media_folder_request)
+  data, status_code, headers = api_instance.create_media_folder_with_http_info(workspace_uuid, create_media_folder_request, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <MediaFolder>
@@ -222,6 +226,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **workspace_uuid** | **String** | UUID of the workspace. |  |
 | **create_media_folder_request** | [**CreateMediaFolderRequest**](CreateMediaFolderRequest.md) |  |  |
+| **idempotency_key** | **String** | Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with &#x60;Idempotent-Replayed: true&#x60; and has no further effect. Keys are scoped to your user, the workspace, the method and the path.  | [optional] |
 
 ### Return type
 
@@ -527,7 +532,7 @@ end
 
 ## initiate_chunked_upload
 
-> <InitiateChunkedUpload201Response> initiate_chunked_upload(workspace_uuid, initiate_chunked_upload_request)
+> <InitiateChunkedUpload201Response> initiate_chunked_upload(workspace_uuid, initiate_chunked_upload_request, opts)
 
 Initiate chunked upload
 
@@ -547,10 +552,13 @@ end
 api_instance = PostBoost::MediaApi.new
 workspace_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the workspace.
 initiate_chunked_upload_request = PostBoost::InitiateChunkedUploadRequest.new({filename: 'filename_example', mime_type: 'video/mp4', total_size: 37}) # InitiateChunkedUploadRequest | 
+opts = {
+  idempotency_key: 'idempotency_key_example' # String | Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with `Idempotent-Replayed: true` and has no further effect. Keys are scoped to your user, the workspace, the method and the path. 
+}
 
 begin
   # Initiate chunked upload
-  result = api_instance.initiate_chunked_upload(workspace_uuid, initiate_chunked_upload_request)
+  result = api_instance.initiate_chunked_upload(workspace_uuid, initiate_chunked_upload_request, opts)
   p result
 rescue PostBoost::ApiError => e
   puts "Error when calling MediaApi->initiate_chunked_upload: #{e}"
@@ -561,12 +569,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InitiateChunkedUpload201Response>, Integer, Hash)> initiate_chunked_upload_with_http_info(workspace_uuid, initiate_chunked_upload_request)
+> <Array(<InitiateChunkedUpload201Response>, Integer, Hash)> initiate_chunked_upload_with_http_info(workspace_uuid, initiate_chunked_upload_request, opts)
 
 ```ruby
 begin
   # Initiate chunked upload
-  data, status_code, headers = api_instance.initiate_chunked_upload_with_http_info(workspace_uuid, initiate_chunked_upload_request)
+  data, status_code, headers = api_instance.initiate_chunked_upload_with_http_info(workspace_uuid, initiate_chunked_upload_request, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <InitiateChunkedUpload201Response>
@@ -581,6 +589,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **workspace_uuid** | **String** | UUID of the workspace. |  |
 | **initiate_chunked_upload_request** | [**InitiateChunkedUploadRequest**](InitiateChunkedUploadRequest.md) |  |  |
+| **idempotency_key** | **String** | Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with &#x60;Idempotent-Replayed: true&#x60; and has no further effect. Keys are scoped to your user, the workspace, the method and the path.  | [optional] |
 
 ### Return type
 
@@ -598,7 +607,7 @@ end
 
 ## initiate_remote_upload
 
-> <InitiateRemoteUpload201Response> initiate_remote_upload(workspace_uuid, initiate_remote_upload_request)
+> <InitiateRemoteUpload201Response> initiate_remote_upload(workspace_uuid, initiate_remote_upload_request, opts)
 
 Initiate remote upload
 
@@ -618,10 +627,13 @@ end
 api_instance = PostBoost::MediaApi.new
 workspace_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the workspace.
 initiate_remote_upload_request = PostBoost::InitiateRemoteUploadRequest.new({url: 'url_example'}) # InitiateRemoteUploadRequest | 
+opts = {
+  idempotency_key: 'idempotency_key_example' # String | Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with `Idempotent-Replayed: true` and has no further effect. Keys are scoped to your user, the workspace, the method and the path. 
+}
 
 begin
   # Initiate remote upload
-  result = api_instance.initiate_remote_upload(workspace_uuid, initiate_remote_upload_request)
+  result = api_instance.initiate_remote_upload(workspace_uuid, initiate_remote_upload_request, opts)
   p result
 rescue PostBoost::ApiError => e
   puts "Error when calling MediaApi->initiate_remote_upload: #{e}"
@@ -632,12 +644,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InitiateRemoteUpload201Response>, Integer, Hash)> initiate_remote_upload_with_http_info(workspace_uuid, initiate_remote_upload_request)
+> <Array(<InitiateRemoteUpload201Response>, Integer, Hash)> initiate_remote_upload_with_http_info(workspace_uuid, initiate_remote_upload_request, opts)
 
 ```ruby
 begin
   # Initiate remote upload
-  data, status_code, headers = api_instance.initiate_remote_upload_with_http_info(workspace_uuid, initiate_remote_upload_request)
+  data, status_code, headers = api_instance.initiate_remote_upload_with_http_info(workspace_uuid, initiate_remote_upload_request, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <InitiateRemoteUpload201Response>
@@ -652,6 +664,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **workspace_uuid** | **String** | UUID of the workspace. |  |
 | **initiate_remote_upload_request** | [**InitiateRemoteUploadRequest**](InitiateRemoteUploadRequest.md) |  |  |
+| **idempotency_key** | **String** | Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with &#x60;Idempotent-Replayed: true&#x60; and has no further effect. Keys are scoped to your user, the workspace, the method and the path.  | [optional] |
 
 ### Return type
 
@@ -1052,7 +1065,7 @@ end
 
 Upload media (binary)
 
-Upload a file directly as multipart form data.
+Upload a file directly as multipart form data. Images and videos, plus a PDF (up to 100 MB) for LinkedIn document posts: a post that attaches a PDF must have it as the only media item and may only go to LinkedIn profiles and pages. 
 
 ### Examples
 
@@ -1069,6 +1082,7 @@ api_instance = PostBoost::MediaApi.new
 workspace_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the workspace.
 file = File.new('/path/to/some/file') # File | The file to upload.
 opts = {
+  idempotency_key: 'idempotency_key_example', # String | Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with `Idempotent-Replayed: true` and has no further effect. Keys are scoped to your user, the workspace, the method and the path. 
   alt_text: 'alt_text_example', # String | Alternative text for accessibility.
   folder: '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the media folder to file the upload in. Omit or null for the library root.
 }
@@ -1106,6 +1120,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **workspace_uuid** | **String** | UUID of the workspace. |  |
 | **file** | **File** | The file to upload. |  |
+| **idempotency_key** | **String** | Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with &#x60;Idempotent-Replayed: true&#x60; and has no further effect. Keys are scoped to your user, the workspace, the method and the path.  | [optional] |
 | **alt_text** | **String** | Alternative text for accessibility. | [optional] |
 | **folder** | **String** | UUID of the media folder to file the upload in. Omit or null for the library root. | [optional] |
 
@@ -1120,5 +1135,80 @@ end
 ### HTTP request headers
 
 - **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+
+## upload_media_base64
+
+> <Media> upload_media_base64(workspace_uuid, media_base64_input, opts)
+
+Upload media (base64 JSON)
+
+Upload a file as base64 inside a JSON body, for agents and tools that cannot send multipart form data. The decoded file is checked exactly like `POST media` (allowed types and size limits; a PDF is accepted for LinkedIn document posts). Decoded size is capped at 20 MB; for larger files use remote upload by URL or chunked upload. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+# setup authorization
+PostBoost.configure do |config|
+  # Configure Bearer authorization: bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = PostBoost::MediaApi.new
+workspace_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the workspace.
+media_base64_input = PostBoost::MediaBase64Input.new({content: 'content_example', filename: 'cover.png'}) # MediaBase64Input | 
+opts = {
+  idempotency_key: 'idempotency_key_example' # String | Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with `Idempotent-Replayed: true` and has no further effect. Keys are scoped to your user, the workspace, the method and the path. 
+}
+
+begin
+  # Upload media (base64 JSON)
+  result = api_instance.upload_media_base64(workspace_uuid, media_base64_input, opts)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling MediaApi->upload_media_base64: #{e}"
+end
+```
+
+#### Using the upload_media_base64_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Media>, Integer, Hash)> upload_media_base64_with_http_info(workspace_uuid, media_base64_input, opts)
+
+```ruby
+begin
+  # Upload media (base64 JSON)
+  data, status_code, headers = api_instance.upload_media_base64_with_http_info(workspace_uuid, media_base64_input, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Media>
+rescue PostBoost::ApiError => e
+  puts "Error when calling MediaApi->upload_media_base64_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **workspace_uuid** | **String** | UUID of the workspace. |  |
+| **media_base64_input** | [**MediaBase64Input**](MediaBase64Input.md) |  |  |
+| **idempotency_key** | **String** | Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with &#x60;Idempotent-Replayed: true&#x60; and has no further effect. Keys are scoped to your user, the workspace, the method and the path.  | [optional] |
+
+### Return type
+
+[**Media**](Media.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 

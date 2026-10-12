@@ -13,7 +13,7 @@ All URIs are relative to *https://postboost.co/app/api*
 
 ## create_mention
 
-> <CreateMention201Response> create_mention(workspace_uuid, mention_input)
+> <CreateMention201Response> create_mention(workspace_uuid, mention_input, opts)
 
 Create mention
 
@@ -33,10 +33,13 @@ end
 api_instance = PostBoost::MentionsApi.new
 workspace_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the workspace.
 mention_input = PostBoost::MentionInput.new({name: 'name_example'}) # MentionInput | 
+opts = {
+  idempotency_key: 'idempotency_key_example' # String | Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with `Idempotent-Replayed: true` and has no further effect. Keys are scoped to your user, the workspace, the method and the path. 
+}
 
 begin
   # Create mention
-  result = api_instance.create_mention(workspace_uuid, mention_input)
+  result = api_instance.create_mention(workspace_uuid, mention_input, opts)
   p result
 rescue PostBoost::ApiError => e
   puts "Error when calling MentionsApi->create_mention: #{e}"
@@ -47,12 +50,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<CreateMention201Response>, Integer, Hash)> create_mention_with_http_info(workspace_uuid, mention_input)
+> <Array(<CreateMention201Response>, Integer, Hash)> create_mention_with_http_info(workspace_uuid, mention_input, opts)
 
 ```ruby
 begin
   # Create mention
-  data, status_code, headers = api_instance.create_mention_with_http_info(workspace_uuid, mention_input)
+  data, status_code, headers = api_instance.create_mention_with_http_info(workspace_uuid, mention_input, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <CreateMention201Response>
@@ -67,6 +70,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **workspace_uuid** | **String** | UUID of the workspace. |  |
 | **mention_input** | [**MentionInput**](MentionInput.md) |  |  |
+| **idempotency_key** | **String** | Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with &#x60;Idempotent-Replayed: true&#x60; and has no further effect. Keys are scoped to your user, the workspace, the method and the path.  | [optional] |
 
 ### Return type
 

@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **data** | [**BlogToSocialResponse**](BlogToSocialResponse.md) |  | [optional] |
+| **meta** | [**BrandVoiceMeta**](BrandVoiceMeta.md) |  | [optional] |
 
 ## Example
 
@@ -12,7 +13,8 @@
 require 'postboost'
 
 instance = PostBoost::BlogToSocial200Response.new(
-  data: null
+  data: null,
+  meta: null
 )
 ```
 

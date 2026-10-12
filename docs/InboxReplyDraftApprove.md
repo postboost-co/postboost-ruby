@@ -1,0 +1,18 @@
+# PostBoost::InboxReplyDraftApprove
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | **String** | Edited text to send instead of the draft&#39;s. | [optional] |
+
+## Example
+
+```ruby
+require 'postboost'
+
+instance = PostBoost::InboxReplyDraftApprove.new(
+  body: null
+)
+```
+
