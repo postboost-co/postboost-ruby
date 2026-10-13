@@ -11,5 +11,5 @@ Generator version: 7.9.0
 =end
 
 module PostBoost
-  VERSION = '1.15.0'
+  VERSION = '1.16.0'
 end
