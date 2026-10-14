@@ -13,7 +13,7 @@ gem install postboost
 | **RubyGems** | [rubygems.org/gems/postboost](https://rubygems.org/gems/postboost) |
 | **GitHub** | [postboost-co/postboost-ruby](https://github.com/postboost-co/postboost-ruby) |
 | **Docs** | [postboost.co/docs/api](https://postboost.co/docs/api) |
-| **Version** | v1.18.0 |
+| **Version** | v1.19.0 |
 
 ## Quick start
 
@@ -39,6 +39,7 @@ Class | Method | HTTP request | Description
 *PostBoost::AIApi* | [**delete_brand_voice**](docs/AIApi.md#delete_brand_voice) | **DELETE** /{workspaceUuid}/brand-voice | Delete the brand voice
 *PostBoost::AIApi* | [**get_ai_usage**](docs/AIApi.md#get_ai_usage) | **GET** /{workspaceUuid}/usage/ai | AI credit usage
 *PostBoost::AIApi* | [**get_brand_voice**](docs/AIApi.md#get_brand_voice) | **GET** /{workspaceUuid}/brand-voice | Get the brand voice
+*PostBoost::AIApi* | [**get_repurpose_run**](docs/AIApi.md#get_repurpose_run) | **GET** /{workspaceUuid}/ai/repurpose/runs/{runId} | Get a repurpose run
 *PostBoost::AIApi* | [**image_alt_text**](docs/AIApi.md#image_alt_text) | **POST** /{workspaceUuid}/ai/image-alt-text | Generate alt text for a media image using AI
 *PostBoost::AIApi* | [**image_edit**](docs/AIApi.md#image_edit) | **POST** /{workspaceUuid}/ai/image-edit | Edit an existing media image using AI
 *PostBoost::AIApi* | [**image_generate**](docs/AIApi.md#image_generate) | **POST** /{workspaceUuid}/ai/image-generate | Generate social media images from a caption

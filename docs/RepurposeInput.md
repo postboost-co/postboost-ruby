@@ -23,6 +23,7 @@
 | **theme** | [**RepurposeInputTheme**](RepurposeInputTheme.md) |  | [optional] |
 | **create_post** | **Boolean** | Create the draft post. &#x60;false&#x60; returns captions and slides only. | [optional][default to true] |
 | **use_brand_voice** | **Boolean** |  | [optional][default to true] |
+| **async** | **Boolean** | Answer &#x60;202&#x60; with a run id right away instead of waiting up to 20 seconds for the result. | [optional][default to false] |
 
 ## Example
 
@@ -48,7 +49,8 @@ instance = PostBoost::RepurposeInput.new(
   slide_count: null,
   theme: null,
   create_post: null,
-  use_brand_voice: null
+  use_brand_voice: null,
+  async: null
 )
 ```
 
