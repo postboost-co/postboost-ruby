@@ -187,7 +187,7 @@ end
 
 ## create_post
 
-> <Post> create_post(workspace_uuid, post_input, opts)
+> <CreatePost201Response> create_post(workspace_uuid, post_input, opts)
 
 Create post
 
@@ -224,7 +224,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Post>, Integer, Hash)> create_post_with_http_info(workspace_uuid, post_input, opts)
+> <Array(<CreatePost201Response>, Integer, Hash)> create_post_with_http_info(workspace_uuid, post_input, opts)
 
 ```ruby
 begin
@@ -232,7 +232,7 @@ begin
   data, status_code, headers = api_instance.create_post_with_http_info(workspace_uuid, post_input, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Post>
+  p data # => <CreatePost201Response>
 rescue PostBoost::ApiError => e
   puts "Error when calling PostsApi->create_post_with_http_info: #{e}"
 end
@@ -248,7 +248,7 @@ end
 
 ### Return type
 
-[**Post**](Post.md)
+[**CreatePost201Response**](CreatePost201Response.md)
 
 ### Authorization
 
@@ -1552,7 +1552,7 @@ end
 
 ## update_post
 
-> Object update_post(workspace_uuid, post_uuid, post_input)
+> <UpdatePost200Response> update_post(workspace_uuid, post_uuid, post_input)
 
 Update post
 
@@ -1587,7 +1587,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(Object, Integer, Hash)> update_post_with_http_info(workspace_uuid, post_uuid, post_input)
+> <Array(<UpdatePost200Response>, Integer, Hash)> update_post_with_http_info(workspace_uuid, post_uuid, post_input)
 
 ```ruby
 begin
@@ -1595,7 +1595,7 @@ begin
   data, status_code, headers = api_instance.update_post_with_http_info(workspace_uuid, post_uuid, post_input)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => Object
+  p data # => <UpdatePost200Response>
 rescue PostBoost::ApiError => e
   puts "Error when calling PostsApi->update_post_with_http_info: #{e}"
 end
@@ -1611,7 +1611,7 @@ end
 
 ### Return type
 
-**Object**
+[**UpdatePost200Response**](UpdatePost200Response.md)
 
 ### Authorization
 
