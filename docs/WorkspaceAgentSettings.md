@@ -9,6 +9,7 @@
 | **banned_phrases** | **Array&lt;String&gt;** | Phrases to propose removing from captions. | [optional] |
 | **ai_review** | **Boolean** | Ask AI to review captions (one AI credit per reviewed post). | [optional][default to false] |
 | **max_ai_reviews_per_run** | **Integer** |  | [optional][default to 10] |
+| **lookback_hours** | **Integer** | Look at posts that failed within this many hours. | [optional][default to 24] |
 
 ## Example
 
@@ -20,7 +21,8 @@ instance = PostBoost::WorkspaceAgentSettings.new(
   check_links: null,
   banned_phrases: null,
   ai_review: null,
-  max_ai_reviews_per_run: null
+  max_ai_reviews_per_run: null,
+  lookback_hours: null
 )
 ```
 
