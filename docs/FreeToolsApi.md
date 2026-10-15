@@ -5,6 +5,7 @@ All URIs are relative to *https://postboost.co/app/api*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**build_utm_url**](FreeToolsApi.md#build_utm_url) | **POST** /tools/utm-builder | Build a UTM-tagged campaign URL |
+| [**calculate_crop**](FreeToolsApi.md#calculate_crop) | **POST** /tools/social-media-image-sizes/crop | Calculate the crop box that fits an image to a social media size |
 | [**calculate_engagement_rate**](FreeToolsApi.md#calculate_engagement_rate) | **POST** /tools/engagement-rate-calculator | Calculate an engagement rate |
 | [**check_post**](FreeToolsApi.md#check_post) | **POST** /tools/social-media-post-checker | Check a post against each network&#39;s publishing rules |
 | [**clean_text**](FreeToolsApi.md#clean_text) | **POST** /tools/ai-text-cleaner | Clean AI-written text: dashes, quotes, invisible characters, markdown |
@@ -13,6 +14,8 @@ All URIs are relative to *https://postboost.co/app/api*
 | [**generate_caption**](FreeToolsApi.md#generate_caption) | **POST** /tools/instagram-caption-generator | Write three post captions for a topic with AI (needs a token, spends AI credits) |
 | [**generate_fancy_text**](FreeToolsApi.md#generate_fancy_text) | **POST** /tools/fancy-text-generator | Convert text to fancy Unicode styles |
 | [**generate_hashtags**](FreeToolsApi.md#generate_hashtags) | **POST** /tools/instagram-hashtag-generator | Generate hashtags for a post topic with AI (needs a token, spends AI credits) |
+| [**get_best_times_to_post**](FreeToolsApi.md#get_best_times_to_post) | **GET** /tools/best-time-to-post | Get the best times to post per network from published studies, with sources |
+| [**get_image_sizes**](FreeToolsApi.md#get_image_sizes) | **GET** /tools/social-media-image-sizes | Get social media image sizes per network, each with its source |
 | [**list_free_tools**](FreeToolsApi.md#list_free_tools) | **GET** /tools | List the free tools |
 | [**split_thread**](FreeToolsApi.md#split_thread) | **POST** /tools/x-thread-maker | Split long text into a thread |
 
@@ -70,6 +73,70 @@ end
 ### Return type
 
 [**FreeToolBuildUtmUrlResponse**](FreeToolBuildUtmUrlResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## calculate_crop
+
+> <FreeToolCalculateCropResponse> calculate_crop(free_tool_calculate_crop_request)
+
+Calculate the crop box that fits an image to a social media size
+
+Calculate the crop box that fits an image to a social media size. The same logic as the free web tool at https://postboost.co/tools/social-media-image-sizes. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_calculate_crop_request = PostBoost::FreeToolCalculateCropRequest.new({width: 37, height: 37}) # FreeToolCalculateCropRequest | 
+
+begin
+  # Calculate the crop box that fits an image to a social media size
+  result = api_instance.calculate_crop(free_tool_calculate_crop_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->calculate_crop: #{e}"
+end
+```
+
+#### Using the calculate_crop_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolCalculateCropResponse>, Integer, Hash)> calculate_crop_with_http_info(free_tool_calculate_crop_request)
+
+```ruby
+begin
+  # Calculate the crop box that fits an image to a social media size
+  data, status_code, headers = api_instance.calculate_crop_with_http_info(free_tool_calculate_crop_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolCalculateCropResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->calculate_crop_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_calculate_crop_request** | [**FreeToolCalculateCropRequest**](FreeToolCalculateCropRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolCalculateCropResponse**](FreeToolCalculateCropResponse.md)
 
 ### Authorization
 
@@ -600,6 +667,138 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## get_best_times_to_post
+
+> <FreeToolGetBestTimesToPostResponse> get_best_times_to_post(opts)
+
+Get the best times to post per network from published studies, with sources
+
+Get the best times to post per network from published studies, with sources. The same logic as the free web tool at https://postboost.co/tools/best-time-to-post. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+opts = {
+  network: 'network_example' # String | 
+}
+
+begin
+  # Get the best times to post per network from published studies, with sources
+  result = api_instance.get_best_times_to_post(opts)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->get_best_times_to_post: #{e}"
+end
+```
+
+#### Using the get_best_times_to_post_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolGetBestTimesToPostResponse>, Integer, Hash)> get_best_times_to_post_with_http_info(opts)
+
+```ruby
+begin
+  # Get the best times to post per network from published studies, with sources
+  data, status_code, headers = api_instance.get_best_times_to_post_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolGetBestTimesToPostResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->get_best_times_to_post_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **network** | **String** |  | [optional] |
+
+### Return type
+
+[**FreeToolGetBestTimesToPostResponse**](FreeToolGetBestTimesToPostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_image_sizes
+
+> <FreeToolGetImageSizesResponse> get_image_sizes(opts)
+
+Get social media image sizes per network, each with its source
+
+Get social media image sizes per network, each with its source. The same logic as the free web tool at https://postboost.co/tools/social-media-image-sizes. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+opts = {
+  network: 'network_example' # String | 
+}
+
+begin
+  # Get social media image sizes per network, each with its source
+  result = api_instance.get_image_sizes(opts)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->get_image_sizes: #{e}"
+end
+```
+
+#### Using the get_image_sizes_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolGetImageSizesResponse>, Integer, Hash)> get_image_sizes_with_http_info(opts)
+
+```ruby
+begin
+  # Get social media image sizes per network, each with its source
+  data, status_code, headers = api_instance.get_image_sizes_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolGetImageSizesResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->get_image_sizes_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **network** | **String** |  | [optional] |
+
+### Return type
+
+[**FreeToolGetImageSizesResponse**](FreeToolGetImageSizesResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
