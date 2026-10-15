@@ -13,7 +13,7 @@ gem install postboost
 | **RubyGems** | [rubygems.org/gems/postboost](https://rubygems.org/gems/postboost) |
 | **GitHub** | [postboost-co/postboost-ruby](https://github.com/postboost-co/postboost-ruby) |
 | **Docs** | [postboost.co/docs/api](https://postboost.co/docs/api) |
-| **Version** | v1.24.1 |
+| **Version** | v1.25.0 |
 
 ## Quick start
 
