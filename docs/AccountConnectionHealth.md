@@ -10,6 +10,7 @@
 | **days_left** | **Integer** | Whole days until &#x60;expires_at&#x60; (0 &#x3D; less than a day). |  |
 | **refreshable** | **Boolean** | PostBoost refreshes the token automatically until the hard expiry. |  |
 | **note** | **String** | Plain-language explanation of the prediction. |  |
+| **reconnect_reason** | [**AccountConnectionHealthReconnectReason**](AccountConnectionHealthReconnectReason.md) |  |  |
 | **last_success_at** | **Time** | When the account last published successfully. |  |
 | **last_error** | **String** | The error of the account&#39;s latest failed publish, shortened to 300 characters. |  |
 | **reconnect_url** | **String** | Where a workspace member reconnects the account. |  |
@@ -26,6 +27,7 @@ instance = PostBoost::AccountConnectionHealth.new(
   days_left: null,
   refreshable: null,
   note: null,
+  reconnect_reason: null,
   last_success_at: null,
   last_error: null,
   reconnect_url: null
