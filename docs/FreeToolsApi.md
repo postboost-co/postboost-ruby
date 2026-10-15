@@ -10,7 +10,9 @@ All URIs are relative to *https://postboost.co/app/api*
 | [**clean_text**](FreeToolsApi.md#clean_text) | **POST** /tools/ai-text-cleaner | Clean AI-written text: dashes, quotes, invisible characters, markdown |
 | [**count_characters**](FreeToolsApi.md#count_characters) | **POST** /tools/social-media-character-counter | Count characters as each network counts them |
 | [**format_linked_in_post**](FreeToolsApi.md#format_linked_in_post) | **POST** /tools/linkedin-post-formatter | Format a LinkedIn post with bold, italic and lists |
+| [**generate_caption**](FreeToolsApi.md#generate_caption) | **POST** /tools/instagram-caption-generator | Write three post captions for a topic with AI (needs a token, spends AI credits) |
 | [**generate_fancy_text**](FreeToolsApi.md#generate_fancy_text) | **POST** /tools/fancy-text-generator | Convert text to fancy Unicode styles |
+| [**generate_hashtags**](FreeToolsApi.md#generate_hashtags) | **POST** /tools/instagram-hashtag-generator | Generate hashtags for a post topic with AI (needs a token, spends AI credits) |
 | [**list_free_tools**](FreeToolsApi.md#list_free_tools) | **GET** /tools | List the free tools |
 | [**split_thread**](FreeToolsApi.md#split_thread) | **POST** /tools/x-thread-maker | Split long text into a thread |
 
@@ -399,6 +401,75 @@ No authorization required
 - **Accept**: application/json
 
 
+## generate_caption
+
+> <FreeToolGenerateCaptionResponse> generate_caption(free_tool_generate_caption_request)
+
+Write three post captions for a topic with AI (needs a token, spends AI credits)
+
+Write three post captions for a topic with AI (needs a token, spends AI credits). The same logic as the free web tool at https://postboost.co/tools/instagram-caption-generator. Needs an API token (a scoped key needs the `ai` ability and pays with its own workspace). A new generation spends 1 AI credit of the workspace you name (or your active workspace); a repeated identical request is answered from the cache for free.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+# setup authorization
+PostBoost.configure do |config|
+  # Configure Bearer authorization: bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_generate_caption_request = PostBoost::FreeToolGenerateCaptionRequest.new({text: 'text_example'}) # FreeToolGenerateCaptionRequest | 
+
+begin
+  # Write three post captions for a topic with AI (needs a token, spends AI credits)
+  result = api_instance.generate_caption(free_tool_generate_caption_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_caption: #{e}"
+end
+```
+
+#### Using the generate_caption_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolGenerateCaptionResponse>, Integer, Hash)> generate_caption_with_http_info(free_tool_generate_caption_request)
+
+```ruby
+begin
+  # Write three post captions for a topic with AI (needs a token, spends AI credits)
+  data, status_code, headers = api_instance.generate_caption_with_http_info(free_tool_generate_caption_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolGenerateCaptionResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_caption_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_generate_caption_request** | [**FreeToolGenerateCaptionRequest**](FreeToolGenerateCaptionRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolGenerateCaptionResponse**](FreeToolGenerateCaptionResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## generate_fancy_text
 
 > <FreeToolGenerateFancyTextResponse> generate_fancy_text(free_tool_generate_fancy_text_request)
@@ -456,6 +527,75 @@ end
 ### Authorization
 
 No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## generate_hashtags
+
+> <FreeToolGenerateHashtagsResponse> generate_hashtags(free_tool_generate_hashtags_request)
+
+Generate hashtags for a post topic with AI (needs a token, spends AI credits)
+
+Generate hashtags for a post topic with AI (needs a token, spends AI credits). The same logic as the free web tool at https://postboost.co/tools/instagram-hashtag-generator. Needs an API token (a scoped key needs the `ai` ability and pays with its own workspace). A new generation spends 1 AI credit of the workspace you name (or your active workspace); a repeated identical request is answered from the cache for free.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+# setup authorization
+PostBoost.configure do |config|
+  # Configure Bearer authorization: bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_generate_hashtags_request = PostBoost::FreeToolGenerateHashtagsRequest.new({topic: 'topic_example'}) # FreeToolGenerateHashtagsRequest | 
+
+begin
+  # Generate hashtags for a post topic with AI (needs a token, spends AI credits)
+  result = api_instance.generate_hashtags(free_tool_generate_hashtags_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_hashtags: #{e}"
+end
+```
+
+#### Using the generate_hashtags_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolGenerateHashtagsResponse>, Integer, Hash)> generate_hashtags_with_http_info(free_tool_generate_hashtags_request)
+
+```ruby
+begin
+  # Generate hashtags for a post topic with AI (needs a token, spends AI credits)
+  data, status_code, headers = api_instance.generate_hashtags_with_http_info(free_tool_generate_hashtags_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolGenerateHashtagsResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_hashtags_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_generate_hashtags_request** | [**FreeToolGenerateHashtagsRequest**](FreeToolGenerateHashtagsRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolGenerateHashtagsResponse**](FreeToolGenerateHashtagsResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
