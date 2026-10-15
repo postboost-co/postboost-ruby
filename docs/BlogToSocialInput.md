@@ -36,7 +36,7 @@ instance = PostBoost::BlogToSocialInput.new(
   hashtags: few,
   cta: link,
   language: auto,
-  custom_instructions: Always mention that PostBoost supports 12+ platforms.,
+  custom_instructions: Always mention that PostBoost has a free plan.,
   create_post: null,
   use_brand_voice: null
 )
