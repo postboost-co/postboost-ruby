@@ -5,6 +5,7 @@ All URIs are relative to *https://postboost.co/app/api*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**connect_channel**](AccountsApi.md#connect_channel) | **POST** /{workspaceUuid}/accounts/connect/{provider} | Connect a Telegram, Discord or Slack channel |
+| [**create_connect_link**](AccountsApi.md#create_connect_link) | **POST** /{workspaceUuid}/accounts/connect-links | Create a connect link |
 | [**create_reconnect_link**](AccountsApi.md#create_reconnect_link) | **POST** /{workspaceUuid}/accounts/{accountUuid}/reconnect-links | Create a reconnect link |
 | [**get_account**](AccountsApi.md#get_account) | **GET** /{workspaceUuid}/accounts/{accountUuid} | Get account |
 | [**get_account_health**](AccountsApi.md#get_account_health) | **GET** /{workspaceUuid}/account-health | Account health |
@@ -73,6 +74,77 @@ end
 ### Return type
 
 [**ChannelAccount**](ChannelAccount.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_connect_link
+
+> <ConnectLink> create_connect_link(workspace_uuid, create_connect_link_request)
+
+Create a connect link
+
+Creates a single-use link (valid 15 minutes) that lets the user connect a new account on an OAuth network to this workspace. Ask the user to open this link in their browser while logged in to PostBoost, wait until they confirm, then call `list-accounts` to get the new account id. The link signs no one in: only the user who created it, while a workspace admin, can use it. Telegram, Discord and Slack need no browser: connect them with `connectChannel`. Mastodon, Pixelfed and Bluesky ask for a server or handle first, so the user connects them in the app. Workspace admins only; at most 10 links per minute. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+# setup authorization
+PostBoost.configure do |config|
+  # Configure Bearer authorization: bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = PostBoost::AccountsApi.new
+workspace_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | UUID of the workspace.
+create_connect_link_request = PostBoost::CreateConnectLinkRequest.new({provider: 'twitter'}) # CreateConnectLinkRequest | 
+
+begin
+  # Create a connect link
+  result = api_instance.create_connect_link(workspace_uuid, create_connect_link_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling AccountsApi->create_connect_link: #{e}"
+end
+```
+
+#### Using the create_connect_link_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConnectLink>, Integer, Hash)> create_connect_link_with_http_info(workspace_uuid, create_connect_link_request)
+
+```ruby
+begin
+  # Create a connect link
+  data, status_code, headers = api_instance.create_connect_link_with_http_info(workspace_uuid, create_connect_link_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConnectLink>
+rescue PostBoost::ApiError => e
+  puts "Error when calling AccountsApi->create_connect_link_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **workspace_uuid** | **String** | UUID of the workspace. |  |
+| **create_connect_link_request** | [**CreateConnectLinkRequest**](CreateConnectLinkRequest.md) |  |  |
+
+### Return type
+
+[**ConnectLink**](ConnectLink.md)
 
 ### Authorization
 

@@ -13,7 +13,7 @@ gem install postboost
 | **RubyGems** | [rubygems.org/gems/postboost](https://rubygems.org/gems/postboost) |
 | **GitHub** | [postboost-co/postboost-ruby](https://github.com/postboost-co/postboost-ruby) |
 | **Docs** | [postboost.co/docs/api](https://postboost.co/docs/api) |
-| **Version** | v1.23.0 |
+| **Version** | v1.24.0 |
 
 ## Quick start
 
@@ -54,6 +54,7 @@ Class | Method | HTTP request | Description
 *PostBoost::AccountGroupsApi* | [**list_account_groups**](docs/AccountGroupsApi.md#list_account_groups) | **GET** /{workspaceUuid}/account-groups | List account groups
 *PostBoost::AccountGroupsApi* | [**update_account_group**](docs/AccountGroupsApi.md#update_account_group) | **PUT** /{workspaceUuid}/account-groups/{accountGroupUuid} | Update an account group
 *PostBoost::AccountsApi* | [**connect_channel**](docs/AccountsApi.md#connect_channel) | **POST** /{workspaceUuid}/accounts/connect/{provider} | Connect a Telegram, Discord or Slack channel
+*PostBoost::AccountsApi* | [**create_connect_link**](docs/AccountsApi.md#create_connect_link) | **POST** /{workspaceUuid}/accounts/connect-links | Create a connect link
 *PostBoost::AccountsApi* | [**create_reconnect_link**](docs/AccountsApi.md#create_reconnect_link) | **POST** /{workspaceUuid}/accounts/{accountUuid}/reconnect-links | Create a reconnect link
 *PostBoost::AccountsApi* | [**get_account**](docs/AccountsApi.md#get_account) | **GET** /{workspaceUuid}/accounts/{accountUuid} | Get account
 *PostBoost::AccountsApi* | [**get_account_health**](docs/AccountsApi.md#get_account_health) | **GET** /{workspaceUuid}/account-health | Account health
