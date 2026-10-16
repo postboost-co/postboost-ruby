@@ -9,8 +9,10 @@ All URIs are relative to *https://postboost.co/app/api*
 | [**calculate_crop**](FreeToolsApi.md#calculate_crop) | **POST** /tools/social-media-image-sizes/crop | Calculate the crop box that fits an image to a social media size |
 | [**calculate_engagement_rate**](FreeToolsApi.md#calculate_engagement_rate) | **POST** /tools/engagement-rate-calculator | Calculate an engagement rate |
 | [**calculate_social_roi**](FreeToolsApi.md#calculate_social_roi) | **POST** /tools/social-media-roi-calculator | Calculate social media ROI |
+| [**calculate_x_api_cost**](FreeToolsApi.md#calculate_x_api_cost) | **POST** /tools/x-api-cost-calculator | Calculate the monthly X API cost |
 | [**check_link_preview**](FreeToolsApi.md#check_link_preview) | **POST** /tools/link-preview-checker | Check how a link previews on X, LinkedIn, Facebook and chat apps (Open Graph and Twitter card tags) |
 | [**check_post**](FreeToolsApi.md#check_post) | **POST** /tools/social-media-post-checker | Check a post against each network&#39;s publishing rules |
+| [**check_readability**](FreeToolsApi.md#check_readability) | **POST** /tools/post-readability-checker | Check the readability of a post: Flesch scores, long sentences and passive hints |
 | [**check_youtube_thumbnail**](FreeToolsApi.md#check_youtube_thumbnail) | **POST** /tools/youtube-thumbnail-size-checker | Check a YouTube thumbnail&#39;s ratio, width, file size and format against YouTube&#39;s requirements |
 | [**clean_text**](FreeToolsApi.md#clean_text) | **POST** /tools/ai-text-cleaner | Clean AI-written text: dashes, quotes, invisible characters, markdown |
 | [**count_characters**](FreeToolsApi.md#count_characters) | **POST** /tools/social-media-character-counter | Count characters as each network counts them |
@@ -29,6 +31,7 @@ All URIs are relative to *https://postboost.co/app/api*
 | [**list_free_tools**](FreeToolsApi.md#list_free_tools) | **GET** /tools | List the free tools |
 | [**plan_content_calendar**](FreeToolsApi.md#plan_content_calendar) | **POST** /tools/social-media-content-calendar-generator | Plan a social media content calendar and get it as CSV and ICS |
 | [**preview_post**](FreeToolsApi.md#preview_post) | **POST** /tools/social-media-post-preview | Preview where a post folds and when its image is cropped on Instagram, X, LinkedIn and Facebook |
+| [**search_emoji**](FreeToolsApi.md#search_emoji) | **POST** /tools/social-media-emoji-picker | Search emoji by name or keyword, to copy and paste into a post |
 | [**split_thread**](FreeToolsApi.md#split_thread) | **POST** /tools/x-thread-maker | Split long text into a thread |
 
 
@@ -352,6 +355,70 @@ No authorization required
 - **Accept**: application/json
 
 
+## calculate_x_api_cost
+
+> <FreeToolCalculateXApiCostResponse> calculate_x_api_cost(free_tool_calculate_x_api_cost_request)
+
+Calculate the monthly X API cost
+
+Calculate the monthly X API cost. The same logic as the free web tool at https://postboost.co/tools/x-api-cost-calculator. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_calculate_x_api_cost_request = PostBoost::FreeToolCalculateXApiCostRequest.new # FreeToolCalculateXApiCostRequest | 
+
+begin
+  # Calculate the monthly X API cost
+  result = api_instance.calculate_x_api_cost(free_tool_calculate_x_api_cost_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->calculate_x_api_cost: #{e}"
+end
+```
+
+#### Using the calculate_x_api_cost_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolCalculateXApiCostResponse>, Integer, Hash)> calculate_x_api_cost_with_http_info(free_tool_calculate_x_api_cost_request)
+
+```ruby
+begin
+  # Calculate the monthly X API cost
+  data, status_code, headers = api_instance.calculate_x_api_cost_with_http_info(free_tool_calculate_x_api_cost_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolCalculateXApiCostResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->calculate_x_api_cost_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_calculate_x_api_cost_request** | [**FreeToolCalculateXApiCostRequest**](FreeToolCalculateXApiCostRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolCalculateXApiCostResponse**](FreeToolCalculateXApiCostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## check_link_preview
 
 > <FreeToolCheckLinkPreviewResponse> check_link_preview(free_tool_check_link_preview_request)
@@ -469,6 +536,70 @@ end
 ### Return type
 
 [**FreeToolCheckPostResponse**](FreeToolCheckPostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## check_readability
+
+> <FreeToolCheckReadabilityResponse> check_readability(free_tool_check_readability_request)
+
+Check the readability of a post: Flesch scores, long sentences and passive hints
+
+Check the readability of a post: Flesch scores, long sentences and passive hints. The same logic as the free web tool at https://postboost.co/tools/post-readability-checker. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_check_readability_request = PostBoost::FreeToolCheckReadabilityRequest.new({text: 'text_example'}) # FreeToolCheckReadabilityRequest | 
+
+begin
+  # Check the readability of a post: Flesch scores, long sentences and passive hints
+  result = api_instance.check_readability(free_tool_check_readability_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->check_readability: #{e}"
+end
+```
+
+#### Using the check_readability_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolCheckReadabilityResponse>, Integer, Hash)> check_readability_with_http_info(free_tool_check_readability_request)
+
+```ruby
+begin
+  # Check the readability of a post: Flesch scores, long sentences and passive hints
+  data, status_code, headers = api_instance.check_readability_with_http_info(free_tool_check_readability_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolCheckReadabilityResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->check_readability_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_check_readability_request** | [**FreeToolCheckReadabilityRequest**](FreeToolCheckReadabilityRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolCheckReadabilityResponse**](FreeToolCheckReadabilityResponse.md)
 
 ### Authorization
 
@@ -1652,6 +1783,70 @@ end
 ### Return type
 
 [**FreeToolPreviewPostResponse**](FreeToolPreviewPostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## search_emoji
+
+> <FreeToolSearchEmojiResponse> search_emoji(free_tool_search_emoji_request)
+
+Search emoji by name or keyword, to copy and paste into a post
+
+Search emoji by name or keyword, to copy and paste into a post. The same logic as the free web tool at https://postboost.co/tools/social-media-emoji-picker. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_search_emoji_request = PostBoost::FreeToolSearchEmojiRequest.new # FreeToolSearchEmojiRequest | 
+
+begin
+  # Search emoji by name or keyword, to copy and paste into a post
+  result = api_instance.search_emoji(free_tool_search_emoji_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->search_emoji: #{e}"
+end
+```
+
+#### Using the search_emoji_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolSearchEmojiResponse>, Integer, Hash)> search_emoji_with_http_info(free_tool_search_emoji_request)
+
+```ruby
+begin
+  # Search emoji by name or keyword, to copy and paste into a post
+  data, status_code, headers = api_instance.search_emoji_with_http_info(free_tool_search_emoji_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolSearchEmojiResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->search_emoji_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_search_emoji_request** | [**FreeToolSearchEmojiRequest**](FreeToolSearchEmojiRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolSearchEmojiResponse**](FreeToolSearchEmojiResponse.md)
 
 ### Authorization
 
