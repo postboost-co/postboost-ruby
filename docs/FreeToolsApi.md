@@ -26,6 +26,7 @@ All URIs are relative to *https://postboost.co/app/api*
 | [**get_image_sizes**](FreeToolsApi.md#get_image_sizes) | **GET** /tools/social-media-image-sizes | Get social media image sizes per network, each with its source |
 | [**get_video_specs**](FreeToolsApi.md#get_video_specs) | **GET** /tools/social-media-video-specs | Get social media video ratios, resolutions, lengths and file size limits per network, with sources |
 | [**list_free_tools**](FreeToolsApi.md#list_free_tools) | **GET** /tools | List the free tools |
+| [**plan_content_calendar**](FreeToolsApi.md#plan_content_calendar) | **POST** /tools/social-media-content-calendar-generator | Plan a social media content calendar and get it as CSV and ICS |
 | [**preview_post**](FreeToolsApi.md#preview_post) | **POST** /tools/social-media-post-preview | Preview where a post folds and when its image is cropped on Instagram, X, LinkedIn and Facebook |
 | [**split_thread**](FreeToolsApi.md#split_thread) | **POST** /tools/x-thread-maker | Split long text into a thread |
 
@@ -1466,6 +1467,70 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## plan_content_calendar
+
+> <FreeToolPlanContentCalendarResponse> plan_content_calendar(free_tool_plan_content_calendar_request)
+
+Plan a social media content calendar and get it as CSV and ICS
+
+Plan a social media content calendar and get it as CSV and ICS. The same logic as the free web tool at https://postboost.co/tools/social-media-content-calendar-generator. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_plan_content_calendar_request = PostBoost::FreeToolPlanContentCalendarRequest.new({start_date: 'start_date_example', posts_per_week: PostBoost::FreeToolPlanContentCalendarRequestPostsPerWeek.new}) # FreeToolPlanContentCalendarRequest | 
+
+begin
+  # Plan a social media content calendar and get it as CSV and ICS
+  result = api_instance.plan_content_calendar(free_tool_plan_content_calendar_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->plan_content_calendar: #{e}"
+end
+```
+
+#### Using the plan_content_calendar_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolPlanContentCalendarResponse>, Integer, Hash)> plan_content_calendar_with_http_info(free_tool_plan_content_calendar_request)
+
+```ruby
+begin
+  # Plan a social media content calendar and get it as CSV and ICS
+  data, status_code, headers = api_instance.plan_content_calendar_with_http_info(free_tool_plan_content_calendar_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolPlanContentCalendarResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->plan_content_calendar_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_plan_content_calendar_request** | [**FreeToolPlanContentCalendarRequest**](FreeToolPlanContentCalendarRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolPlanContentCalendarResponse**](FreeToolPlanContentCalendarResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
