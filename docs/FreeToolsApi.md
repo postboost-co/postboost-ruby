@@ -15,6 +15,7 @@ All URIs are relative to *https://postboost.co/app/api*
 | [**generate_caption**](FreeToolsApi.md#generate_caption) | **POST** /tools/instagram-caption-generator | Write three post captions for a topic with AI (needs a token, spends AI credits) |
 | [**generate_fancy_text**](FreeToolsApi.md#generate_fancy_text) | **POST** /tools/fancy-text-generator | Convert text to fancy Unicode styles |
 | [**generate_hashtags**](FreeToolsApi.md#generate_hashtags) | **POST** /tools/instagram-hashtag-generator | Generate hashtags for a post topic with AI (needs a token, spends AI credits) |
+| [**generate_qr_code**](FreeToolsApi.md#generate_qr_code) | **POST** /tools/qr-code-generator | Generate a QR code (SVG) for a link or text, with optional UTM tags |
 | [**get_best_times_to_post**](FreeToolsApi.md#get_best_times_to_post) | **GET** /tools/best-time-to-post | Get the best times to post per network from published studies, with sources |
 | [**get_image_sizes**](FreeToolsApi.md#get_image_sizes) | **GET** /tools/social-media-image-sizes | Get social media image sizes per network, each with its source |
 | [**list_free_tools**](FreeToolsApi.md#list_free_tools) | **GET** /tools | List the free tools |
@@ -729,6 +730,70 @@ end
 ### Authorization
 
 [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## generate_qr_code
+
+> <FreeToolGenerateQrCodeResponse> generate_qr_code(free_tool_generate_qr_code_request)
+
+Generate a QR code (SVG) for a link or text, with optional UTM tags
+
+Generate a QR code (SVG) for a link or text, with optional UTM tags. The same logic as the free web tool at https://postboost.co/tools/qr-code-generator. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_generate_qr_code_request = PostBoost::FreeToolGenerateQrCodeRequest.new({data: 'data_example'}) # FreeToolGenerateQrCodeRequest | 
+
+begin
+  # Generate a QR code (SVG) for a link or text, with optional UTM tags
+  result = api_instance.generate_qr_code(free_tool_generate_qr_code_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_qr_code: #{e}"
+end
+```
+
+#### Using the generate_qr_code_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolGenerateQrCodeResponse>, Integer, Hash)> generate_qr_code_with_http_info(free_tool_generate_qr_code_request)
+
+```ruby
+begin
+  # Generate a QR code (SVG) for a link or text, with optional UTM tags
+  data, status_code, headers = api_instance.generate_qr_code_with_http_info(free_tool_generate_qr_code_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolGenerateQrCodeResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_qr_code_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_generate_qr_code_request** | [**FreeToolGenerateQrCodeRequest**](FreeToolGenerateQrCodeRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolGenerateQrCodeResponse**](FreeToolGenerateQrCodeResponse.md)
+
+### Authorization
+
+No authorization required
 
 ### HTTP request headers
 
