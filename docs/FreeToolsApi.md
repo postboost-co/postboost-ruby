@@ -13,6 +13,7 @@ All URIs are relative to *https://postboost.co/app/api*
 | [**check_youtube_thumbnail**](FreeToolsApi.md#check_youtube_thumbnail) | **POST** /tools/youtube-thumbnail-size-checker | Check a YouTube thumbnail&#39;s ratio, width, file size and format against YouTube&#39;s requirements |
 | [**clean_text**](FreeToolsApi.md#clean_text) | **POST** /tools/ai-text-cleaner | Clean AI-written text: dashes, quotes, invisible characters, markdown |
 | [**count_characters**](FreeToolsApi.md#count_characters) | **POST** /tools/social-media-character-counter | Count characters as each network counts them |
+| [**format_instagram_caption**](FreeToolsApi.md#format_instagram_caption) | **POST** /tools/instagram-line-break-generator | Keep blank lines in an Instagram caption with spacer lines, and count it |
 | [**format_linked_in_post**](FreeToolsApi.md#format_linked_in_post) | **POST** /tools/linkedin-post-formatter | Format a LinkedIn post with bold, italic and lists |
 | [**generate_caption**](FreeToolsApi.md#generate_caption) | **POST** /tools/instagram-caption-generator | Write three post captions for a topic with AI (needs a token, spends AI credits) |
 | [**generate_fancy_text**](FreeToolsApi.md#generate_fancy_text) | **POST** /tools/fancy-text-generator | Convert text to fancy Unicode styles |
@@ -594,6 +595,70 @@ end
 ### Return type
 
 [**FreeToolCountCharactersResponse**](FreeToolCountCharactersResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## format_instagram_caption
+
+> <FreeToolFormatInstagramCaptionResponse> format_instagram_caption(free_tool_format_instagram_caption_request)
+
+Keep blank lines in an Instagram caption with spacer lines, and count it
+
+Keep blank lines in an Instagram caption with spacer lines, and count it. The same logic as the free web tool at https://postboost.co/tools/instagram-line-break-generator. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_format_instagram_caption_request = PostBoost::FreeToolFormatInstagramCaptionRequest.new({text: 'text_example'}) # FreeToolFormatInstagramCaptionRequest | 
+
+begin
+  # Keep blank lines in an Instagram caption with spacer lines, and count it
+  result = api_instance.format_instagram_caption(free_tool_format_instagram_caption_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->format_instagram_caption: #{e}"
+end
+```
+
+#### Using the format_instagram_caption_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolFormatInstagramCaptionResponse>, Integer, Hash)> format_instagram_caption_with_http_info(free_tool_format_instagram_caption_request)
+
+```ruby
+begin
+  # Keep blank lines in an Instagram caption with spacer lines, and count it
+  data, status_code, headers = api_instance.format_instagram_caption_with_http_info(free_tool_format_instagram_caption_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolFormatInstagramCaptionResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->format_instagram_caption_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_format_instagram_caption_request** | [**FreeToolFormatInstagramCaptionRequest**](FreeToolFormatInstagramCaptionRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolFormatInstagramCaptionResponse**](FreeToolFormatInstagramCaptionResponse.md)
 
 ### Authorization
 
