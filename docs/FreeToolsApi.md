@@ -8,6 +8,7 @@ All URIs are relative to *https://postboost.co/app/api*
 | [**calculate_aspect_ratio**](FreeToolsApi.md#calculate_aspect_ratio) | **POST** /tools/aspect-ratio-calculator | Calculate an aspect ratio, or the missing side of an image at a given ratio |
 | [**calculate_crop**](FreeToolsApi.md#calculate_crop) | **POST** /tools/social-media-image-sizes/crop | Calculate the crop box that fits an image to a social media size |
 | [**calculate_engagement_rate**](FreeToolsApi.md#calculate_engagement_rate) | **POST** /tools/engagement-rate-calculator | Calculate an engagement rate |
+| [**calculate_social_roi**](FreeToolsApi.md#calculate_social_roi) | **POST** /tools/social-media-roi-calculator | Calculate social media ROI |
 | [**check_link_preview**](FreeToolsApi.md#check_link_preview) | **POST** /tools/link-preview-checker | Check how a link previews on X, LinkedIn, Facebook and chat apps (Open Graph and Twitter card tags) |
 | [**check_post**](FreeToolsApi.md#check_post) | **POST** /tools/social-media-post-checker | Check a post against each network&#39;s publishing rules |
 | [**check_youtube_thumbnail**](FreeToolsApi.md#check_youtube_thumbnail) | **POST** /tools/youtube-thumbnail-size-checker | Check a YouTube thumbnail&#39;s ratio, width, file size and format against YouTube&#39;s requirements |
@@ -276,6 +277,70 @@ end
 ### Return type
 
 [**FreeToolCalculateEngagementRateResponse**](FreeToolCalculateEngagementRateResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## calculate_social_roi
+
+> <FreeToolCalculateSocialRoiResponse> calculate_social_roi(free_tool_calculate_social_roi_request)
+
+Calculate social media ROI
+
+Calculate social media ROI. The same logic as the free web tool at https://postboost.co/tools/social-media-roi-calculator. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_calculate_social_roi_request = PostBoost::FreeToolCalculateSocialRoiRequest.new({revenue: 3.56}) # FreeToolCalculateSocialRoiRequest | 
+
+begin
+  # Calculate social media ROI
+  result = api_instance.calculate_social_roi(free_tool_calculate_social_roi_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->calculate_social_roi: #{e}"
+end
+```
+
+#### Using the calculate_social_roi_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolCalculateSocialRoiResponse>, Integer, Hash)> calculate_social_roi_with_http_info(free_tool_calculate_social_roi_request)
+
+```ruby
+begin
+  # Calculate social media ROI
+  data, status_code, headers = api_instance.calculate_social_roi_with_http_info(free_tool_calculate_social_roi_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolCalculateSocialRoiResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->calculate_social_roi_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_calculate_social_roi_request** | [**FreeToolCalculateSocialRoiRequest**](FreeToolCalculateSocialRoiRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolCalculateSocialRoiResponse**](FreeToolCalculateSocialRoiResponse.md)
 
 ### Authorization
 
