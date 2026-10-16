@@ -16,8 +16,10 @@ All URIs are relative to *https://postboost.co/app/api*
 | [**generate_caption**](FreeToolsApi.md#generate_caption) | **POST** /tools/instagram-caption-generator | Write three post captions for a topic with AI (needs a token, spends AI credits) |
 | [**generate_fancy_text**](FreeToolsApi.md#generate_fancy_text) | **POST** /tools/fancy-text-generator | Convert text to fancy Unicode styles |
 | [**generate_hashtags**](FreeToolsApi.md#generate_hashtags) | **POST** /tools/instagram-hashtag-generator | Generate hashtags for a post topic with AI (needs a token, spends AI credits) |
+| [**generate_hooks**](FreeToolsApi.md#generate_hooks) | **POST** /tools/hook-generator | Generate hooks (opening lines) for a social media post with AI (needs a token, spends AI credits) |
 | [**generate_qr_code**](FreeToolsApi.md#generate_qr_code) | **POST** /tools/qr-code-generator | Generate a QR code (SVG) for a link or text, with optional UTM tags |
 | [**get_best_times_to_post**](FreeToolsApi.md#get_best_times_to_post) | **GET** /tools/best-time-to-post | Get the best times to post per network from published studies, with sources |
+| [**get_hook_templates**](FreeToolsApi.md#get_hook_templates) | **GET** /tools/hook-generator/library | Get free hook templates for social media posts, filtered by style and network |
 | [**get_image_sizes**](FreeToolsApi.md#get_image_sizes) | **GET** /tools/social-media-image-sizes | Get social media image sizes per network, each with its source |
 | [**list_free_tools**](FreeToolsApi.md#list_free_tools) | **GET** /tools | List the free tools |
 | [**preview_post**](FreeToolsApi.md#preview_post) | **POST** /tools/social-media-post-preview | Preview where a post folds and when its image is cropped on Instagram, X, LinkedIn and Facebook |
@@ -802,6 +804,75 @@ end
 - **Accept**: application/json
 
 
+## generate_hooks
+
+> <FreeToolGenerateHooksResponse> generate_hooks(free_tool_generate_hooks_request)
+
+Generate hooks (opening lines) for a social media post with AI (needs a token, spends AI credits)
+
+Generate hooks (opening lines) for a social media post with AI (needs a token, spends AI credits). The same logic as the free web tool at https://postboost.co/tools/hook-generator. Needs an API token (a scoped key needs the `ai` ability and pays with its own workspace). A new generation spends 1 AI credit of the workspace you name (or your active workspace); a repeated identical request is answered from the cache for free.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+# setup authorization
+PostBoost.configure do |config|
+  # Configure Bearer authorization: bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_generate_hooks_request = PostBoost::FreeToolGenerateHooksRequest.new({topic: 'topic_example'}) # FreeToolGenerateHooksRequest | 
+
+begin
+  # Generate hooks (opening lines) for a social media post with AI (needs a token, spends AI credits)
+  result = api_instance.generate_hooks(free_tool_generate_hooks_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_hooks: #{e}"
+end
+```
+
+#### Using the generate_hooks_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolGenerateHooksResponse>, Integer, Hash)> generate_hooks_with_http_info(free_tool_generate_hooks_request)
+
+```ruby
+begin
+  # Generate hooks (opening lines) for a social media post with AI (needs a token, spends AI credits)
+  data, status_code, headers = api_instance.generate_hooks_with_http_info(free_tool_generate_hooks_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolGenerateHooksResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_hooks_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_generate_hooks_request** | [**FreeToolGenerateHooksRequest**](FreeToolGenerateHooksRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolGenerateHooksResponse**](FreeToolGenerateHooksResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## generate_qr_code
 
 > <FreeToolGenerateQrCodeResponse> generate_qr_code(free_tool_generate_qr_code_request)
@@ -921,6 +992,78 @@ end
 ### Return type
 
 [**FreeToolGetBestTimesToPostResponse**](FreeToolGetBestTimesToPostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_hook_templates
+
+> <FreeToolGetHookTemplatesResponse> get_hook_templates(opts)
+
+Get free hook templates for social media posts, filtered by style and network
+
+Get free hook templates for social media posts, filtered by style and network. The same logic as the free web tool at https://postboost.co/tools/hook-generator. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+opts = {
+  topic: 'topic_example', # String | 
+  category: 'question', # String | 
+  network: 'instagram', # String | 
+  search: 'search_example' # String | 
+}
+
+begin
+  # Get free hook templates for social media posts, filtered by style and network
+  result = api_instance.get_hook_templates(opts)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->get_hook_templates: #{e}"
+end
+```
+
+#### Using the get_hook_templates_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolGetHookTemplatesResponse>, Integer, Hash)> get_hook_templates_with_http_info(opts)
+
+```ruby
+begin
+  # Get free hook templates for social media posts, filtered by style and network
+  data, status_code, headers = api_instance.get_hook_templates_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolGetHookTemplatesResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->get_hook_templates_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **topic** | **String** |  | [optional] |
+| **category** | **String** |  | [optional] |
+| **network** | **String** |  | [optional] |
+| **search** | **String** |  | [optional] |
+
+### Return type
+
+[**FreeToolGetHookTemplatesResponse**](FreeToolGetHookTemplatesResponse.md)
 
 ### Authorization
 
