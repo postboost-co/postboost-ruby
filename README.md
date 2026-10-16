@@ -13,7 +13,7 @@ gem install postboost
 | **RubyGems** | [rubygems.org/gems/postboost](https://rubygems.org/gems/postboost) |
 | **GitHub** | [postboost-co/postboost-ruby](https://github.com/postboost-co/postboost-ruby) |
 | **Docs** | [postboost.co/docs/api](https://postboost.co/docs/api) |
-| **Version** | v1.40.0 |
+| **Version** | v1.41.0 |
 
 ## Quick start
 
@@ -101,6 +101,7 @@ Class | Method | HTTP request | Description
 *PostBoost::FreeToolsApi* | [**generate_hashtags**](docs/FreeToolsApi.md#generate_hashtags) | **POST** /tools/instagram-hashtag-generator | Generate hashtags for a post topic with AI (needs a token, spends AI credits)
 *PostBoost::FreeToolsApi* | [**generate_hooks**](docs/FreeToolsApi.md#generate_hooks) | **POST** /tools/hook-generator | Generate hooks (opening lines) for a social media post with AI (needs a token, spends AI credits)
 *PostBoost::FreeToolsApi* | [**generate_qr_code**](docs/FreeToolsApi.md#generate_qr_code) | **POST** /tools/qr-code-generator | Generate a QR code (SVG) for a link or text, with optional UTM tags
+*PostBoost::FreeToolsApi* | [**generate_social_posts_from_blog**](docs/FreeToolsApi.md#generate_social_posts_from_blog) | **POST** /tools/blog-to-social-media | Turn a blog post (URL or text) into one social post per network with AI (needs a token, spends AI credits)
 *PostBoost::FreeToolsApi* | [**get_best_times_to_post**](docs/FreeToolsApi.md#get_best_times_to_post) | **GET** /tools/best-time-to-post | Get the best times to post per network from published studies, with sources
 *PostBoost::FreeToolsApi* | [**get_hook_templates**](docs/FreeToolsApi.md#get_hook_templates) | **GET** /tools/hook-generator/library | Get free hook templates for social media posts, filtered by style and network
 *PostBoost::FreeToolsApi* | [**get_image_sizes**](docs/FreeToolsApi.md#get_image_sizes) | **GET** /tools/social-media-image-sizes | Get social media image sizes per network, each with its source

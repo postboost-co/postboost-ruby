@@ -19,6 +19,7 @@ All URIs are relative to *https://postboost.co/app/api*
 | [**generate_hashtags**](FreeToolsApi.md#generate_hashtags) | **POST** /tools/instagram-hashtag-generator | Generate hashtags for a post topic with AI (needs a token, spends AI credits) |
 | [**generate_hooks**](FreeToolsApi.md#generate_hooks) | **POST** /tools/hook-generator | Generate hooks (opening lines) for a social media post with AI (needs a token, spends AI credits) |
 | [**generate_qr_code**](FreeToolsApi.md#generate_qr_code) | **POST** /tools/qr-code-generator | Generate a QR code (SVG) for a link or text, with optional UTM tags |
+| [**generate_social_posts_from_blog**](FreeToolsApi.md#generate_social_posts_from_blog) | **POST** /tools/blog-to-social-media | Turn a blog post (URL or text) into one social post per network with AI (needs a token, spends AI credits) |
 | [**get_best_times_to_post**](FreeToolsApi.md#get_best_times_to_post) | **GET** /tools/best-time-to-post | Get the best times to post per network from published studies, with sources |
 | [**get_hook_templates**](FreeToolsApi.md#get_hook_templates) | **GET** /tools/hook-generator/library | Get free hook templates for social media posts, filtered by style and network |
 | [**get_image_sizes**](FreeToolsApi.md#get_image_sizes) | **GET** /tools/social-media-image-sizes | Get social media image sizes per network, each with its source |
@@ -996,6 +997,75 @@ end
 ### Authorization
 
 No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## generate_social_posts_from_blog
+
+> <FreeToolGenerateSocialPostsFromBlogResponse> generate_social_posts_from_blog(free_tool_generate_social_posts_from_blog_request)
+
+Turn a blog post (URL or text) into one social post per network with AI (needs a token, spends AI credits)
+
+Turn a blog post (URL or text) into one social post per network with AI (needs a token, spends AI credits). The same logic as the free web tool at https://postboost.co/tools/blog-to-social-media. Needs an API token (a scoped key needs the `ai` ability and pays with its own workspace). Each post spends 1 AI credit of the workspace you name (or your active workspace), so a call costs one credit per platform that comes back; results are not cached.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+# setup authorization
+PostBoost.configure do |config|
+  # Configure Bearer authorization: bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_generate_social_posts_from_blog_request = PostBoost::FreeToolGenerateSocialPostsFromBlogRequest.new({platforms: ['facebook']}) # FreeToolGenerateSocialPostsFromBlogRequest | 
+
+begin
+  # Turn a blog post (URL or text) into one social post per network with AI (needs a token, spends AI credits)
+  result = api_instance.generate_social_posts_from_blog(free_tool_generate_social_posts_from_blog_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_social_posts_from_blog: #{e}"
+end
+```
+
+#### Using the generate_social_posts_from_blog_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolGenerateSocialPostsFromBlogResponse>, Integer, Hash)> generate_social_posts_from_blog_with_http_info(free_tool_generate_social_posts_from_blog_request)
+
+```ruby
+begin
+  # Turn a blog post (URL or text) into one social post per network with AI (needs a token, spends AI credits)
+  data, status_code, headers = api_instance.generate_social_posts_from_blog_with_http_info(free_tool_generate_social_posts_from_blog_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolGenerateSocialPostsFromBlogResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_social_posts_from_blog_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_generate_social_posts_from_blog_request** | [**FreeToolGenerateSocialPostsFromBlogRequest**](FreeToolGenerateSocialPostsFromBlogRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolGenerateSocialPostsFromBlogResponse**](FreeToolGenerateSocialPostsFromBlogResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
