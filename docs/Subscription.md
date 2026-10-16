@@ -9,9 +9,9 @@
 | **platform_plan_id** | **String** |  |  |
 | **status** | [**SubscriptionStatus**](SubscriptionStatus.md) |  |  |
 | **recurring** | **Boolean** |  |  |
-| **trial_ends_at** | **Time** |  | [optional] |
-| **paused_from** | **Time** |  | [optional] |
-| **ends_at** | **Time** |  | [optional] |
+| **trial_ends_at** | **String** | Display date in the configured timezone, &#x60;M j, Y&#x60; (not RFC 3339). | [optional] |
+| **paused_from** | **String** | Display date in the configured timezone, &#x60;M j, Y&#x60; (not RFC 3339). | [optional] |
+| **ends_at** | **String** | Display date in the configured timezone, &#x60;M j, Y&#x60; (not RFC 3339). | [optional] |
 
 ## Example
 
@@ -24,9 +24,9 @@ instance = PostBoost::Subscription.new(
   platform_plan_id: null,
   status: null,
   recurring: null,
-  trial_ends_at: null,
-  paused_from: null,
-  ends_at: null
+  trial_ends_at: Oct 30, 2026,
+  paused_from: Oct 30, 2026,
+  ends_at: Oct 30, 2026
 )
 ```
 

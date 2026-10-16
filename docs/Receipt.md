@@ -12,8 +12,8 @@
 | **currency** | **String** |  |  |
 | **receipt_url** | **String** |  | [optional] |
 | **description** | **String** |  | [optional] |
-| **paid_at** | **Time** |  |  |
-| **created_at** | **Time** |  |  |
+| **paid_at** | **String** | Display date in the configured timezone, &#x60;M j, Y&#x60; (not RFC 3339). |  |
+| **created_at** | **String** | Display date in the configured timezone, &#x60;M j, Y&#x60; (not RFC 3339). |  |
 
 ## Example
 
@@ -29,8 +29,8 @@ instance = PostBoost::Receipt.new(
   currency: null,
   receipt_url: null,
   description: null,
-  paid_at: null,
-  created_at: null
+  paid_at: Oct 16, 2026,
+  created_at: Oct 16, 2026
 )
 ```
 
