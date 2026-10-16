@@ -9,7 +9,7 @@
 | **name** | **String** |  |  |
 | **username** | **String** |  |  |
 | **image** | **String** |  | [optional] |
-| **provider** | **String** |  |  |
+| **provider** | **String** | Network key. Known values: &#x60;twitter&#x60;, &#x60;facebook_page&#x60;, &#x60;instagram&#x60;, &#x60;instagram_standalone&#x60;, &#x60;threads&#x60;, &#x60;linkedin&#x60;, &#x60;linkedin_page&#x60;, &#x60;tiktok&#x60;, &#x60;youtube&#x60;, &#x60;pinterest&#x60;, &#x60;gbp&#x60;, &#x60;bluesky&#x60;, &#x60;mastodon&#x60;, &#x60;pixelfed&#x60;, &#x60;telegram&#x60;, &#x60;discord&#x60;, &#x60;slack&#x60;. New networks add new keys, so treat unknown values as valid.  |  |
 | **data** | **Object** | Provider-specific metadata. |  |
 | **authorized** | **Boolean** |  |  |
 | **profile_url** | **String** | Public URL of the account&#39;s profile on the network, when known. | [optional] |
@@ -31,7 +31,7 @@ instance = PostBoost::Account.new(
   name: My Instagram,
   username: myhandle,
   image: null,
-  provider: null,
+  provider: instagram,
   data: null,
   authorized: null,
   profile_url: null,
