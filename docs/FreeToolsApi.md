@@ -10,6 +10,7 @@ All URIs are relative to *https://postboost.co/app/api*
 | [**calculate_engagement_rate**](FreeToolsApi.md#calculate_engagement_rate) | **POST** /tools/engagement-rate-calculator | Calculate an engagement rate |
 | [**check_link_preview**](FreeToolsApi.md#check_link_preview) | **POST** /tools/link-preview-checker | Check how a link previews on X, LinkedIn, Facebook and chat apps (Open Graph and Twitter card tags) |
 | [**check_post**](FreeToolsApi.md#check_post) | **POST** /tools/social-media-post-checker | Check a post against each network&#39;s publishing rules |
+| [**check_youtube_thumbnail**](FreeToolsApi.md#check_youtube_thumbnail) | **POST** /tools/youtube-thumbnail-size-checker | Check a YouTube thumbnail&#39;s ratio, width, file size and format against YouTube&#39;s requirements |
 | [**clean_text**](FreeToolsApi.md#clean_text) | **POST** /tools/ai-text-cleaner | Clean AI-written text: dashes, quotes, invisible characters, markdown |
 | [**count_characters**](FreeToolsApi.md#count_characters) | **POST** /tools/social-media-character-counter | Count characters as each network counts them |
 | [**format_linked_in_post**](FreeToolsApi.md#format_linked_in_post) | **POST** /tools/linkedin-post-formatter | Format a LinkedIn post with bold, italic and lists |
@@ -21,6 +22,7 @@ All URIs are relative to *https://postboost.co/app/api*
 | [**get_best_times_to_post**](FreeToolsApi.md#get_best_times_to_post) | **GET** /tools/best-time-to-post | Get the best times to post per network from published studies, with sources |
 | [**get_hook_templates**](FreeToolsApi.md#get_hook_templates) | **GET** /tools/hook-generator/library | Get free hook templates for social media posts, filtered by style and network |
 | [**get_image_sizes**](FreeToolsApi.md#get_image_sizes) | **GET** /tools/social-media-image-sizes | Get social media image sizes per network, each with its source |
+| [**get_video_specs**](FreeToolsApi.md#get_video_specs) | **GET** /tools/social-media-video-specs | Get social media video ratios, resolutions, lengths and file size limits per network, with sources |
 | [**list_free_tools**](FreeToolsApi.md#list_free_tools) | **GET** /tools | List the free tools |
 | [**preview_post**](FreeToolsApi.md#preview_post) | **POST** /tools/social-media-post-preview | Preview where a post folds and when its image is cropped on Instagram, X, LinkedIn and Facebook |
 | [**split_thread**](FreeToolsApi.md#split_thread) | **POST** /tools/x-thread-maker | Split long text into a thread |
@@ -399,6 +401,70 @@ end
 ### Return type
 
 [**FreeToolCheckPostResponse**](FreeToolCheckPostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## check_youtube_thumbnail
+
+> <FreeToolCheckYoutubeThumbnailResponse> check_youtube_thumbnail(free_tool_check_youtube_thumbnail_request)
+
+Check a YouTube thumbnail's ratio, width, file size and format against YouTube's requirements
+
+Check a YouTube thumbnail's ratio, width, file size and format against YouTube's requirements. The same logic as the free web tool at https://postboost.co/tools/youtube-thumbnail-size-checker. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_check_youtube_thumbnail_request = PostBoost::FreeToolCheckYoutubeThumbnailRequest.new({width: 37, height: 37, file_size_bytes: 37, format: 'format_example'}) # FreeToolCheckYoutubeThumbnailRequest | 
+
+begin
+  # Check a YouTube thumbnail's ratio, width, file size and format against YouTube's requirements
+  result = api_instance.check_youtube_thumbnail(free_tool_check_youtube_thumbnail_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->check_youtube_thumbnail: #{e}"
+end
+```
+
+#### Using the check_youtube_thumbnail_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolCheckYoutubeThumbnailResponse>, Integer, Hash)> check_youtube_thumbnail_with_http_info(free_tool_check_youtube_thumbnail_request)
+
+```ruby
+begin
+  # Check a YouTube thumbnail's ratio, width, file size and format against YouTube's requirements
+  data, status_code, headers = api_instance.check_youtube_thumbnail_with_http_info(free_tool_check_youtube_thumbnail_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolCheckYoutubeThumbnailResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->check_youtube_thumbnail_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_check_youtube_thumbnail_request** | [**FreeToolCheckYoutubeThumbnailRequest**](FreeToolCheckYoutubeThumbnailRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolCheckYoutubeThumbnailResponse**](FreeToolCheckYoutubeThumbnailResponse.md)
 
 ### Authorization
 
@@ -1130,6 +1196,72 @@ end
 ### Return type
 
 [**FreeToolGetImageSizesResponse**](FreeToolGetImageSizesResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_video_specs
+
+> <FreeToolGetVideoSpecsResponse> get_video_specs(opts)
+
+Get social media video ratios, resolutions, lengths and file size limits per network, with sources
+
+Get social media video ratios, resolutions, lengths and file size limits per network, with sources. The same logic as the free web tool at https://postboost.co/tools/social-media-video-specs. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+opts = {
+  network: 'network_example' # String | 
+}
+
+begin
+  # Get social media video ratios, resolutions, lengths and file size limits per network, with sources
+  result = api_instance.get_video_specs(opts)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->get_video_specs: #{e}"
+end
+```
+
+#### Using the get_video_specs_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolGetVideoSpecsResponse>, Integer, Hash)> get_video_specs_with_http_info(opts)
+
+```ruby
+begin
+  # Get social media video ratios, resolutions, lengths and file size limits per network, with sources
+  data, status_code, headers = api_instance.get_video_specs_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolGetVideoSpecsResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->get_video_specs_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **network** | **String** |  | [optional] |
+
+### Return type
+
+[**FreeToolGetVideoSpecsResponse**](FreeToolGetVideoSpecsResponse.md)
 
 ### Authorization
 
