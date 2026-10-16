@@ -17,6 +17,7 @@ All URIs are relative to *https://postboost.co/app/api*
 | [**get_best_times_to_post**](FreeToolsApi.md#get_best_times_to_post) | **GET** /tools/best-time-to-post | Get the best times to post per network from published studies, with sources |
 | [**get_image_sizes**](FreeToolsApi.md#get_image_sizes) | **GET** /tools/social-media-image-sizes | Get social media image sizes per network, each with its source |
 | [**list_free_tools**](FreeToolsApi.md#list_free_tools) | **GET** /tools | List the free tools |
+| [**preview_post**](FreeToolsApi.md#preview_post) | **POST** /tools/social-media-post-preview | Preview where a post folds and when its image is cropped on Instagram, X, LinkedIn and Facebook |
 | [**split_thread**](FreeToolsApi.md#split_thread) | **POST** /tools/x-thread-maker | Split long text into a thread |
 
 
@@ -860,6 +861,70 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## preview_post
+
+> <FreeToolPreviewPostResponse> preview_post(free_tool_preview_post_request)
+
+Preview where a post folds and when its image is cropped on Instagram, X, LinkedIn and Facebook
+
+Preview where a post folds and when its image is cropped on Instagram, X, LinkedIn and Facebook. The same logic as the free web tool at https://postboost.co/tools/social-media-post-preview. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_preview_post_request = PostBoost::FreeToolPreviewPostRequest.new({text: 'text_example'}) # FreeToolPreviewPostRequest | 
+
+begin
+  # Preview where a post folds and when its image is cropped on Instagram, X, LinkedIn and Facebook
+  result = api_instance.preview_post(free_tool_preview_post_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->preview_post: #{e}"
+end
+```
+
+#### Using the preview_post_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolPreviewPostResponse>, Integer, Hash)> preview_post_with_http_info(free_tool_preview_post_request)
+
+```ruby
+begin
+  # Preview where a post folds and when its image is cropped on Instagram, X, LinkedIn and Facebook
+  data, status_code, headers = api_instance.preview_post_with_http_info(free_tool_preview_post_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolPreviewPostResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->preview_post_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_preview_post_request** | [**FreeToolPreviewPostRequest**](FreeToolPreviewPostRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolPreviewPostResponse**](FreeToolPreviewPostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
