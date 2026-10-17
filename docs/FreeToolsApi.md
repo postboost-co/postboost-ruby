@@ -31,10 +31,12 @@ All URIs are relative to *https://postboost.co/app/api*
 | [**get_image_sizes**](FreeToolsApi.md#get_image_sizes) | **GET** /tools/social-media-image-sizes | Get social media image sizes per network, each with its source |
 | [**get_safe_zones**](FreeToolsApi.md#get_safe_zones) | **POST** /tools/safe-zone-checker | Get the TikTok, Instagram Reels or YouTube Shorts safe zones for a vertical frame |
 | [**get_video_specs**](FreeToolsApi.md#get_video_specs) | **GET** /tools/social-media-video-specs | Get social media video ratios, resolutions, lengths and file size limits per network, with sources |
+| [**list_awareness_days**](FreeToolsApi.md#list_awareness_days) | **GET** /tools/social-media-holiday-calendar | List public holidays, awareness days and social media days by date, country, type and topic, with sources |
 | [**list_free_tools**](FreeToolsApi.md#list_free_tools) | **GET** /tools | List the free tools |
 | [**plan_content_calendar**](FreeToolsApi.md#plan_content_calendar) | **POST** /tools/social-media-content-calendar-generator | Plan a social media content calendar and get it as CSV and ICS |
 | [**plan_posting_frequency**](FreeToolsApi.md#plan_posting_frequency) | **POST** /tools/posting-frequency-planner | Plan how often to post on each network |
 | [**preview_post**](FreeToolsApi.md#preview_post) | **POST** /tools/social-media-post-preview | Preview where a post folds and when its image is cropped on Instagram, X, LinkedIn and Facebook |
+| [**score_social_audit**](FreeToolsApi.md#score_social_audit) | **POST** /tools/social-media-audit-template | Score a social media audit checklist and get the top fixes |
 | [**search_emoji**](FreeToolsApi.md#search_emoji) | **POST** /tools/social-media-emoji-picker | Search emoji by name or keyword, to copy and paste into a post |
 | [**split_thread**](FreeToolsApi.md#split_thread) | **POST** /tools/x-thread-maker | Split long text into a thread |
 
@@ -1801,6 +1803,80 @@ No authorization required
 - **Accept**: application/json
 
 
+## list_awareness_days
+
+> <FreeToolListAwarenessDaysResponse> list_awareness_days(opts)
+
+List public holidays, awareness days and social media days by date, country, type and topic, with sources
+
+List public holidays, awareness days and social media days by date, country, type and topic, with sources. The same logic as the free web tool at https://postboost.co/tools/social-media-holiday-calendar. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+opts = {
+  from: 'from_example', # String | 
+  to: 'to_example', # String | 
+  country: 'US', # String | 
+  type: 'public-holiday', # String | 
+  topic: 'business' # String | 
+}
+
+begin
+  # List public holidays, awareness days and social media days by date, country, type and topic, with sources
+  result = api_instance.list_awareness_days(opts)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->list_awareness_days: #{e}"
+end
+```
+
+#### Using the list_awareness_days_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolListAwarenessDaysResponse>, Integer, Hash)> list_awareness_days_with_http_info(opts)
+
+```ruby
+begin
+  # List public holidays, awareness days and social media days by date, country, type and topic, with sources
+  data, status_code, headers = api_instance.list_awareness_days_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolListAwarenessDaysResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->list_awareness_days_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **from** | **String** |  | [optional] |
+| **to** | **String** |  | [optional] |
+| **country** | **String** |  | [optional] |
+| **type** | **String** |  | [optional] |
+| **topic** | **String** |  | [optional] |
+
+### Return type
+
+[**FreeToolListAwarenessDaysResponse**](FreeToolListAwarenessDaysResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## list_free_tools
 
 > <FreeToolList> list_free_tools
@@ -2043,6 +2119,70 @@ end
 ### Return type
 
 [**FreeToolPreviewPostResponse**](FreeToolPreviewPostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## score_social_audit
+
+> <FreeToolScoreSocialAuditResponse> score_social_audit(free_tool_score_social_audit_request)
+
+Score a social media audit checklist and get the top fixes
+
+Score a social media audit checklist and get the top fixes. The same logic as the free web tool at https://postboost.co/tools/social-media-audit-template. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_score_social_audit_request = PostBoost::FreeToolScoreSocialAuditRequest.new # FreeToolScoreSocialAuditRequest | 
+
+begin
+  # Score a social media audit checklist and get the top fixes
+  result = api_instance.score_social_audit(free_tool_score_social_audit_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->score_social_audit: #{e}"
+end
+```
+
+#### Using the score_social_audit_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolScoreSocialAuditResponse>, Integer, Hash)> score_social_audit_with_http_info(free_tool_score_social_audit_request)
+
+```ruby
+begin
+  # Score a social media audit checklist and get the top fixes
+  data, status_code, headers = api_instance.score_social_audit_with_http_info(free_tool_score_social_audit_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolScoreSocialAuditResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->score_social_audit_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_score_social_audit_request** | [**FreeToolScoreSocialAuditRequest**](FreeToolScoreSocialAuditRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolScoreSocialAuditResponse**](FreeToolScoreSocialAuditResponse.md)
 
 ### Authorization
 
