@@ -13,7 +13,7 @@ gem install postboost
 | **RubyGems** | [rubygems.org/gems/postboost](https://rubygems.org/gems/postboost) |
 | **GitHub** | [postboost-co/postboost-ruby](https://github.com/postboost-co/postboost-ruby) |
 | **Docs** | [postboost.co/docs/api](https://postboost.co/docs/api) |
-| **Version** | v1.49.0 |
+| **Version** | v1.53.1 |
 
 ## Quick start
 
@@ -88,8 +88,10 @@ Class | Method | HTTP request | Description
 *PostBoost::CompetitorsApi* | [**list_competitors**](docs/CompetitorsApi.md#list_competitors) | **GET** /{workspaceUuid}/competitors | List competitors
 *PostBoost::FreeToolsApi* | [**build_utm_url**](docs/FreeToolsApi.md#build_utm_url) | **POST** /tools/utm-builder | Build a UTM-tagged campaign URL
 *PostBoost::FreeToolsApi* | [**calculate_aspect_ratio**](docs/FreeToolsApi.md#calculate_aspect_ratio) | **POST** /tools/aspect-ratio-calculator | Calculate an aspect ratio, or the missing side of an image at a given ratio
+*PostBoost::FreeToolsApi* | [**calculate_carousel_slices**](docs/FreeToolsApi.md#calculate_carousel_slices) | **POST** /tools/instagram-carousel-splitter | Split a wide image into seamless Instagram carousel slides
 *PostBoost::FreeToolsApi* | [**calculate_crop**](docs/FreeToolsApi.md#calculate_crop) | **POST** /tools/social-media-image-sizes/crop | Calculate the crop box that fits an image to a social media size
 *PostBoost::FreeToolsApi* | [**calculate_engagement_rate**](docs/FreeToolsApi.md#calculate_engagement_rate) | **POST** /tools/engagement-rate-calculator | Calculate an engagement rate
+*PostBoost::FreeToolsApi* | [**calculate_influencer_rate**](docs/FreeToolsApi.md#calculate_influencer_rate) | **POST** /tools/influencer-rate-calculator | Estimate an influencer's rate for one sponsored deliverable
 *PostBoost::FreeToolsApi* | [**calculate_social_roi**](docs/FreeToolsApi.md#calculate_social_roi) | **POST** /tools/social-media-roi-calculator | Calculate social media ROI
 *PostBoost::FreeToolsApi* | [**calculate_x_api_cost**](docs/FreeToolsApi.md#calculate_x_api_cost) | **POST** /tools/x-api-cost-calculator | Calculate the monthly X API cost
 *PostBoost::FreeToolsApi* | [**check_link_preview**](docs/FreeToolsApi.md#check_link_preview) | **POST** /tools/link-preview-checker | Check how a link previews on X, LinkedIn, Facebook and chat apps (Open Graph and Twitter card tags)
@@ -109,9 +111,11 @@ Class | Method | HTTP request | Description
 *PostBoost::FreeToolsApi* | [**get_best_times_to_post**](docs/FreeToolsApi.md#get_best_times_to_post) | **GET** /tools/best-time-to-post | Get the best times to post per network from published studies, with sources
 *PostBoost::FreeToolsApi* | [**get_hook_templates**](docs/FreeToolsApi.md#get_hook_templates) | **GET** /tools/hook-generator/library | Get free hook templates for social media posts, filtered by style and network
 *PostBoost::FreeToolsApi* | [**get_image_sizes**](docs/FreeToolsApi.md#get_image_sizes) | **GET** /tools/social-media-image-sizes | Get social media image sizes per network, each with its source
+*PostBoost::FreeToolsApi* | [**get_safe_zones**](docs/FreeToolsApi.md#get_safe_zones) | **POST** /tools/safe-zone-checker | Get the TikTok, Instagram Reels or YouTube Shorts safe zones for a vertical frame
 *PostBoost::FreeToolsApi* | [**get_video_specs**](docs/FreeToolsApi.md#get_video_specs) | **GET** /tools/social-media-video-specs | Get social media video ratios, resolutions, lengths and file size limits per network, with sources
 *PostBoost::FreeToolsApi* | [**list_free_tools**](docs/FreeToolsApi.md#list_free_tools) | **GET** /tools | List the free tools
 *PostBoost::FreeToolsApi* | [**plan_content_calendar**](docs/FreeToolsApi.md#plan_content_calendar) | **POST** /tools/social-media-content-calendar-generator | Plan a social media content calendar and get it as CSV and ICS
+*PostBoost::FreeToolsApi* | [**plan_posting_frequency**](docs/FreeToolsApi.md#plan_posting_frequency) | **POST** /tools/posting-frequency-planner | Plan how often to post on each network
 *PostBoost::FreeToolsApi* | [**preview_post**](docs/FreeToolsApi.md#preview_post) | **POST** /tools/social-media-post-preview | Preview where a post folds and when its image is cropped on Instagram, X, LinkedIn and Facebook
 *PostBoost::FreeToolsApi* | [**search_emoji**](docs/FreeToolsApi.md#search_emoji) | **POST** /tools/social-media-emoji-picker | Search emoji by name or keyword, to copy and paste into a post
 *PostBoost::FreeToolsApi* | [**split_thread**](docs/FreeToolsApi.md#split_thread) | **POST** /tools/x-thread-maker | Split long text into a thread
