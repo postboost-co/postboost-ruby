@@ -4,12 +4,14 @@ All URIs are relative to *https://postboost.co/app/api*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**build_hashtag_groups**](FreeToolsApi.md#build_hashtag_groups) | **POST** /tools/hashtag-group-builder | Clean, dedupe and split hashtags into groups that fit a network&#39;s hashtag cap |
 | [**build_utm_url**](FreeToolsApi.md#build_utm_url) | **POST** /tools/utm-builder | Build a UTM-tagged campaign URL |
 | [**calculate_aspect_ratio**](FreeToolsApi.md#calculate_aspect_ratio) | **POST** /tools/aspect-ratio-calculator | Calculate an aspect ratio, or the missing side of an image at a given ratio |
 | [**calculate_carousel_slices**](FreeToolsApi.md#calculate_carousel_slices) | **POST** /tools/instagram-carousel-splitter | Split a wide image into seamless Instagram carousel slides |
 | [**calculate_crop**](FreeToolsApi.md#calculate_crop) | **POST** /tools/social-media-image-sizes/crop | Calculate the crop box that fits an image to a social media size |
 | [**calculate_engagement_rate**](FreeToolsApi.md#calculate_engagement_rate) | **POST** /tools/engagement-rate-calculator | Calculate an engagement rate |
 | [**calculate_influencer_rate**](FreeToolsApi.md#calculate_influencer_rate) | **POST** /tools/influencer-rate-calculator | Estimate an influencer&#39;s rate for one sponsored deliverable |
+| [**calculate_smm_pricing**](FreeToolsApi.md#calculate_smm_pricing) | **POST** /tools/social-media-manager-pricing-calculator | Estimate social media manager pricing |
 | [**calculate_social_roi**](FreeToolsApi.md#calculate_social_roi) | **POST** /tools/social-media-roi-calculator | Calculate social media ROI |
 | [**calculate_x_api_cost**](FreeToolsApi.md#calculate_x_api_cost) | **POST** /tools/x-api-cost-calculator | Calculate the monthly X API cost |
 | [**check_link_preview**](FreeToolsApi.md#check_link_preview) | **POST** /tools/link-preview-checker | Check how a link previews on X, LinkedIn, Facebook and chat apps (Open Graph and Twitter card tags) |
@@ -18,27 +20,102 @@ All URIs are relative to *https://postboost.co/app/api*
 | [**check_youtube_thumbnail**](FreeToolsApi.md#check_youtube_thumbnail) | **POST** /tools/youtube-thumbnail-size-checker | Check a YouTube thumbnail&#39;s ratio, width, file size and format against YouTube&#39;s requirements |
 | [**clean_text**](FreeToolsApi.md#clean_text) | **POST** /tools/ai-text-cleaner | Clean AI-written text: dashes, quotes, invisible characters, markdown |
 | [**count_characters**](FreeToolsApi.md#count_characters) | **POST** /tools/social-media-character-counter | Count characters as each network counts them |
+| [**find_automation_recipes**](FreeToolsApi.md#find_automation_recipes) | **GET** /tools/social-media-automation-recipes | Find n8n, Zapier and Make recipes that automate social media posting through the PostBoost API |
 | [**format_instagram_caption**](FreeToolsApi.md#format_instagram_caption) | **POST** /tools/instagram-line-break-generator | Keep blank lines in an Instagram caption with spacer lines, and count it |
 | [**format_linked_in_post**](FreeToolsApi.md#format_linked_in_post) | **POST** /tools/linkedin-post-formatter | Format a LinkedIn post with bold, italic and lists |
+| [**generate_alt_text**](FreeToolsApi.md#generate_alt_text) | **POST** /tools/alt-text-generator | Write alt text for an image with AI (needs a token, spends AI credits) |
+| [**generate_bio**](FreeToolsApi.md#generate_bio) | **POST** /tools/instagram-bio-generator | Write five profile bios with AI (needs a token, spends AI credits) |
 | [**generate_caption**](FreeToolsApi.md#generate_caption) | **POST** /tools/instagram-caption-generator | Write three post captions for a topic with AI (needs a token, spends AI credits) |
 | [**generate_fancy_text**](FreeToolsApi.md#generate_fancy_text) | **POST** /tools/fancy-text-generator | Convert text to fancy Unicode styles |
 | [**generate_hashtags**](FreeToolsApi.md#generate_hashtags) | **POST** /tools/instagram-hashtag-generator | Generate hashtags for a post topic with AI (needs a token, spends AI credits) |
 | [**generate_hooks**](FreeToolsApi.md#generate_hooks) | **POST** /tools/hook-generator | Generate hooks (opening lines) for a social media post with AI (needs a token, spends AI credits) |
+| [**generate_linked_in_headline**](FreeToolsApi.md#generate_linked_in_headline) | **POST** /tools/linkedin-headline-generator | Write five LinkedIn profile headlines with AI (needs a token, spends AI credits) |
 | [**generate_qr_code**](FreeToolsApi.md#generate_qr_code) | **POST** /tools/qr-code-generator | Generate a QR code (SVG) for a link or text, with optional UTM tags |
 | [**generate_social_posts_from_blog**](FreeToolsApi.md#generate_social_posts_from_blog) | **POST** /tools/blog-to-social-media | Turn a blog post (URL or text) into one social post per network with AI (needs a token, spends AI credits) |
+| [**generate_usernames**](FreeToolsApi.md#generate_usernames) | **POST** /tools/social-media-username-generator | Generate social media usernames |
+| [**generate_youtube_description**](FreeToolsApi.md#generate_youtube_description) | **POST** /tools/youtube-description-generator | Write three YouTube video descriptions with AI (needs a token, spends AI credits) |
+| [**generate_youtube_titles**](FreeToolsApi.md#generate_youtube_titles) | **POST** /tools/youtube-title-generator | Write five YouTube video titles with AI (needs a token, spends AI credits) |
 | [**get_best_times_to_post**](FreeToolsApi.md#get_best_times_to_post) | **GET** /tools/best-time-to-post | Get the best times to post per network from published studies, with sources |
+| [**get_glossary**](FreeToolsApi.md#get_glossary) | **GET** /tools/social-media-glossary | Look up social media terms: plain-language definitions by category, with sources and related terms |
 | [**get_hook_templates**](FreeToolsApi.md#get_hook_templates) | **GET** /tools/hook-generator/library | Get free hook templates for social media posts, filtered by style and network |
 | [**get_image_sizes**](FreeToolsApi.md#get_image_sizes) | **GET** /tools/social-media-image-sizes | Get social media image sizes per network, each with its source |
 | [**get_safe_zones**](FreeToolsApi.md#get_safe_zones) | **POST** /tools/safe-zone-checker | Get the TikTok, Instagram Reels or YouTube Shorts safe zones for a vertical frame |
 | [**get_video_specs**](FreeToolsApi.md#get_video_specs) | **GET** /tools/social-media-video-specs | Get social media video ratios, resolutions, lengths and file size limits per network, with sources |
 | [**list_awareness_days**](FreeToolsApi.md#list_awareness_days) | **GET** /tools/social-media-holiday-calendar | List public holidays, awareness days and social media days by date, country, type and topic, with sources |
 | [**list_free_tools**](FreeToolsApi.md#list_free_tools) | **GET** /tools | List the free tools |
+| [**pick_social_media_tool**](FreeToolsApi.md#pick_social_media_tool) | **POST** /tools/social-media-tool-picker | Match your needs against social media management tools and see what each one misses |
 | [**plan_content_calendar**](FreeToolsApi.md#plan_content_calendar) | **POST** /tools/social-media-content-calendar-generator | Plan a social media content calendar and get it as CSV and ICS |
 | [**plan_posting_frequency**](FreeToolsApi.md#plan_posting_frequency) | **POST** /tools/posting-frequency-planner | Plan how often to post on each network |
 | [**preview_post**](FreeToolsApi.md#preview_post) | **POST** /tools/social-media-post-preview | Preview where a post folds and when its image is cropped on Instagram, X, LinkedIn and Facebook |
 | [**score_social_audit**](FreeToolsApi.md#score_social_audit) | **POST** /tools/social-media-audit-template | Score a social media audit checklist and get the top fixes |
 | [**search_emoji**](FreeToolsApi.md#search_emoji) | **POST** /tools/social-media-emoji-picker | Search emoji by name or keyword, to copy and paste into a post |
 | [**split_thread**](FreeToolsApi.md#split_thread) | **POST** /tools/x-thread-maker | Split long text into a thread |
+| [**summarize_report**](FreeToolsApi.md#summarize_report) | **POST** /tools/social-media-report-generator | Summarize social media post metrics into a report |
+| [**verify_webhook_signature**](FreeToolsApi.md#verify_webhook_signature) | **POST** /tools/webhook-signature-verifier | Verify an HMAC webhook signature |
+
+
+## build_hashtag_groups
+
+> <FreeToolBuildHashtagGroupsResponse> build_hashtag_groups(free_tool_build_hashtag_groups_request)
+
+Clean, dedupe and split hashtags into groups that fit a network's hashtag cap
+
+Clean, dedupe and split hashtags into groups that fit a network's hashtag cap. The same logic as the free web tool at https://postboost.co/tools/hashtag-group-builder. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_build_hashtag_groups_request = PostBoost::FreeToolBuildHashtagGroupsRequest.new({text: 'text_example'}) # FreeToolBuildHashtagGroupsRequest | 
+
+begin
+  # Clean, dedupe and split hashtags into groups that fit a network's hashtag cap
+  result = api_instance.build_hashtag_groups(free_tool_build_hashtag_groups_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->build_hashtag_groups: #{e}"
+end
+```
+
+#### Using the build_hashtag_groups_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolBuildHashtagGroupsResponse>, Integer, Hash)> build_hashtag_groups_with_http_info(free_tool_build_hashtag_groups_request)
+
+```ruby
+begin
+  # Clean, dedupe and split hashtags into groups that fit a network's hashtag cap
+  data, status_code, headers = api_instance.build_hashtag_groups_with_http_info(free_tool_build_hashtag_groups_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolBuildHashtagGroupsResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->build_hashtag_groups_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_build_hashtag_groups_request** | [**FreeToolBuildHashtagGroupsRequest**](FreeToolBuildHashtagGroupsRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolBuildHashtagGroupsResponse**](FreeToolBuildHashtagGroupsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## build_utm_url
@@ -414,6 +491,70 @@ end
 ### Return type
 
 [**FreeToolCalculateInfluencerRateResponse**](FreeToolCalculateInfluencerRateResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## calculate_smm_pricing
+
+> <FreeToolCalculateSmmPricingResponse> calculate_smm_pricing(free_tool_calculate_smm_pricing_request)
+
+Estimate social media manager pricing
+
+Estimate social media manager pricing. The same logic as the free web tool at https://postboost.co/tools/social-media-manager-pricing-calculator. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_calculate_smm_pricing_request = PostBoost::FreeToolCalculateSmmPricingRequest.new({networks: 37, posts_per_week: 37}) # FreeToolCalculateSmmPricingRequest | 
+
+begin
+  # Estimate social media manager pricing
+  result = api_instance.calculate_smm_pricing(free_tool_calculate_smm_pricing_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->calculate_smm_pricing: #{e}"
+end
+```
+
+#### Using the calculate_smm_pricing_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolCalculateSmmPricingResponse>, Integer, Hash)> calculate_smm_pricing_with_http_info(free_tool_calculate_smm_pricing_request)
+
+```ruby
+begin
+  # Estimate social media manager pricing
+  data, status_code, headers = api_instance.calculate_smm_pricing_with_http_info(free_tool_calculate_smm_pricing_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolCalculateSmmPricingResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->calculate_smm_pricing_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_calculate_smm_pricing_request** | [**FreeToolCalculateSmmPricingRequest**](FreeToolCalculateSmmPricingRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolCalculateSmmPricingResponse**](FreeToolCalculateSmmPricingResponse.md)
 
 ### Authorization
 
@@ -937,6 +1078,76 @@ No authorization required
 - **Accept**: application/json
 
 
+## find_automation_recipes
+
+> <FreeToolFindAutomationRecipesResponse> find_automation_recipes(opts)
+
+Find n8n, Zapier and Make recipes that automate social media posting through the PostBoost API
+
+Find n8n, Zapier and Make recipes that automate social media posting through the PostBoost API. The same logic as the free web tool at https://postboost.co/tools/social-media-automation-recipes. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+opts = {
+  platform: 'n8n', # String | 
+  trigger: 'rss', # String | 
+  q: 'q_example' # String | 
+}
+
+begin
+  # Find n8n, Zapier and Make recipes that automate social media posting through the PostBoost API
+  result = api_instance.find_automation_recipes(opts)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->find_automation_recipes: #{e}"
+end
+```
+
+#### Using the find_automation_recipes_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolFindAutomationRecipesResponse>, Integer, Hash)> find_automation_recipes_with_http_info(opts)
+
+```ruby
+begin
+  # Find n8n, Zapier and Make recipes that automate social media posting through the PostBoost API
+  data, status_code, headers = api_instance.find_automation_recipes_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolFindAutomationRecipesResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->find_automation_recipes_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **platform** | **String** |  | [optional] |
+| **trigger** | **String** |  | [optional] |
+| **q** | **String** |  | [optional] |
+
+### Return type
+
+[**FreeToolFindAutomationRecipesResponse**](FreeToolFindAutomationRecipesResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## format_instagram_caption
 
 > <FreeToolFormatInstagramCaptionResponse> format_instagram_caption(free_tool_format_instagram_caption_request)
@@ -1058,6 +1269,144 @@ end
 ### Authorization
 
 No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## generate_alt_text
+
+> <FreeToolGenerateAltTextResponse> generate_alt_text(free_tool_generate_alt_text_request)
+
+Write alt text for an image with AI (needs a token, spends AI credits)
+
+Write alt text for an image with AI (needs a token, spends AI credits). The same logic as the free web tool at https://postboost.co/tools/alt-text-generator. Needs an API token (a scoped key needs the `ai` ability and pays with its own workspace). A new generation spends 1 AI credit of the workspace you name (or your active workspace); a repeated identical request is answered from the cache for free.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+# setup authorization
+PostBoost.configure do |config|
+  # Configure Bearer authorization: bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_generate_alt_text_request = PostBoost::FreeToolGenerateAltTextRequest.new # FreeToolGenerateAltTextRequest | 
+
+begin
+  # Write alt text for an image with AI (needs a token, spends AI credits)
+  result = api_instance.generate_alt_text(free_tool_generate_alt_text_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_alt_text: #{e}"
+end
+```
+
+#### Using the generate_alt_text_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolGenerateAltTextResponse>, Integer, Hash)> generate_alt_text_with_http_info(free_tool_generate_alt_text_request)
+
+```ruby
+begin
+  # Write alt text for an image with AI (needs a token, spends AI credits)
+  data, status_code, headers = api_instance.generate_alt_text_with_http_info(free_tool_generate_alt_text_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolGenerateAltTextResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_alt_text_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_generate_alt_text_request** | [**FreeToolGenerateAltTextRequest**](FreeToolGenerateAltTextRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolGenerateAltTextResponse**](FreeToolGenerateAltTextResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json, multipart/form-data
+- **Accept**: application/json
+
+
+## generate_bio
+
+> <FreeToolGenerateBioResponse> generate_bio(free_tool_generate_bio_request)
+
+Write five profile bios with AI (needs a token, spends AI credits)
+
+Write five profile bios with AI (needs a token, spends AI credits). The same logic as the free web tool at https://postboost.co/tools/instagram-bio-generator. Needs an API token (a scoped key needs the `ai` ability and pays with its own workspace). A new generation spends 1 AI credit of the workspace you name (or your active workspace); a repeated identical request is answered from the cache for free.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+# setup authorization
+PostBoost.configure do |config|
+  # Configure Bearer authorization: bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_generate_bio_request = PostBoost::FreeToolGenerateBioRequest.new({text: 'text_example'}) # FreeToolGenerateBioRequest | 
+
+begin
+  # Write five profile bios with AI (needs a token, spends AI credits)
+  result = api_instance.generate_bio(free_tool_generate_bio_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_bio: #{e}"
+end
+```
+
+#### Using the generate_bio_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolGenerateBioResponse>, Integer, Hash)> generate_bio_with_http_info(free_tool_generate_bio_request)
+
+```ruby
+begin
+  # Write five profile bios with AI (needs a token, spends AI credits)
+  data, status_code, headers = api_instance.generate_bio_with_http_info(free_tool_generate_bio_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolGenerateBioResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_bio_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_generate_bio_request** | [**FreeToolGenerateBioRequest**](FreeToolGenerateBioRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolGenerateBioResponse**](FreeToolGenerateBioResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -1336,6 +1685,75 @@ end
 - **Accept**: application/json
 
 
+## generate_linked_in_headline
+
+> <FreeToolGenerateLinkedInHeadlineResponse> generate_linked_in_headline(free_tool_generate_linked_in_headline_request)
+
+Write five LinkedIn profile headlines with AI (needs a token, spends AI credits)
+
+Write five LinkedIn profile headlines with AI (needs a token, spends AI credits). The same logic as the free web tool at https://postboost.co/tools/linkedin-headline-generator. Needs an API token (a scoped key needs the `ai` ability and pays with its own workspace). A new generation spends 1 AI credit of the workspace you name (or your active workspace); a repeated identical request is answered from the cache for free.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+# setup authorization
+PostBoost.configure do |config|
+  # Configure Bearer authorization: bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_generate_linked_in_headline_request = PostBoost::FreeToolGenerateLinkedInHeadlineRequest.new({role: 'role_example', skills: 'skills_example'}) # FreeToolGenerateLinkedInHeadlineRequest | 
+
+begin
+  # Write five LinkedIn profile headlines with AI (needs a token, spends AI credits)
+  result = api_instance.generate_linked_in_headline(free_tool_generate_linked_in_headline_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_linked_in_headline: #{e}"
+end
+```
+
+#### Using the generate_linked_in_headline_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolGenerateLinkedInHeadlineResponse>, Integer, Hash)> generate_linked_in_headline_with_http_info(free_tool_generate_linked_in_headline_request)
+
+```ruby
+begin
+  # Write five LinkedIn profile headlines with AI (needs a token, spends AI credits)
+  data, status_code, headers = api_instance.generate_linked_in_headline_with_http_info(free_tool_generate_linked_in_headline_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolGenerateLinkedInHeadlineResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_linked_in_headline_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_generate_linked_in_headline_request** | [**FreeToolGenerateLinkedInHeadlineRequest**](FreeToolGenerateLinkedInHeadlineRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolGenerateLinkedInHeadlineResponse**](FreeToolGenerateLinkedInHeadlineResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## generate_qr_code
 
 > <FreeToolGenerateQrCodeResponse> generate_qr_code(free_tool_generate_qr_code_request)
@@ -1469,6 +1887,208 @@ end
 - **Accept**: application/json
 
 
+## generate_usernames
+
+> <FreeToolGenerateUsernamesResponse> generate_usernames(free_tool_generate_usernames_request)
+
+Generate social media usernames
+
+Generate social media usernames. The same logic as the free web tool at https://postboost.co/tools/social-media-username-generator. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_generate_usernames_request = PostBoost::FreeToolGenerateUsernamesRequest.new({name: 'name_example'}) # FreeToolGenerateUsernamesRequest | 
+
+begin
+  # Generate social media usernames
+  result = api_instance.generate_usernames(free_tool_generate_usernames_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_usernames: #{e}"
+end
+```
+
+#### Using the generate_usernames_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolGenerateUsernamesResponse>, Integer, Hash)> generate_usernames_with_http_info(free_tool_generate_usernames_request)
+
+```ruby
+begin
+  # Generate social media usernames
+  data, status_code, headers = api_instance.generate_usernames_with_http_info(free_tool_generate_usernames_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolGenerateUsernamesResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_usernames_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_generate_usernames_request** | [**FreeToolGenerateUsernamesRequest**](FreeToolGenerateUsernamesRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolGenerateUsernamesResponse**](FreeToolGenerateUsernamesResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## generate_youtube_description
+
+> <FreeToolGenerateYoutubeDescriptionResponse> generate_youtube_description(free_tool_generate_youtube_description_request)
+
+Write three YouTube video descriptions with AI (needs a token, spends AI credits)
+
+Write three YouTube video descriptions with AI (needs a token, spends AI credits). The same logic as the free web tool at https://postboost.co/tools/youtube-description-generator. Needs an API token (a scoped key needs the `ai` ability and pays with its own workspace). A new generation spends 1 AI credit of the workspace you name (or your active workspace); a repeated identical request is answered from the cache for free.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+# setup authorization
+PostBoost.configure do |config|
+  # Configure Bearer authorization: bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_generate_youtube_description_request = PostBoost::FreeToolGenerateYoutubeDescriptionRequest.new({text: 'text_example'}) # FreeToolGenerateYoutubeDescriptionRequest | 
+
+begin
+  # Write three YouTube video descriptions with AI (needs a token, spends AI credits)
+  result = api_instance.generate_youtube_description(free_tool_generate_youtube_description_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_youtube_description: #{e}"
+end
+```
+
+#### Using the generate_youtube_description_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolGenerateYoutubeDescriptionResponse>, Integer, Hash)> generate_youtube_description_with_http_info(free_tool_generate_youtube_description_request)
+
+```ruby
+begin
+  # Write three YouTube video descriptions with AI (needs a token, spends AI credits)
+  data, status_code, headers = api_instance.generate_youtube_description_with_http_info(free_tool_generate_youtube_description_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolGenerateYoutubeDescriptionResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_youtube_description_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_generate_youtube_description_request** | [**FreeToolGenerateYoutubeDescriptionRequest**](FreeToolGenerateYoutubeDescriptionRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolGenerateYoutubeDescriptionResponse**](FreeToolGenerateYoutubeDescriptionResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## generate_youtube_titles
+
+> <FreeToolGenerateYoutubeTitlesResponse> generate_youtube_titles(free_tool_generate_youtube_titles_request)
+
+Write five YouTube video titles with AI (needs a token, spends AI credits)
+
+Write five YouTube video titles with AI (needs a token, spends AI credits). The same logic as the free web tool at https://postboost.co/tools/youtube-title-generator. Needs an API token (a scoped key needs the `ai` ability and pays with its own workspace). A new generation spends 1 AI credit of the workspace you name (or your active workspace); a repeated identical request is answered from the cache for free.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+# setup authorization
+PostBoost.configure do |config|
+  # Configure Bearer authorization: bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_generate_youtube_titles_request = PostBoost::FreeToolGenerateYoutubeTitlesRequest.new({text: 'text_example'}) # FreeToolGenerateYoutubeTitlesRequest | 
+
+begin
+  # Write five YouTube video titles with AI (needs a token, spends AI credits)
+  result = api_instance.generate_youtube_titles(free_tool_generate_youtube_titles_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_youtube_titles: #{e}"
+end
+```
+
+#### Using the generate_youtube_titles_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolGenerateYoutubeTitlesResponse>, Integer, Hash)> generate_youtube_titles_with_http_info(free_tool_generate_youtube_titles_request)
+
+```ruby
+begin
+  # Write five YouTube video titles with AI (needs a token, spends AI credits)
+  data, status_code, headers = api_instance.generate_youtube_titles_with_http_info(free_tool_generate_youtube_titles_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolGenerateYoutubeTitlesResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_youtube_titles_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_generate_youtube_titles_request** | [**FreeToolGenerateYoutubeTitlesRequest**](FreeToolGenerateYoutubeTitlesRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolGenerateYoutubeTitlesResponse**](FreeToolGenerateYoutubeTitlesResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## get_best_times_to_post
 
 > <FreeToolGetBestTimesToPostResponse> get_best_times_to_post(opts)
@@ -1524,6 +2144,74 @@ end
 ### Return type
 
 [**FreeToolGetBestTimesToPostResponse**](FreeToolGetBestTimesToPostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_glossary
+
+> <FreeToolGetGlossaryResponse> get_glossary(opts)
+
+Look up social media terms: plain-language definitions by category, with sources and related terms
+
+Look up social media terms: plain-language definitions by category, with sources and related terms. The same logic as the free web tool at https://postboost.co/tools/social-media-glossary. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+opts = {
+  q: 'q_example', # String | 
+  category: 'metrics' # String | 
+}
+
+begin
+  # Look up social media terms: plain-language definitions by category, with sources and related terms
+  result = api_instance.get_glossary(opts)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->get_glossary: #{e}"
+end
+```
+
+#### Using the get_glossary_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolGetGlossaryResponse>, Integer, Hash)> get_glossary_with_http_info(opts)
+
+```ruby
+begin
+  # Look up social media terms: plain-language definitions by category, with sources and related terms
+  data, status_code, headers = api_instance.get_glossary_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolGetGlossaryResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->get_glossary_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **q** | **String** |  | [optional] |
+| **category** | **String** |  | [optional] |
+
+### Return type
+
+[**FreeToolGetGlossaryResponse**](FreeToolGetGlossaryResponse.md)
 
 ### Authorization
 
@@ -1938,6 +2626,70 @@ No authorization required
 - **Accept**: application/json
 
 
+## pick_social_media_tool
+
+> <FreeToolPickSocialMediaToolResponse> pick_social_media_tool(free_tool_pick_social_media_tool_request)
+
+Match your needs against social media management tools and see what each one misses
+
+Match your needs against social media management tools and see what each one misses. The same logic as the free web tool at https://postboost.co/tools/social-media-tool-picker. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_pick_social_media_tool_request = PostBoost::FreeToolPickSocialMediaToolRequest.new # FreeToolPickSocialMediaToolRequest | 
+
+begin
+  # Match your needs against social media management tools and see what each one misses
+  result = api_instance.pick_social_media_tool(free_tool_pick_social_media_tool_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->pick_social_media_tool: #{e}"
+end
+```
+
+#### Using the pick_social_media_tool_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolPickSocialMediaToolResponse>, Integer, Hash)> pick_social_media_tool_with_http_info(free_tool_pick_social_media_tool_request)
+
+```ruby
+begin
+  # Match your needs against social media management tools and see what each one misses
+  data, status_code, headers = api_instance.pick_social_media_tool_with_http_info(free_tool_pick_social_media_tool_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolPickSocialMediaToolResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->pick_social_media_tool_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_pick_social_media_tool_request** | [**FreeToolPickSocialMediaToolRequest**](FreeToolPickSocialMediaToolRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolPickSocialMediaToolResponse**](FreeToolPickSocialMediaToolResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## plan_content_calendar
 
 > <FreeToolPlanContentCalendarResponse> plan_content_calendar(free_tool_plan_content_calendar_request)
@@ -2311,6 +3063,134 @@ end
 ### Return type
 
 [**FreeToolSplitThreadResponse**](FreeToolSplitThreadResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## summarize_report
+
+> <FreeToolSummarizeReportResponse> summarize_report(free_tool_summarize_report_request)
+
+Summarize social media post metrics into a report
+
+Summarize social media post metrics into a report. The same logic as the free web tool at https://postboost.co/tools/social-media-report-generator. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_summarize_report_request = PostBoost::FreeToolSummarizeReportRequest.new({rows: [PostBoost::FreeToolSummarizeReportRequestRowsInner.new]}) # FreeToolSummarizeReportRequest | 
+
+begin
+  # Summarize social media post metrics into a report
+  result = api_instance.summarize_report(free_tool_summarize_report_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->summarize_report: #{e}"
+end
+```
+
+#### Using the summarize_report_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolSummarizeReportResponse>, Integer, Hash)> summarize_report_with_http_info(free_tool_summarize_report_request)
+
+```ruby
+begin
+  # Summarize social media post metrics into a report
+  data, status_code, headers = api_instance.summarize_report_with_http_info(free_tool_summarize_report_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolSummarizeReportResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->summarize_report_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_summarize_report_request** | [**FreeToolSummarizeReportRequest**](FreeToolSummarizeReportRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolSummarizeReportResponse**](FreeToolSummarizeReportResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## verify_webhook_signature
+
+> <FreeToolVerifyWebhookSignatureResponse> verify_webhook_signature(free_tool_verify_webhook_signature_request)
+
+Verify an HMAC webhook signature
+
+Verify an HMAC webhook signature. The same logic as the free web tool at https://postboost.co/tools/webhook-signature-verifier. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_verify_webhook_signature_request = PostBoost::FreeToolVerifyWebhookSignatureRequest.new({body: 'body_example', secret: 'secret_example', signature: 'signature_example'}) # FreeToolVerifyWebhookSignatureRequest | 
+
+begin
+  # Verify an HMAC webhook signature
+  result = api_instance.verify_webhook_signature(free_tool_verify_webhook_signature_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->verify_webhook_signature: #{e}"
+end
+```
+
+#### Using the verify_webhook_signature_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolVerifyWebhookSignatureResponse>, Integer, Hash)> verify_webhook_signature_with_http_info(free_tool_verify_webhook_signature_request)
+
+```ruby
+begin
+  # Verify an HMAC webhook signature
+  data, status_code, headers = api_instance.verify_webhook_signature_with_http_info(free_tool_verify_webhook_signature_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolVerifyWebhookSignatureResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->verify_webhook_signature_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_verify_webhook_signature_request** | [**FreeToolVerifyWebhookSignatureRequest**](FreeToolVerifyWebhookSignatureRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolVerifyWebhookSignatureResponse**](FreeToolVerifyWebhookSignatureResponse.md)
 
 ### Authorization
 

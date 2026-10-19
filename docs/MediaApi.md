@@ -465,7 +465,7 @@ end
 
 Get remote upload status
 
-Poll the status of an in-progress remote media download.
+Poll a background download started by `initiateRemoteUpload` until `status` is `completed` or `failed`. `status` moves from `pending` to `downloading` and `processing`, and ends as `completed` (with `media`) or `failed` (with `error`). The final result is returned once: after a `completed` or `failed` response the download id is forgotten and later polls return `404`, as do ids older than one hour. 
 
 ### Examples
 
@@ -607,11 +607,11 @@ end
 
 ## initiate_remote_upload
 
-> <InitiateRemoteUpload201Response> initiate_remote_upload(workspace_uuid, initiate_remote_upload_request, opts)
+> <InitiateRemoteUpload200Response> initiate_remote_upload(workspace_uuid, initiate_remote_upload_request, opts)
 
 Initiate remote upload
 
-Download a file from a remote URL into the media library. For small files the media object is returned immediately. For large files a `download_id` is returned — poll the status endpoint. 
+Download a file from a remote URL into the media library. A file under 10 MB (or one whose server does not send its size) is downloaded during the request: the response has `status: completed` and the `media` object, or `status: failed` and an `error`. A larger file downloads in the background: the response has `status: pending` and a `download_id`; poll `getRemoteUploadStatus` with it until `status` is `completed` or `failed`. 
 
 ### Examples
 
@@ -644,7 +644,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InitiateRemoteUpload201Response>, Integer, Hash)> initiate_remote_upload_with_http_info(workspace_uuid, initiate_remote_upload_request, opts)
+> <Array(<InitiateRemoteUpload200Response>, Integer, Hash)> initiate_remote_upload_with_http_info(workspace_uuid, initiate_remote_upload_request, opts)
 
 ```ruby
 begin
@@ -652,7 +652,7 @@ begin
   data, status_code, headers = api_instance.initiate_remote_upload_with_http_info(workspace_uuid, initiate_remote_upload_request, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InitiateRemoteUpload201Response>
+  p data # => <InitiateRemoteUpload200Response>
 rescue PostBoost::ApiError => e
   puts "Error when calling MediaApi->initiate_remote_upload_with_http_info: #{e}"
 end
@@ -668,7 +668,7 @@ end
 
 ### Return type
 
-[**InitiateRemoteUpload201Response**](InitiateRemoteUpload201Response.md)
+[**InitiateRemoteUpload200Response**](InitiateRemoteUpload200Response.md)
 
 ### Authorization
 
