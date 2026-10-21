@@ -13,7 +13,7 @@ gem install postboost
 | **RubyGems** | [rubygems.org/gems/postboost](https://rubygems.org/gems/postboost) |
 | **GitHub** | [postboost-co/postboost-ruby](https://github.com/postboost-co/postboost-ruby) |
 | **Docs** | [postboost.co/docs/api](https://postboost.co/docs/api) |
-| **Version** | v1.57.8 |
+| **Version** | v1.61.0 |
 
 ## Quick start
 
@@ -103,6 +103,7 @@ Class | Method | HTTP request | Description
 *PostBoost::FreeToolsApi* | [**clean_text**](docs/FreeToolsApi.md#clean_text) | **POST** /tools/ai-text-cleaner | Clean AI-written text: dashes, quotes, invisible characters, markdown
 *PostBoost::FreeToolsApi* | [**count_characters**](docs/FreeToolsApi.md#count_characters) | **POST** /tools/social-media-character-counter | Count characters as each network counts them
 *PostBoost::FreeToolsApi* | [**find_automation_recipes**](docs/FreeToolsApi.md#find_automation_recipes) | **GET** /tools/social-media-automation-recipes | Find n8n, Zapier and Make recipes that automate social media posting through the PostBoost API
+*PostBoost::FreeToolsApi* | [**format_cross_post**](docs/FreeToolsApi.md#format_cross_post) | **POST** /tools/cross-post-formatter | Format one post for X, Threads, Bluesky, Mastodon and LinkedIn
 *PostBoost::FreeToolsApi* | [**format_instagram_caption**](docs/FreeToolsApi.md#format_instagram_caption) | **POST** /tools/instagram-line-break-generator | Keep blank lines in an Instagram caption with spacer lines, and count it
 *PostBoost::FreeToolsApi* | [**format_linked_in_post**](docs/FreeToolsApi.md#format_linked_in_post) | **POST** /tools/linkedin-post-formatter | Format a LinkedIn post with bold, italic and lists
 *PostBoost::FreeToolsApi* | [**generate_alt_text**](docs/FreeToolsApi.md#generate_alt_text) | **POST** /tools/alt-text-generator | Write alt text for an image with AI (needs a token, spends AI credits)
@@ -125,6 +126,7 @@ Class | Method | HTTP request | Description
 *PostBoost::FreeToolsApi* | [**get_video_specs**](docs/FreeToolsApi.md#get_video_specs) | **GET** /tools/social-media-video-specs | Get social media video ratios, resolutions, lengths and file size limits per network, with sources
 *PostBoost::FreeToolsApi* | [**list_awareness_days**](docs/FreeToolsApi.md#list_awareness_days) | **GET** /tools/social-media-holiday-calendar | List public holidays, awareness days and social media days by date, country, type and topic, with sources
 *PostBoost::FreeToolsApi* | [**list_free_tools**](docs/FreeToolsApi.md#list_free_tools) | **GET** /tools | List the free tools
+*PostBoost::FreeToolsApi* | [**pick_giveaway_winners**](docs/FreeToolsApi.md#pick_giveaway_winners) | **POST** /tools/giveaway-comment-picker | Pick giveaway winners with a draw anyone can verify
 *PostBoost::FreeToolsApi* | [**pick_social_media_tool**](docs/FreeToolsApi.md#pick_social_media_tool) | **POST** /tools/social-media-tool-picker | Match your needs against social media management tools and see what each one misses
 *PostBoost::FreeToolsApi* | [**plan_content_calendar**](docs/FreeToolsApi.md#plan_content_calendar) | **POST** /tools/social-media-content-calendar-generator | Plan a social media content calendar and get it as CSV and ICS
 *PostBoost::FreeToolsApi* | [**plan_posting_frequency**](docs/FreeToolsApi.md#plan_posting_frequency) | **POST** /tools/posting-frequency-planner | Plan how often to post on each network

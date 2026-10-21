@@ -21,6 +21,7 @@ All URIs are relative to *https://postboost.co/app/api*
 | [**clean_text**](FreeToolsApi.md#clean_text) | **POST** /tools/ai-text-cleaner | Clean AI-written text: dashes, quotes, invisible characters, markdown |
 | [**count_characters**](FreeToolsApi.md#count_characters) | **POST** /tools/social-media-character-counter | Count characters as each network counts them |
 | [**find_automation_recipes**](FreeToolsApi.md#find_automation_recipes) | **GET** /tools/social-media-automation-recipes | Find n8n, Zapier and Make recipes that automate social media posting through the PostBoost API |
+| [**format_cross_post**](FreeToolsApi.md#format_cross_post) | **POST** /tools/cross-post-formatter | Format one post for X, Threads, Bluesky, Mastodon and LinkedIn |
 | [**format_instagram_caption**](FreeToolsApi.md#format_instagram_caption) | **POST** /tools/instagram-line-break-generator | Keep blank lines in an Instagram caption with spacer lines, and count it |
 | [**format_linked_in_post**](FreeToolsApi.md#format_linked_in_post) | **POST** /tools/linkedin-post-formatter | Format a LinkedIn post with bold, italic and lists |
 | [**generate_alt_text**](FreeToolsApi.md#generate_alt_text) | **POST** /tools/alt-text-generator | Write alt text for an image with AI (needs a token, spends AI credits) |
@@ -43,6 +44,7 @@ All URIs are relative to *https://postboost.co/app/api*
 | [**get_video_specs**](FreeToolsApi.md#get_video_specs) | **GET** /tools/social-media-video-specs | Get social media video ratios, resolutions, lengths and file size limits per network, with sources |
 | [**list_awareness_days**](FreeToolsApi.md#list_awareness_days) | **GET** /tools/social-media-holiday-calendar | List public holidays, awareness days and social media days by date, country, type and topic, with sources |
 | [**list_free_tools**](FreeToolsApi.md#list_free_tools) | **GET** /tools | List the free tools |
+| [**pick_giveaway_winners**](FreeToolsApi.md#pick_giveaway_winners) | **POST** /tools/giveaway-comment-picker | Pick giveaway winners with a draw anyone can verify |
 | [**pick_social_media_tool**](FreeToolsApi.md#pick_social_media_tool) | **POST** /tools/social-media-tool-picker | Match your needs against social media management tools and see what each one misses |
 | [**plan_content_calendar**](FreeToolsApi.md#plan_content_calendar) | **POST** /tools/social-media-content-calendar-generator | Plan a social media content calendar and get it as CSV and ICS |
 | [**plan_posting_frequency**](FreeToolsApi.md#plan_posting_frequency) | **POST** /tools/posting-frequency-planner | Plan how often to post on each network |
@@ -1145,6 +1147,70 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## format_cross_post
+
+> <FreeToolFormatCrossPostResponse> format_cross_post(free_tool_format_cross_post_request)
+
+Format one post for X, Threads, Bluesky, Mastodon and LinkedIn
+
+Format one post for X, Threads, Bluesky, Mastodon and LinkedIn. The same logic as the free web tool at https://postboost.co/tools/cross-post-formatter. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_format_cross_post_request = PostBoost::FreeToolFormatCrossPostRequest.new # FreeToolFormatCrossPostRequest | 
+
+begin
+  # Format one post for X, Threads, Bluesky, Mastodon and LinkedIn
+  result = api_instance.format_cross_post(free_tool_format_cross_post_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->format_cross_post: #{e}"
+end
+```
+
+#### Using the format_cross_post_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolFormatCrossPostResponse>, Integer, Hash)> format_cross_post_with_http_info(free_tool_format_cross_post_request)
+
+```ruby
+begin
+  # Format one post for X, Threads, Bluesky, Mastodon and LinkedIn
+  data, status_code, headers = api_instance.format_cross_post_with_http_info(free_tool_format_cross_post_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolFormatCrossPostResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->format_cross_post_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_format_cross_post_request** | [**FreeToolFormatCrossPostRequest**](FreeToolFormatCrossPostRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolFormatCrossPostResponse**](FreeToolFormatCrossPostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -2623,6 +2689,70 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## pick_giveaway_winners
+
+> <FreeToolPickGiveawayWinnersResponse> pick_giveaway_winners(free_tool_pick_giveaway_winners_request)
+
+Pick giveaway winners with a draw anyone can verify
+
+Pick giveaway winners with a draw anyone can verify. The same logic as the free web tool at https://postboost.co/tools/giveaway-comment-picker. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_pick_giveaway_winners_request = PostBoost::FreeToolPickGiveawayWinnersRequest.new({entrants: [PostBoost::FreeToolPickGiveawayWinnersRequestEntrantsInner.new({username: 'username_example'})]}) # FreeToolPickGiveawayWinnersRequest | 
+
+begin
+  # Pick giveaway winners with a draw anyone can verify
+  result = api_instance.pick_giveaway_winners(free_tool_pick_giveaway_winners_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->pick_giveaway_winners: #{e}"
+end
+```
+
+#### Using the pick_giveaway_winners_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolPickGiveawayWinnersResponse>, Integer, Hash)> pick_giveaway_winners_with_http_info(free_tool_pick_giveaway_winners_request)
+
+```ruby
+begin
+  # Pick giveaway winners with a draw anyone can verify
+  data, status_code, headers = api_instance.pick_giveaway_winners_with_http_info(free_tool_pick_giveaway_winners_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolPickGiveawayWinnersResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->pick_giveaway_winners_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_pick_giveaway_winners_request** | [**FreeToolPickGiveawayWinnersRequest**](FreeToolPickGiveawayWinnersRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolPickGiveawayWinnersResponse**](FreeToolPickGiveawayWinnersResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
