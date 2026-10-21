@@ -4,6 +4,7 @@ All URIs are relative to *https://postboost.co/app/api*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**build_agent_skill**](FreeToolsApi.md#build_agent_skill) | **POST** /tools/social-media-agent-skill-builder | Build a SKILL.md, AGENTS.md or system prompt for a social media agent |
 | [**build_hashtag_groups**](FreeToolsApi.md#build_hashtag_groups) | **POST** /tools/hashtag-group-builder | Clean, dedupe and split hashtags into groups that fit a network&#39;s hashtag cap |
 | [**build_utm_url**](FreeToolsApi.md#build_utm_url) | **POST** /tools/utm-builder | Build a UTM-tagged campaign URL |
 | [**calculate_aspect_ratio**](FreeToolsApi.md#calculate_aspect_ratio) | **POST** /tools/aspect-ratio-calculator | Calculate an aspect ratio, or the missing side of an image at a given ratio |
@@ -54,6 +55,70 @@ All URIs are relative to *https://postboost.co/app/api*
 | [**split_thread**](FreeToolsApi.md#split_thread) | **POST** /tools/x-thread-maker | Split long text into a thread |
 | [**summarize_report**](FreeToolsApi.md#summarize_report) | **POST** /tools/social-media-report-generator | Summarize social media post metrics into a report |
 | [**verify_webhook_signature**](FreeToolsApi.md#verify_webhook_signature) | **POST** /tools/webhook-signature-verifier | Verify an HMAC webhook signature |
+
+
+## build_agent_skill
+
+> <FreeToolBuildAgentSkillResponse> build_agent_skill(free_tool_build_agent_skill_request)
+
+Build a SKILL.md, AGENTS.md or system prompt for a social media agent
+
+Build a SKILL.md, AGENTS.md or system prompt for a social media agent. The same logic as the free web tool at https://postboost.co/tools/social-media-agent-skill-builder. No account needed: call it without a token, or with any API token.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_build_agent_skill_request = PostBoost::FreeToolBuildAgentSkillRequest.new # FreeToolBuildAgentSkillRequest | 
+
+begin
+  # Build a SKILL.md, AGENTS.md or system prompt for a social media agent
+  result = api_instance.build_agent_skill(free_tool_build_agent_skill_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->build_agent_skill: #{e}"
+end
+```
+
+#### Using the build_agent_skill_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolBuildAgentSkillResponse>, Integer, Hash)> build_agent_skill_with_http_info(free_tool_build_agent_skill_request)
+
+```ruby
+begin
+  # Build a SKILL.md, AGENTS.md or system prompt for a social media agent
+  data, status_code, headers = api_instance.build_agent_skill_with_http_info(free_tool_build_agent_skill_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolBuildAgentSkillResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->build_agent_skill_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_build_agent_skill_request** | [**FreeToolBuildAgentSkillRequest**](FreeToolBuildAgentSkillRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolBuildAgentSkillResponse**](FreeToolBuildAgentSkillResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## build_hashtag_groups
