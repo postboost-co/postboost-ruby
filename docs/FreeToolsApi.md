@@ -28,6 +28,7 @@ All URIs are relative to *https://postboost.co/app/api*
 | [**format_linked_in_post**](FreeToolsApi.md#format_linked_in_post) | **POST** /tools/linkedin-post-formatter | Format a LinkedIn post with bold, italic and lists |
 | [**generate_alt_text**](FreeToolsApi.md#generate_alt_text) | **POST** /tools/alt-text-generator | Write alt text for an image with AI (needs a token, spends AI credits) |
 | [**generate_bio**](FreeToolsApi.md#generate_bio) | **POST** /tools/instagram-bio-generator | Write five profile bios with AI (needs a token, spends AI credits) |
+| [**generate_brand_voice**](FreeToolsApi.md#generate_brand_voice) | **POST** /tools/brand-voice-generator | Derive a brand voice from 3 to 10 of your posts with AI: traits with quoted evidence, a guide, an AI system prompt and PostBoost brand voice JSON (needs a token, spends AI credits) |
 | [**generate_caption**](FreeToolsApi.md#generate_caption) | **POST** /tools/instagram-caption-generator | Write three post captions for a topic with AI (needs a token, spends AI credits) |
 | [**generate_fancy_text**](FreeToolsApi.md#generate_fancy_text) | **POST** /tools/fancy-text-generator | Convert text to fancy Unicode styles |
 | [**generate_hashtags**](FreeToolsApi.md#generate_hashtags) | **POST** /tools/instagram-hashtag-generator | Generate hashtags for a post topic with AI (needs a token, spends AI credits) |
@@ -1600,6 +1601,75 @@ end
 ### Return type
 
 [**FreeToolGenerateBioResponse**](FreeToolGenerateBioResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## generate_brand_voice
+
+> <FreeToolGenerateBrandVoiceResponse> generate_brand_voice(free_tool_generate_brand_voice_request)
+
+Derive a brand voice from 3 to 10 of your posts with AI: traits with quoted evidence, a guide, an AI system prompt and PostBoost brand voice JSON (needs a token, spends AI credits)
+
+Derive a brand voice from 3 to 10 of your posts with AI: traits with quoted evidence, a guide, an AI system prompt and PostBoost brand voice JSON (needs a token, spends AI credits). The same logic as the free web tool at https://postboost.co/tools/brand-voice-generator. Needs an API token (a scoped key needs the `ai` ability and pays with its own workspace). A new generation spends 1 AI credit of the workspace you name (or your active workspace); a repeated identical request is answered from the cache for free.
+
+### Examples
+
+```ruby
+require 'time'
+require 'postboost'
+# setup authorization
+PostBoost.configure do |config|
+  # Configure Bearer authorization: bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = PostBoost::FreeToolsApi.new
+free_tool_generate_brand_voice_request = PostBoost::FreeToolGenerateBrandVoiceRequest.new({posts: ['posts_example']}) # FreeToolGenerateBrandVoiceRequest | 
+
+begin
+  # Derive a brand voice from 3 to 10 of your posts with AI: traits with quoted evidence, a guide, an AI system prompt and PostBoost brand voice JSON (needs a token, spends AI credits)
+  result = api_instance.generate_brand_voice(free_tool_generate_brand_voice_request)
+  p result
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_brand_voice: #{e}"
+end
+```
+
+#### Using the generate_brand_voice_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FreeToolGenerateBrandVoiceResponse>, Integer, Hash)> generate_brand_voice_with_http_info(free_tool_generate_brand_voice_request)
+
+```ruby
+begin
+  # Derive a brand voice from 3 to 10 of your posts with AI: traits with quoted evidence, a guide, an AI system prompt and PostBoost brand voice JSON (needs a token, spends AI credits)
+  data, status_code, headers = api_instance.generate_brand_voice_with_http_info(free_tool_generate_brand_voice_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FreeToolGenerateBrandVoiceResponse>
+rescue PostBoost::ApiError => e
+  puts "Error when calling FreeToolsApi->generate_brand_voice_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **free_tool_generate_brand_voice_request** | [**FreeToolGenerateBrandVoiceRequest**](FreeToolGenerateBrandVoiceRequest.md) |  |  |
+
+### Return type
+
+[**FreeToolGenerateBrandVoiceResponse**](FreeToolGenerateBrandVoiceResponse.md)
 
 ### Authorization
 
